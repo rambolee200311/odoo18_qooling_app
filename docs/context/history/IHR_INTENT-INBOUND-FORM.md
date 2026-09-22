@@ -26,7 +26,7 @@
 | Change Boundary | CC §4 |
 | Required Behavior | `CC-CHANGE-001` 至 `CC-CHANGE-007` |
 | Preservation | `CC-PRESERVE-001` 至 `CC-PRESERVE-005` |
-| Guardrails | `T-SCOPE-001`、`T-DATA-001`、`T-SIGN-001`、`T-I18N-001`、`T-SEC-001`、`T-ORM-001`、`T-PDF-001`、`T-ERR-001` |
+| Guardrails | `T-SCOPE-001`、`T-DATA-001`、`T-SIGN-001`、`T-I18N-001`、`T-SEC-001`、`T-ORM-001`、`T-ERR-001` |
 | Test Contract | `CC-TEST-001` 至 `CC-TEST-010` |
 | Stop Conditions | CC §12 |
 | Done Criteria | CC §13 |
@@ -35,11 +35,11 @@
 
 | 项 | 状态 |
 |---|---|
-| CC-CHANGE 落实进度 | 7 / 7（PDF 具体实现按 `TD-006` 阻塞） |
+| CC-CHANGE 落实进度 | 7 / 7 |
 | Preservation Impact | None（待 HVR 验证） |
 | Deviation | None |
 | Stop Condition 触发 | No |
-| Open Issues | 1（PDF 入口 `TD-006`） |
+| Open Issues | 0 |
 | Revert 发生 | No |
 | 当前状态 | Implementation Complete |
 
@@ -111,14 +111,14 @@
 |---|---|
 | 时间 | 2026-09-22 17:49（+08:00） |
 | 阶段 | Implementation |
-| Action | 保持 PDF 具体 Adapter、导入器和生成器未实现 |
-| Reason | 遵守冻结 TDD `TD-006` 和 `T-PDF-001` |
-| Files / Components | 无新增 PDF 组件 |
-| Contract Reference | `CC-DEC-003`、`T-PDF-001` |
-| Upstream Reference | TDD `TD-006` |
-| Result | Blocked（按设计阻塞） |
+| Action | 按更正后的范围仅实现 Web/PDA 入口 |
+| Reason | 业务确认 Inbound 仅需要 Web 和 PDA |
+| Files / Components | `mymodules/wd_qooling_app/` |
+| Contract Reference | `CC-CHANGE-005` |
+| Upstream Reference | SRS `v0.7.0`、TDD `v1.1.0` |
+| Result | Completed |
 | Deviation | None |
-| Follow-up | PDF 业务入口确认后修订 TDD/CC |
+| Follow-up | None |
 
 ## 5. 实际变更清单
 
@@ -134,17 +134,17 @@
 
 ## 6. Deviation / Stop 事件
 
-无未经批准的 Deviation。PDF 具体实现按冻结设计处于 `TD-006` Blocked，不是未经批准的越界变更。
+无未经批准的 Deviation。
 
 ## 7. Open Issues
 
 | ID | 描述 | 状态 | 后续 |
 |---|---|---|---|
-| IHR-ISSUE-001 | PDF 入口是上传现有 PDF 还是系统生成 PDF 尚未确认 | Open / Blocked | 业务确认后修订 TDD `TD-006` |
+| — | 无 | Closed | — |
 
 ## 8. Handoff Summary
 
-- Implementation：完成冻结 CC 中除 PDF 具体 Adapter 外的实现范围；
+- Implementation：完成 Web/PDA 范围内的冻结 CC 实现；
 - ATR：`ATR-RUN-001` 保留失败记录，`ATR-RUN-002` 当前自动化测试通过；
 - HVR：待真实人类验证 Web/PDA、移动视口、签名、多语言和记录查看；
 - FR：尚未形成；

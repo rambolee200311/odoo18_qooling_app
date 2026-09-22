@@ -1,7 +1,7 @@
 # Inbound Form 技术设计说明书（TDD）
 
 > 文档状态：Frozen
-> 文档版本：v1.0.0
+> 文档版本：v1.1.0
 > 技术负责人：待指定
 > 基线日期：2026-09-22
 > 上游 SRS：[SRS_qooling_inbound_form.md](./SRS_qooling_inbound_form.md)
@@ -19,15 +19,15 @@
 
 | 项 | 内容 |
 |---|---|
-| 业务基线 | Inbound SRS `v0.6.0`，已冻结 |
+| 业务基线 | Inbound SRS `v0.7.0`，已冻结 |
 | 领域基线 | N/A；当前为简单 Form 记录，不建立 DDD |
 | 执行边界 | Coding Contract `v0.1.0`，Draft |
 | Odoo | `18.0` |
 | Python | `>= 3.10` |
 
-### 0.3 当前阻塞项
+### 0.3 入口范围
 
-SRS Open Questions 尚未决定 PDF 入口是“上传现有 PDF”还是“系统生成 PDF”。本冻结版本只定义入口边界和内部记录接口，不授权 PDF 具体 Adapter、导入器或报告生成器编码。该决策完成后须通过 `TD-006` 追加技术设计并升级 TDD 版本。
+本 TDD 仅覆盖 Web 和 PDA 入口，不包含 PDF 入口或 PDF 相关技术实现。
 
 ## 1. 技术上下文与基线冻结
 
@@ -41,7 +41,6 @@ SRS Open Questions 尚未决定 PDF 入口是“上传现有 PDF”还是“系�
 | 后端数据访问 | Odoo ORM | Odoo 18 原生 | 禁止裸 SQL |
 | Web UI | Odoo XML View / 原生 Web Client | Odoo 18 | 优先标准 Form/List/Search |
 | PDA UI | Odoo 响应式 Web 入口 | Odoo 18 | 仅在 TDD UI 验证后增加必要组件 |
-| PDF | 待业务入口决策 | N/A | 暂不实现具体文件协议 |
 | 队列/缓存 | 无 | N/A | 本 Form 不需要异步或缓存 |
 
 ### 1.2 模块依赖
@@ -74,7 +73,7 @@ mymodules/wd_qooling_app/
     └── test_inbound_form.py
 ```
 
-不创建 `services/`、`adapters/`、`queue/` 或独立 Schema 目录，除非 PDF 入口决策或后续技术验证证明确有必要。
+不创建 `services/`、`adapters/`、`queue/` 或独立 Schema 目录。
 
 ## 3. ORM 模型设计
 
@@ -157,7 +156,6 @@ mymodules/wd_qooling_app/
 
 当前不存在外部 JSON API，也不建立内部 JSON 作为第二套权威数据模型。
 
-如 PDF 入口最终需要文件解析或结构化报文，必须在 PDF 业务决策后新增 `ADPT`/`API`/Schema 契约，并通过 `TD-006` 修订本节。
 
 ## 6. 领域行为实现
 
@@ -177,7 +175,6 @@ mymodules/wd_qooling_app/
 
 无外部服务 Adapter。
 
-PDF 入口具体是上传或生成尚未决定；在决定前不得创建 PDF Adapter、解析服务或报告生成服务。
 
 ## 8. 异步队列、Worker、Cron
 
@@ -240,9 +237,6 @@ PDF 入口具体是上传或生成尚未决定；在决定前不得创建 PDF Ad
 - 签名使用 Odoo 可兼容的手写签名组件；若标准组件不足，才在 TDD 修订中定义最小 Owl 组件。
 - 提交按钮必须触发服务端校验，不能只依赖前端必填属性。
 
-### 13.2 PDF
-
-PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.form` 对接的设计位置，不实现上传、解析、生成或归档 UI。
 
 ### 13.3 稳定选择器
 
@@ -261,7 +255,6 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 | TEST-INBOUND-007 | QUnit/OWL 或 Playwright | Web/PDA 手写签名持久化 |
 | TEST-INBOUND-008 | Playwright | 多语言字段和选择值显示 |
 | TEST-INBOUND-009 | Playwright | 移动视口填写和提交 |
-| TEST-INBOUND-010 | 入口集成测试 | PDF 入口决策冻结后补充；当前不得宣称通过 |
 
 没有真实执行的测试不得记录为 PASS。E2E 必须等待业务 UI 状态，不使用 `networkidle` 或固定 sleep 作为通用等待。
 
@@ -278,7 +271,6 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 - `__manifest__.py` 必须声明实际使用的官方依赖和数据文件。
 - 安装/升级使用 Odoo 模块机制，不直接改数据库。
 - 模块升级前执行针对性 ORM/视图测试。
-- PDF 入口未决，不得把未决定的 PDF 依赖加入 manifest。
 
 ## 17. 技术风险与防护
 
@@ -288,7 +280,6 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 | 只靠 UI 隐藏实现 ADR 条件 | `T-DATA-001`，服务端校验与视图测试同时覆盖 |
 | 签名被普通文本替代 | `T-SIGN-001`，验证图像、签名人和时间 |
 | 多语言显示三语并列 | `T-I18N-001`，不同用户语言 E2E 验证 |
-| PDF 入口过早定型 | `T-PDF-001`，决策前禁止 Adapter 实现 |
 | 权限只在按钮层实现 | `T-SEC-001`，ACL/Record Rule 和真实用户测试 |
 
 ## 18. Implementation Guardrails
@@ -301,7 +292,6 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 | T-I18N-001 | 多语言 | 标签和 Selection 使用 Odoo 翻译，不硬编码三语并列 | TEST-INBOUND-008 |
 | T-SEC-001 | 权限 | ACL/Record Rule 必须覆盖创建、读取、修改、提交和撤回 | TEST-INBOUND-006 |
 | T-ORM-001 | 数据访问 | 只能通过 Odoo ORM，不得使用裸 SQL 或数据库驱动 | 代码审查 |
-| T-PDF-001 | 未决 PDF 入口 | PDF 业务入口未确认前不得实现具体 Adapter | TDD Review |
 | T-ERR-001 | 错误透明 | 保存/提交/文件错误必须显式显示，不得静默成功 | TEST-INBOUND-002、运行验证 |
 
 ## 19. 需求追溯矩阵
@@ -311,7 +301,6 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 | FR-INBOUND-01 至 04 | ORM-INBOUND-001 至 005、SVC-INBOUND-001 至 003 |
 | FR-INBOUND-05 至 07 | SVC-INBOUND-004、005、SEC-ACL |
 | FR-INBOUND-08、10 | UI 契约、TEST-INBOUND-007 至 009 |
-| FR-INBOUND-09 | 当前仅定义接口边界；PDF 决策后由 TD-006 追加 |
 | FR-INBOUND-11 | UI 动态行为、ORM-INBOUND-030 至 034、TEST-INBOUND-003 |
 | FR-INBOUND-12、13 | ORM-INBOUND-026 至 034、SVC-INBOUND-002 |
 | FR-INBOUND-14 | ORM-INBOUND-037 至 039、T-SIGN-001 |
@@ -327,7 +316,6 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 | Inbound Form | 货物接收记录表单 |
 | 记录结果 | 用户填写并持久化的字段值 |
 | 业务动作 | 卸货、通知、异常工单、隔离、放行或库存等超出 Form 记录范围的动作 |
-| PDF 入口 | 尚未决定是上传现有 PDF 还是系统生成 PDF 的业务入口 |
 
 ## 附录 B — 技术决策记录
 
@@ -338,18 +326,17 @@ PDF 入口业务方式未决。确定前仅保留一个与 `wd.qooling.inbound.f
 | TD-003 | 使用 Odoo 原生 ORM、标准 XML View、ACL/Record Rule 和原生序列 | Draft |
 | TD-004 | 不使用队列、缓存、外部服务或独立领域服务 | Draft |
 | TD-005 | Checkbox list 暂按三个布尔字段保存；业务控件变化需回到 SRS/TDD | Draft |
-| TD-006 | PDF 入口选择上传现有 PDF 或系统生成 PDF | Blocked，等待业务确认 |
 
 ## 附录 C — 版本变更记录
 
 | 版本 | 日期 | 变更说明 | 状态 |
 |---|---|---|---|
 | v0.1.0 | 2026-09-22 | 基于冻结 Inbound SRS 和 Coding Contract 起草技术设计；明确 ORM、状态、权限、UI、测试和 Guardrails | Draft |
-| v1.0.0 | 2026-09-22 | 经批准冻结；保留 PDF 入口决策为后续追加设计，不授权当前实现 | Frozen |
+| v1.0.0 | 2026-09-22 | 经批准冻结；覆盖 Web/PDA 入口 | Frozen |
+| v1.1.0 | 2026-09-22 | 根据业务更正移除 PDF 入口及其未决技术设计 | Revised |
 
 ## 填写自查清单
 
-- [ ] PDF 入口业务方式已确认；后续追加 TD-006 设计
 - [ ] 技术负责人已指定
 - [ ] 具体 ACL/Record Rule 已完成权限评审
 - [ ] 签名组件方案已通过 Web/PDA 技术验证

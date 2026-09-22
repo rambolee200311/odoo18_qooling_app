@@ -11,7 +11,7 @@
 
 本 Coding Contract（CC）只冻结 Inbound Form 本次实现的范围、保留行为、禁止事项、测试契约和完成闸门，不重新定义 SRS 业务语义。
 
-Inbound TDD `v1.0.0` 已冻结。本 CC 冻结本次实现边界；PDF 入口具体实现仍受 `TD-006` 业务决策约束。
+Inbound TDD `v1.1.0` 已根据业务更正修订并冻结。本 CC 仅覆盖 Web 和 PDA 入口。
 
 本 CC 已获批准进入实施。批准不解除范围、追溯、测试和停止条件；编码必须严格遵守本文件以及 TDD Guardrails。
 
@@ -33,7 +33,7 @@ Inbound TDD `v1.0.0` 已冻结。本 CC 冻结本次实现边界；PDF 入口具
 | SRS ID | 标题 | 与本次 CC 的相关性 |
 |---|---|---|
 | FR-INBOUND-01 至 FR-INBOUND-07 | 记录操作 | 在范围内 |
-| FR-INBOUND-08 至 FR-INBOUND-10 | Web、PDF、PDA 入口 | 在范围内，按 TDD 技术边界实现 |
+| FR-INBOUND-08 至 FR-INBOUND-09 | Web、PDA 入口 | 在范围内，按 TDD 技术边界实现 |
 | FR-INBOUND-11 至 FR-INBOUND-15 | 动态字段、签名、多语言 | 在范围内 |
 | BR-INBOUND-01 至 BR-INBOUND-02 | 提交字段和结果保存边界 | 在范围内 |
 | AC-INBOUND-01 至 AC-INBOUND-16 | Inbound 验收标准 | 在范围内 |
@@ -46,7 +46,6 @@ N/A。当前项目尚无 Inbound DDD；不得为填写 CC 虚构领域对象或�
 
 技术基线：[TDD_qooling_inbound_form.md](../designing/TDD_qooling_inbound_form.md)，当前为 `v1.0.0 Frozen`。
 
-PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/生成器外，TDD 已冻结的 Inbound 技术范围可进入后续实现评审。
 
 ## 3. 范围冻结
 
@@ -57,7 +56,7 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 - 实现草稿保存、提交、查看和已提交记录按权限撤回为草稿；
 - 实现 ADR 条件字段的表单显示和填写行为；
 - 实现 Web/PDA 手写签名记录，包括签名图像、签名人和签名时间；
-- 使 Web、PDF、PDA 入口产生具有一致字段含义和记录结果的 Inbound 记录；
+- 使 Web 和 PDA 入口产生具有一致字段含义和记录结果的 Inbound 记录；
 - 保存可选照片和备注；
 - 为 AC-INBOUND-01 至 AC-INBOUND-16 提供可验证测试。
 
@@ -78,7 +77,6 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 - 不把 `Not good`、`No`、`Dangerous` 或温度结果转换为系统业务结论；
 - 不自行拆分 Checkbox list 为更多业务字段；
 - 不增加复核结果、复核意见、异常状态或更正历史字段；
-- 不自行决定 PDF 是上传现有文件还是系统生成文件；该入口决策须先进入 TDD/业务确认。
 
 ## 4. 变更边界
 
@@ -113,7 +111,7 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 | 2 | 尚无 Inbound 字段实现 | 保存 SRS 第 3 章定义的字段和选择值 | CC-CHANGE-002 |
 | 3 | 尚无提交能力 | 完成提交所需字段和手写签名后提交并保存提交信息 | CC-CHANGE-003 |
 | 4 | 尚无条件字段行为 | ADR 为 `Yes` 时显示适用字段，`No` 时不要求填写 | CC-CHANGE-004 |
-| 5 | 尚无入口一致性 | Web、PDF、PDA 记录具有一致字段含义和结果 | CC-CHANGE-005 |
+| 5 | 尚无入口一致性 | Web、PDA 记录具有一致字段含义和结果 | CC-CHANGE-005 |
 | 6 | 尚无签名记录能力 | Web/PDA 保存签名图像、签名人和签名时间 | CC-CHANGE-006 |
 | 7 | 尚无记录查询能力 | 授权用户可按日期、执行人和业务参考查询 | CC-CHANGE-007 |
 
@@ -129,7 +127,7 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 
 ## 7. 适用的 TDD 防护栏
 
-引用 TDD `v1.0.0 Frozen` 中的 `T-SCOPE-001`、`T-DATA-001`、`T-SIGN-001`、`T-I18N-001`、`T-SEC-001`、`T-ORM-001`、`T-PDF-001` 和 `T-ERR-001`。TDD 若后续追加 PDF 设计或发生技术变更，必须同步本 CC。
+引用 TDD `v1.1.0 Revised` 中的 `T-SCOPE-001`、`T-DATA-001`、`T-SIGN-001`、`T-I18N-001`、`T-SEC-001`、`T-ORM-001` 和 `T-ERR-001`。
 
 ## 8. 数据 / 迁移影响
 
@@ -146,9 +144,9 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 
 | 字段 | 值 |
 |---|---|
-| 修改的端点 | N/A；具体 PDF 入口协议待 `TD-006` 决策 |
+| 修改的端点 | N/A；本次不新增外部入口协议 |
 | 向后兼容 | N/A |
-| Adapter 变更 | 当前无；`TD-006` 决策前不得新增 PDF Adapter |
+| Adapter 变更 | 当前无；本次不新增 Adapter |
 
 ## 10. 安全 / 权限影响
 
@@ -170,7 +168,7 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 | CC-TEST-006 | 手写签名证据 | AC-INBOUND-12 | QUnit/OWL 或 E2E | Web/PDA 可绘制并保存图像、签名人和时间 | 是 | 验证真实用户交互 |
 | CC-TEST-007 | 多语言显示 | AC-INBOUND-13 | QUnit/E2E | 用户只看到当前语言字段名和选择值 | 是 | 验证用户界面语言行为 |
 | CC-TEST-008 | 可选照片和备注 | AC-INBOUND-14 | ORM/服务端 | 照片和备注为空仍可按其他条件提交 | 否 | 防止错误增加阻断条件 |
-| CC-TEST-009 | 入口结果一致性 | AC-INBOUND-11 | E2E/集成 | Web、PDF、PDA 记录的字段含义和结果一致 | 是 | 验证多入口记录一致性 |
+| CC-TEST-009 | 入口结果一致性 | AC-INBOUND-11 | E2E/集成 | Web、PDA 记录的字段含义和结果一致 | 是 | 验证多入口记录一致性 |
 | CC-TEST-010 | 查询和撤回 | AC-INBOUND-05、15 | ORM/服务端/E2E | 查询条件有效，授权撤回后可修改并重新提交 | 是 | 验证权限和生命周期 |
 
 ## 12. 停止条件 / 升级闸门
@@ -179,7 +177,6 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 
 - 需要新增 SRS 未定义的字段、状态、业务结论或自动动作；
 - 需要把异常结果转换成通知、工单、隔离、放行或库存操作；
-- 需要在 `TD-006` 决策前实现 PDF 上传/生成方式；
 - 需要新增核心模型、外部依赖、公共接口或权限语义；
 - SRS 验收标准无法通过当前技术方案满足；
 - TDD 缺失或与本 CC 冲突；
@@ -197,7 +194,7 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 | 3 | CC-TEST-001 至 CC-TEST-010 已执行并取得证据 | 硬闸门 |
 | 4 | CC-PRESERVE-001 至 CC-PRESERVE-005 已验证未改变 | 硬闸门 |
 | 5 | 适用 TDD 防护栏已通过对应测试 | 硬闸门 |
-| 6 | 需要人工验证的 Web/PDA/PDF 行为已完成 HVR | 硬闸门 |
+| 6 | 需要人工验证的 Web/PDA 行为已完成 HVR | 硬闸门 |
 | 7 | SRS、TDD、CC、测试和执行证据可追溯 | 硬闸门 |
 | 8 | 人工 Review Gate 批准后才可合并或发布 | 硬闸门 |
 
@@ -245,7 +242,7 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 |---|---|
 | Inbound Form | 货物接收记录表单 |
 | Qooling Form | 用于填写、保存、提交和查看检查结果的记录工具 |
-| 入口 | Web、PDF 或 PDA 的录入方式 |
+| 入口 | Web 或 PDA 的录入方式 |
 | 表单结果 | 用户填写并由系统保存的字段值，不等同于 Odoo 业务结论 |
 
 ## 附录 C — 版本历史
@@ -253,4 +250,4 @@ PDF 入口仍受 `TD-006` 业务决策约束；除 PDF 具体 Adapter/导入器/
 | 版本 | 日期 | 变更说明 | 状态 |
 |---|---|---|---|
 | v0.1.0 | 2026-09-22 | 基于已冻结 Inbound SRS 起草 Coding Contract；明确实现范围、禁止业务流程化和 TDD 前置闸门 | Draft |
-| v1.0.0 | 2026-09-22 | 经批准冻结；同步 TDD v1.0.0 技术边界，保留 PDF 入口决策闸门 | Frozen |
+| v1.1.0 | 2026-09-22 | 根据业务更正移除 PDF 入口，范围仅保留 Web/PDA | Revised |

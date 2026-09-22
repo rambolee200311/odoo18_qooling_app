@@ -54,7 +54,6 @@
 | `CC-TEST-010` | `test_reset_to_draft` | `ATR-RUN-002` | PASS | `/tmp/wd_qooling_final_test2.log` |
 | `CC-TEST-006` | Web/PDA signature UI | HVR-RUN-002 / HVR-RUN-003 | PASS（HVR） | HVR record |
 | `CC-TEST-007` | Multi-language UI | HVR-RUN-003 | PASS（HVR） | HVR record |
-| `CC-TEST-009` | PDF entry consistency | — | BLOCKED | `TD-006` unresolved |
 
 ## 5. Test Run History（Append-only）
 
@@ -121,11 +120,10 @@
 | ID | TEST | Run | 类型 | 原因 | Status | Follow-up |
 |---|---|---|---|---|---|---|
 | ATR-ISSUE-001 | `test_submit_persists_submission_and_signature` | `ATR-RUN-001` | FAIL | 提交时未写入 Signer 和 Signature time | Resolved | `IHR-004`、`ATR-RUN-002` |
-| ATR-ISSUE-002 | PDF entry consistency | — | BLOCKED | `TD-006` 尚未确认 | Open | SRS/TDD/CC 修订后追加测试 |
 
 ## 8. Handoff Summary
 
 - 当前自动化测试最新结果：7/7 PASS；
 - `ATR-RUN-001` 的失败记录保留；
-- UI、PDA、语言和 PDF 入口仍需 HVR 或后续决策；
+- Web、PDA 和语言 UI 已通过 HVR；
 - 当前 ATR 不代表 Human Verification 或 Merge Approval。

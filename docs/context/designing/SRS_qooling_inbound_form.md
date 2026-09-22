@@ -1,16 +1,16 @@
 # Inbound Form 软件需求规格说明书（SRS）
 
 > 文档状态：已冻结  
-> 文档版本：v0.6.0  
+> 文档版本：v0.7.0  
 > 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)  
 > 字段证据：[货物接收表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/货物接收表.docx)  
 > 适用 Form：Inbound / 货物接收表
 
 ## 0. 文档边界
 
-本文档只描述 Inbound Form 的字段、填写、提交和记录查看要求。Web、PDF、PDA、手写签名和 Odoo 多语言要求仅在适用于 Inbound Form 时纳入。
+本文档只描述 Inbound Form 的字段、填写、提交和记录查看要求。Web、PDA、手写签名和 Odoo 多语言要求仅在适用于 Inbound Form 时纳入。
 
-本文档不把 Form 记录项扩展为仓库业务流程，不定义自动卸货、自动通知、异常工单、隔离、放行或关闭动作，也不定义 Odoo 模型、数据库结构、XML 视图、ACL、前端组件或 PDF 技术实现。
+本文档不把 Form 记录项扩展为仓库业务流程，不定义自动卸货、自动通知、异常工单、隔离、放行或关闭动作，也不定义 Odoo 模型、数据库结构、XML 视图、ACL 或前端组件。
 
 ## 1. Form 目的与使用场景
 
@@ -18,7 +18,7 @@ Inbound Form 用于记录货物接收过程中的基础信息、检查结果、�
 
 本期支持：
 
-- Web、PDF 和 PDA 入口填写 Inbound Form；
+- Web 和 PDA 入口填写 Inbound Form；
 - 保存草稿并提交记录；
 - 由授权用户查看和复核已提交记录；
 - 使用 Odoo 多语言显示字段名、帮助文本和选择值；
@@ -35,7 +35,6 @@ Inbound Form 用于记录货物接收过程中的基础信息、检查结果、�
 | 仓库主管 | 查看和复核 Inbound 记录 |
 | Web | 填写、保存、提交、查看和复核 |
 | PDA | 填写、保存、提交和绘制手写签名 |
-| PDF | 填写并提交 Inbound 记录 |
 
 Location 使用仓库档案并必填。表单通过 `ref_no` 记录业务参考，由用户选择业务对象和 ID；后续可增加 Project 维度。
 
@@ -127,33 +126,29 @@ Location 使用仓库档案并必填。表单通过 `ref_no` 记录业务参考�
 
 Web 可以填写、保存、提交、查看和复核 Inbound 记录。
 
-#### FR-INBOUND-09 PDF 录入
-
-PDF 入口可以填写并提交 Inbound 记录；PDF 中的字段和签名应登记到同一 Inbound 记录。
-
-#### FR-INBOUND-10 PDA 录入
+#### FR-INBOUND-09 PDA 录入
 
 PDA 可以填写、保存和提交 Inbound 记录，并支持直接绘制手写签名。
 
 ### 4.3 表单动态行为
 
-#### FR-INBOUND-11 ADR 条件字段
+#### FR-INBOUND-10 ADR 条件字段
 
 当用户选择 ADR 为 `Yes` 时，显示并填写适用的 UN Number 和温度相关字段；当用户选择 ADR 为 `No` 时，不要求填写这些字段。该行为是表单字段显示和填写行为，不代表系统自动判断危险品检查结果。
 
-#### FR-INBOUND-12 气体和通风结果
+#### FR-INBOUND-11 气体和通风结果
 
 用户可以填写 Gas measurement、Gas measurement Status、Ventilated 和 Status after ventilation，系统保存用户选择。
 
-#### FR-INBOUND-13 温度信息
+#### FR-INBOUND-12 温度信息
 
 用户可以录入温度测量状态、托盘温度登记状态和每托盘温度相关信息，系统保存用户填写结果，不自动判断温度是否异常。
 
-#### FR-INBOUND-14 手写签名
+#### FR-INBOUND-13 手写签名
 
 Web 和 PDA 支持直接绘制手写签名，并保存签名图像、签名人和签名时间。姓名文本、勾选或键盘输入不能替代手写签名。
 
-#### FR-INBOUND-15 多语言显示
+#### FR-INBOUND-14 多语言显示
 
 字段名、帮助文本和选择值按当前用户语言显示对应翻译；同一界面不显示三语并列文本。
 
@@ -187,7 +182,7 @@ Web 和 PDA 支持直接绘制手写签名，并保存签名图像、签名人�
 | AC-INBOUND-08 | `Packaging condition` 选择结果能够保存并在查看记录时正确显示 |
 | AC-INBOUND-09 | `Unloading permission` 选择结果能够保存并在查看记录时正确显示 |
 | AC-INBOUND-10 | 气体、通风和温度字段的用户填写结果能够保存并查看 |
-| AC-INBOUND-11 | Web、PDF 和 PDA 入口产生的 Inbound 记录具有一致的字段含义和记录结果 |
+| AC-INBOUND-11 | Web 和 PDA 入口产生的 Inbound 记录具有一致的字段含义和记录结果 |
 | AC-INBOUND-12 | Web 和 PDA 可以绘制并保存手写签名、签名人和签名时间 |
 | AC-INBOUND-13 | 用户只看到当前语言的字段名、帮助文本和选择值 |
 | AC-INBOUND-14 | 照片和备注为空时，记录仍可以按其他提交条件提交 |
@@ -198,7 +193,6 @@ Web 和 PDA 支持直接绘制手写签名，并保存签名图像、签名人�
 
 - Inbound Form 的 Checkbox list 是否需要进一步细化每项的录入控件和选项？
 - 温度控制名称和实际每日记录频率如何统一？
-- PDF 入口是上传现有 PDF，还是由系统生成 PDF？
 
 ## 9. 追溯范围
 
@@ -215,8 +209,9 @@ Web 和 PDA 支持直接绘制手写签名，并保存签名图像、签名人�
 | 版本 | 日期 | 变更说明 | 变更人 |
 |---|---|---|---|
 | v0.1.0 | 2026-09-22 | 从聚合 Forms SRS 拆分 Inbound Form | Agent |
-| v0.2.0 | 2026-09-22 | 补充 Packaging condition、Web/PDF/PDA、签名和图片非强制要求 | Agent |
+| v0.2.0 | 2026-09-22 | 补充 Packaging condition、Web/PDA、签名和图片非强制要求 | Agent |
 | v0.3.0 | 2026-09-22 | 确认 Gas measurement 选项为 Yes、No、Not Applicable | Agent |
 | v0.4.0 | 2026-09-22 | 明确温度和异常提交属于人工决策边界 | Agent |
 | v0.5.0 | 2026-09-22 | 按 Form 记录工具定位收缩业务范围，移除自动处置和异常工作流，重编号并区分字段、表单行为和业务规则 | Agent |
 | v0.6.0 | 2026-09-22 | 删除重复动态行为规则、无字段的复核结果要求和表单类型查询；移除提交后修改的历史语义，并明确 PDF 入口业务问题 | Agent |
+| v0.7.0 | 2026-09-22 | 更正录入入口范围，仅保留 Web 和 PDA，移除 PDF 入口要求 | Agent |

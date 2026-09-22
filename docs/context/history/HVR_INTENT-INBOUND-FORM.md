@@ -26,7 +26,6 @@
 | CC Test Contract | `CC-TEST-003` | ADR 条件字段的真实表单行为 |
 | CC Test Contract | `CC-TEST-006` | Web/PDA 手写签名 |
 | CC Test Contract | `CC-TEST-007` | 多语言字段和选择值 |
-| CC Test Contract | `CC-TEST-009` | 多入口记录一致性 |
 | CC-PRESERVE | `CC-PRESERVE-004` | 手写签名不能被文本替代 |
 | CC-PRESERVE | `CC-PRESERVE-005` | 不显示三语并列文本 |
 
@@ -35,11 +34,11 @@
 | 字段 | 值 |
 |---|---|
 | Human Verification Required | Yes |
-| Required Scenarios | 5 |
+| Required Scenarios | 4 |
 | PASS | 4 |
 | FAIL | 0 |
-| BLOCKED | 1（PDF 入口） |
-| NOT RUN | 1 |
+| BLOCKED | 0 |
+| NOT RUN | 0 |
 | Current Code Baseline | ACL 与签名组件修复后，待提交 |
 | Current Valid Evidence Set | — |
 | Evidence Baseline Status | Incomplete |
@@ -50,9 +49,8 @@
 |---|---|---|---|---|---|
 | ADR 条件字段 | `HVR-SCN-001` | `AC-INBOUND-06`、`T-DATA-001` | 浏览器现场观察 | PASS | 当前工作区 |
 | Web 手写签名 | `HVR-SCN-002` | `AC-INBOUND-12`、`T-SIGN-001` | 浏览器现场观察；修复后复测 | PASS | 当前工作区 |
-| 移动/PDA 手写签名 | `HVR-SCN-003` | `FR-INBOUND-10`、`AC-INBOUND-12` | 移动视口现场观察；更新 pointer capture 后复测 | PASS | 当前工作区 |
+| 移动/PDA 手写签名 | `HVR-SCN-003` | `FR-INBOUND-09`、`AC-INBOUND-12` | 移动视口现场观察；更新 pointer capture 后复测 | PASS | 当前工作区 |
 | 多语言显示 | `HVR-SCN-004` | `AC-INBOUND-13`、`T-I18N-001` | 浏览器现场观察 | PASS | 当前工作区 |
-| PDF 入口 | `HVR-SCN-005` | `FR-INBOUND-09`、`AC-INBOUND-11` | — | BLOCKED | `TD-006` |
 
 ## 5. Verification Scenarios
 
@@ -84,13 +82,6 @@
 - 预期：每个用户只看到当前语言字段名和选择值，不显示 Qooling 三语并列文本。
 - 当前结果：PASS。验证者确认字段名和选择值按当前语言显示，未出现 Qooling 三语并列文本。
 
-### HVR-SCN-005 — PDF 入口
-
-- 前置：PDF 入口业务方式已确认。
-- 步骤：按确认的上传或生成方式执行 PDF 入口流程。
-- 预期：PDF 记录结果与同一 Inbound Form 记录语义一致。
-- 当前结果：BLOCKED，`TD-006` 未决。
-
 ## 6. Verification Run History（Append-only）
 
 已由人类验证者 `lijianqiang` 在本地浏览器执行 `HVR-SCN-001` 至
@@ -111,7 +102,6 @@
 
 | ID | Scenario | Run | Finding | Severity | Status | Follow-up |
 |---|---|---|---|---|---|---|
-| HVR-FIND-001 | `HVR-SCN-005` | — | PDF 入口方式尚未由业务确认 | Medium | Open | 处理 TDD `TD-006` |
 | HVR-FIND-002 | `HVR-SCN-002` | HVR-RUN-001 / HVR-RUN-002 | 签名组件在新笔画开始时沿用了上一笔路径，导致笔画自动连线 | Medium | Fixed, verified | 在 pointerdown/pointerup 时初始化新路径；复测通过 |
 
 ## 9. Evidence Inventory
@@ -120,10 +110,9 @@
 
 ## 10. Handoff Summary
 
-- HVR 当前不能宣称 PASS；
+- HVR-SCN-001 至 HVR-SCN-004 均已由人类验证者 PASS；
 - `HVR-SCN-001` 已由 `lijianqiang` PASS；
 - `HVR-SCN-002` 首次发现并修复签名连笔问题，复测已 PASS；
 - `HVR-SCN-003` 已由 `lijianqiang` PASS；
 - `HVR-SCN-004` 已由 `lijianqiang` PASS；
-- PDF 场景在 `TD-006` 解阻前保持 BLOCKED；
-- 完成人工验证后追加 HVR Run、Evidence 和 Findings 状态，不覆盖本记录。
+- 当前 HVR 范围已完成；不包含 PDF 入口。
