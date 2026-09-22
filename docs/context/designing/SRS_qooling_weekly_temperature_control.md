@@ -1,7 +1,7 @@
 # Weekly Temperature Control 软件需求规格说明书（SRS）
 
 > 文档状态：草稿  
-> 文档版本：v0.1.0  
+> 文档版本：v0.2.0
 > 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)  
 > 字段证据：[每周温度控制记录表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/每周温度控制记录表.docx)  
 > 适用 Form：Weekly Temperature Control / 每周温度控制记录表
@@ -203,8 +203,8 @@ PDA 和 Web 均须支持用户直接绘制手写签名；保存签名图像、�
 | AC-33 | PDA/Web 可绘制并保存手写签名 |
 | AC-34 | 未完成手写签名时拒绝完成或提交 |
 
-## 8. 待确认
+## 8. 已确认的用户决策边界
 
-- 温度控制名称和实际每日记录频率如何统一；
+温度控制名称和实际每日记录频率由用户决定；系统不自行统一名称、推导频率或自动改变记录要求。
 
 图片上传非强制，不作为提交阻断条件。温度正常范围、预警、隔离、复测及异常是否阻止提交，均属于已确认的人工决策边界；系统只记录用户结果，不自动判断。
