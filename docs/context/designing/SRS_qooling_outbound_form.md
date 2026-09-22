@@ -1,7 +1,8 @@
 # Outbound Form 软件需求规格说明书（SRS）
 
-> 文档状态：草稿  
-> 文档版本：v0.4.0
+> 文档状态：已冻结
+> 文档版本：v1.0.0
+> 冻结日期：2026-09-22
 > 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)  
 > 字段证据：[出库表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/出库表.docx)  
 > 适用 Form：Outbound / 出库表
