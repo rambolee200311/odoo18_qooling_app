@@ -11,7 +11,7 @@
 
 本 Coding Contract（CC）只冻结 Inbound Form 本次实现的范围、保留行为、禁止事项、测试契约和完成闸门，不重新定义 SRS 业务语义。
 
-Inbound TDD `v1.1.0` 已根据业务更正修订并冻结。本 CC 仅覆盖 Web 和 PDA 入口。
+Inbound TDD `v1.2.0` 已根据业务更正修订。本 CC 仅覆盖 Web 和专用 PDA 触控 Web 入口；专用 PDA 界面记录为 `TD-INBOUND-PDA-001`。
 
 本 CC 已获批准进入实施。批准不解除范围、追溯、测试和停止条件；编码必须严格遵守本文件以及 TDD Guardrails。
 
@@ -33,7 +33,7 @@ Inbound TDD `v1.1.0` 已根据业务更正修订并冻结。本 CC 仅覆盖 Web
 | SRS ID | 标题 | 与本次 CC 的相关性 |
 |---|---|---|
 | FR-INBOUND-01 至 FR-INBOUND-07 | 记录操作 | 在范围内 |
-| FR-INBOUND-08 至 FR-INBOUND-09 | Web、PDA 入口 | 在范围内，按 TDD 技术边界实现 |
+| FR-INBOUND-08 至 FR-INBOUND-09 | Web、专用 PDA 触控 Web 入口 | PDA 专用界面列为 `TD-INBOUND-PDA-001`，当前实现不得宣称已完成 |
 | FR-INBOUND-11 至 FR-INBOUND-15 | 动态字段、签名、多语言 | 在范围内 |
 | BR-INBOUND-01 至 BR-INBOUND-02 | 提交字段和结果保存边界 | 在范围内 |
 | AC-INBOUND-01 至 AC-INBOUND-16 | Inbound 验收标准 | 在范围内 |
@@ -251,3 +251,4 @@ N/A。当前项目尚无 Inbound DDD；不得为填写 CC 虚构领域对象或�
 |---|---|---|---|
 | v0.1.0 | 2026-09-22 | 基于已冻结 Inbound SRS 起草 Coding Contract；明确实现范围、禁止业务流程化和 TDD 前置闸门 | Draft |
 | v1.1.0 | 2026-09-22 | 根据业务更正移除 PDF 入口，范围仅保留 Web/PDA | Revised |
+| v1.2.0 | 2026-09-22 | 明确专用 PDA 触控 Web 界面技术债，不将响应式 Web 验证等同于 PDA 完成 | Revised |

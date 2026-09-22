@@ -39,7 +39,7 @@
 | Preservation Impact | None（待 HVR 验证） |
 | Deviation | None |
 | Stop Condition 触发 | No |
-| Open Issues | 0 |
+| Open Issues | 1（`TD-INBOUND-PDA-001`） |
 | Revert 发生 | No |
 | 当前状态 | Implementation Complete |
 
@@ -146,6 +146,6 @@
 
 - Implementation：完成 Web/PDA 范围内的冻结 CC 实现；
 - ATR：`ATR-RUN-001` 保留失败记录，`ATR-RUN-002` 当前自动化测试通过；
-- HVR：待真实人类验证 Web/PDA、移动视口、签名、多语言和记录查看；
+- HVR：Web 和响应式移动视口已验证；专用 PDA 触控 Web 界面由 `TD-INBOUND-PDA-001` 跟踪；
 - FR：尚未形成；
 - Merge / Release：等待 Human Review。

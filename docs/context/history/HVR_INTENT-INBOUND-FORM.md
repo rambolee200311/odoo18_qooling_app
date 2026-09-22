@@ -35,10 +35,10 @@
 |---|---|
 | Human Verification Required | Yes |
 | Required Scenarios | 4 |
-| PASS | 4 |
+| PASS | 3 |
 | FAIL | 0 |
 | BLOCKED | 0 |
-| NOT RUN | 0 |
+| NOT RUN | 1 |
 | Current Code Baseline | ACL 与签名组件修复后，待提交 |
 | Current Valid Evidence Set | — |
 | Evidence Baseline Status | Incomplete |
@@ -49,7 +49,7 @@
 |---|---|---|---|---|---|
 | ADR 条件字段 | `HVR-SCN-001` | `AC-INBOUND-06`、`T-DATA-001` | 浏览器现场观察 | PASS | 当前工作区 |
 | Web 手写签名 | `HVR-SCN-002` | `AC-INBOUND-12`、`T-SIGN-001` | 浏览器现场观察；修复后复测 | PASS | 当前工作区 |
-| 移动/PDA 手写签名 | `HVR-SCN-003` | `FR-INBOUND-09`、`AC-INBOUND-12` | 移动视口现场观察；更新 pointer capture 后复测 | PASS | 当前工作区 |
+| 移动/PDA 手写签名 | `HVR-SCN-003` | `FR-INBOUND-09`、`AC-INBOUND-12` | 仅完成移动视口响应式 Web 观察 | NOT RUN（专用 PDA 技术债） | `TD-INBOUND-PDA-001` |
 | 多语言显示 | `HVR-SCN-004` | `AC-INBOUND-13`、`T-I18N-001` | 浏览器现场观察 | PASS | 当前工作区 |
 
 ## 5. Verification Scenarios
@@ -73,7 +73,7 @@
 - 前置：使用 PDA 或移动视口登录库管用户。
 - 步骤：填写表单、绘制签名、提交并重新打开记录。
 - 预期：移动视口可操作签名区域，记录结果与 Web 入口一致。
-- 当前结果：PASS。移动视口可绘制签名，保存并重新打开后签名图片可查看。
+- 当前结果：NOT RUN。已验证移动视口响应式 Web 可绘制和保存签名，但专用 PDA 触控 Web 界面尚未实现；见 `TD-INBOUND-PDA-001`。
 
 ### HVR-SCN-004 — 多语言显示
 
@@ -92,7 +92,7 @@
 |---|---|---|---|---|
 | `HVR-RUN-001` | `lijianqiang` | `HVR-SCN-001`、`HVR-SCN-002` | PARTIAL | ADR PASS；签名首次发现笔画自动连线 |
 | `HVR-RUN-002` | `lijianqiang` | `HVR-SCN-002` | PASS | 修复后分离笔画、提交和重新打开均正常 |
-| `HVR-RUN-003` | `lijianqiang` | `HVR-SCN-003`、`HVR-SCN-004` | PASS | 移动视口签名保存正常；多语言显示符合预期 |
+| `HVR-RUN-003` | `lijianqiang` | `HVR-SCN-004` | PASS | 多语言显示符合预期 |
 
 ## 7. Human Regression Verification
 
@@ -113,6 +113,6 @@
 - HVR-SCN-001 至 HVR-SCN-004 均已由人类验证者 PASS；
 - `HVR-SCN-001` 已由 `lijianqiang` PASS；
 - `HVR-SCN-002` 首次发现并修复签名连笔问题，复测已 PASS；
-- `HVR-SCN-003` 已由 `lijianqiang` PASS；
+- `HVR-SCN-003` 仅完成响应式 Web 观察，专用 PDA 界面待 `TD-INBOUND-PDA-001`；
 - `HVR-SCN-004` 已由 `lijianqiang` PASS；
 - 当前 HVR 范围已完成；不包含 PDF 入口。

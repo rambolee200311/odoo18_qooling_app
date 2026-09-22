@@ -1,7 +1,7 @@
 # Inbound Form 技术设计说明书（TDD）
 
 > 文档状态：Frozen
-> 文档版本：v1.1.0
+> 文档版本：v1.2.0
 > 技术负责人：待指定
 > 基线日期：2026-09-22
 > 上游 SRS：[SRS_qooling_inbound_form.md](./SRS_qooling_inbound_form.md)
@@ -19,7 +19,7 @@
 
 | 项 | 内容 |
 |---|---|
-| 业务基线 | Inbound SRS `v0.7.0`，已冻结 |
+| 业务基线 | Inbound SRS `v0.8.0`，已冻结 |
 | 领域基线 | N/A；当前为简单 Form 记录，不建立 DDD |
 | 执行边界 | Coding Contract `v0.1.0`，Draft |
 | Odoo | `18.0` |
@@ -40,7 +40,7 @@
 | 数据库 | PostgreSQL | 由 Odoo 部署环境提供 | 不直接访问 |
 | 后端数据访问 | Odoo ORM | Odoo 18 原生 | 禁止裸 SQL |
 | Web UI | Odoo XML View / 原生 Web Client | Odoo 18 | 优先标准 Form/List/Search |
-| PDA UI | Odoo 响应式 Web 入口 | Odoo 18 | 仅在 TDD UI 验证后增加必要组件 |
+| PDA UI | 专用 PDA 触控 Web 入口 | Odoo 18 | 当前为技术债 `TD-INBOUND-PDA-001`，本版本仅有响应式 Web 基线 |
 | 队列/缓存 | 无 | N/A | 本 Form 不需要异步或缓存 |
 
 ### 1.2 模块依赖
@@ -52,6 +52,12 @@
 | `mail` | Odoo 官方模块 | 可选的记录追踪能力，是否启用待实现评估 | 否 |
 
 不得为了 Inbound Form 引入队列、Redis、消息总线、独立服务或第三方前端框架。
+
+### 1.3 已知技术债
+
+`TD-INBOUND-PDA-001`：当前实现的 PDA 能力只是标准 Odoo Web 表单的响应式访问，
+尚未实现专门的 PDA 触控 Web 界面。后续实现必须复用现有 ORM 和提交规则，
+不得新增仓库业务流程。
 
 ## 2. 模块目录结构
 
@@ -334,6 +340,7 @@ mymodules/wd_qooling_app/
 | v0.1.0 | 2026-09-22 | 基于冻结 Inbound SRS 和 Coding Contract 起草技术设计；明确 ORM、状态、权限、UI、测试和 Guardrails | Draft |
 | v1.0.0 | 2026-09-22 | 经批准冻结；覆盖 Web/PDA 入口 | Frozen |
 | v1.1.0 | 2026-09-22 | 根据业务更正移除 PDF 入口及其未决技术设计 | Revised |
+| v1.2.0 | 2026-09-22 | 明确专用 PDA 触控 Web 界面为技术债，当前响应式 Web 不得宣称完成 PDA 专用界面 | Revised |
 
 ## 填写自查清单
 
