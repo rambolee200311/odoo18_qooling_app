@@ -1,14 +1,14 @@
 # Outbound Form 软件需求规格说明书（SRS）
 
 > 文档状态：草稿  
-> 文档版本：v0.1.0  
+> 文档版本：v0.2.0
 > 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)  
 > 字段证据：[出库表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/出库表.docx)  
 > 适用 Form：Outbound / 出库表
 
 ## 0. 文档边界
 
-本文档只承载 Outbound Form 的业务需求。Web、PDF、PDA、手写签名和 Odoo 多语言要求仅在其适用于 Outbound Form 时纳入。
+本文档只承载 Outbound Form 的业务需求。Web、PDA、手写签名和 Odoo 多语言要求仅在其适用于 Outbound Form 时纳入。
 
 ## 1. 业务目标与范围
 
@@ -16,7 +16,7 @@ Outbound Form 用于记录出库装载、货物、ADR、车辆、驾驶员、温
 
 本期包含：
 
-- Outbound Web、PDF 和 PDA 录入；
+- Outbound Web 和 PDA 录入；
 - 保存草稿、提交和仓库主管复核；
 - 到达、开始装载和结束装载时间；
 - Goods type、MRN、Seal Number 和放行前核查；
@@ -32,7 +32,6 @@ Outbound Form 用于记录出库装载、货物、ADR、车辆、驾驶员、温
 | 仓库主管 | 复核 Outbound Form |
 | Web | 录入、提交、手写签名和复核 |
 | PDA | 录入、提交和手写签名 |
-| PDF | 填写、提交并进入同一复核流程 |
 
 表单通过 `ref_no` 与业务单据关联，由用户选择业务对象和 ID。Location 使用仓库档案；后续可增加 Project 维度。
 
@@ -97,15 +96,11 @@ Outbound Form 用于记录出库装载、货物、ADR、车辆、驾驶员、温
 
 #### FR-FORM-06 Web 入口录入和提交
 
-Web 录入、草稿、提交和复核必须使用与 PDF/PDA 相同的 Outbound 字段和生命周期。
+Web 录入、草稿、提交和复核必须使用与 PDA 相同的 Outbound 字段和生命周期。
 
-#### FR-FORM-07 PDF 入口录入和提交
+#### FR-FORM-08 Web/PDA 统一复核
 
-PDF 字段、签名和归档信息登记到 Outbound 业务记录；缺少必填字段或签名不得标记为已提交，原 PDF 和失败原因须保留。
-
-#### FR-FORM-08 Web/PDF 统一复核
-
-Web、PDF 和 PDA 产生的 Outbound 记录进入同一复核流程，字段语义、权限和状态一致。
+Web 和 PDA 产生的 Outbound 记录进入同一复核流程，字段语义、权限和状态一致。
 
 #### FR-FORM-09 多语言字段和选择值
 
@@ -189,9 +184,7 @@ PDA 和 Web 均须支持用户直接绘制手写签名；保存签名图像、�
 | AC-22 | Reference、到达时间和装载时间被保存并校验顺序 |
 | AC-24 | 出库照片、备注、签名和归档信息可查看 |
 | AC-27 | Web Outbound 可录入、提交和复核 |
-| AC-28 | PDF 原件、字段、签名和提交结果可追溯 |
-| AC-29 | PDF 缺少必填字段或签名时拒绝提交 |
-| AC-30 | Web、PDF、PDA 的 Outbound 复核字段和状态一致 |
+| AC-30 | Web、PDA 的 Outbound 复核字段和状态一致 |
 | AC-31 | 用户只看到当前语言的字段名和选择值 |
 | AC-33 | PDA/Web 可绘制并保存司机和仓库手写签名 |
 | AC-34 | 未完成必需手写签名时拒绝完成或提交 |
