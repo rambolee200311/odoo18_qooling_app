@@ -1,8 +1,9 @@
 # Outbound Form 技术设计说明书（TDD）
 
-> 文档状态：Draft  
-> 文档版本：v0.1.0  
+> 文档状态：Frozen
+> 文档版本：v1.0.0
 > 基线日期：2026-09-22  
+> 冻结日期：2026-09-22
 > 上游 SRS：[SRS_qooling_outbound_form.md](./SRS_qooling_outbound_form.md) `v1.0.0`  
 > 适用 Form：Outbound / 出库表
 
@@ -218,12 +219,14 @@ ACL 和 Record Rule 必须在服务端生效，不能只隐藏按钮。
 | BR-FORM-01 至 BR-FORM-11 | 第 4、5、6 节 |
 | AC-01 至 AC-34 | 第 9 节测试设计 |
 
-## 13. Draft Review Gates
+## 13. Freeze Record
 
-- [ ] 字段命名和每项检查控件完成技术评审；
-- [ ] 两个签名角色和签名持久化方案完成确认；
-- [ ] PDA 触控布局和设备验收基线完成确认；
-- [ ] ACL/Record Rule 与角色矩阵完成确认；
-- [ ] 测试矩阵映射到可执行测试；
+- [x] 字段命名和每项检查控件完成技术评审；
+- [x] 两个签名角色和签名持久化方案完成确认；
+- [x] PDA 触控布局和设备验收基线完成确认；
+- [x] ACL/Record Rule 与角色矩阵完成确认；
+- [x] 测试矩阵映射到可执行测试；
 - [ ] Coding Contract 创建并批准后，才可进入实施。
 
+本 TDD 已获批准冻结。Coding Contract 仍须在实施前创建并批准。后续实现如需改变字段、状态、入口、权限或人工复核边界，
+必须先修订本 TDD 及其下游 Coding Contract。
