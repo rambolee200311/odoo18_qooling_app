@@ -1,12 +1,12 @@
 # Outbound Form Coding Contract
 
 > 文档状态：Frozen
-> 文档版本：v1.0.0
+> 文档版本：v1.1.0
 > 冻结日期：2026-09-23
 > 实施状态：Approved for Implementation
 > 实施批准日期：2026-09-23
-> 上游 SRS：[SRS_qooling_outbound_form.md](../designing/SRS_qooling_outbound_form.md) `v1.0.0 Frozen`
-> 上游 TDD：[TDD_qooling_outbound_form.md](../designing/TDD_qooling_outbound_form.md) `v1.0.0 Frozen`
+> 上游 SRS：[SRS_qooling_outbound_form.md](../designing/SRS_qooling_outbound_form.md) `v1.1.0 Frozen`
+> 上游 TDD：[TDD_qooling_outbound_form.md](../designing/TDD_qooling_outbound_form.md) `v1.1.0 Frozen`
 > 适用 Form：Outbound / 出库表
 
 ## 0. 文档治理
@@ -103,7 +103,7 @@
 | 1 | 授权库管可创建并保存 Outbound 草稿 | `CC-OUTBOUND-CHANGE-001` |
 | 2 | 保存 SRS 定义的基础、检查、温度、车辆和证据字段 | `CC-OUTBOUND-CHANGE-002` |
 | 3 | 到达、开始装载、结束装载时间按顺序校验 | `CC-OUTBOUND-CHANGE-003` |
-| 4 | 两套手写签名齐全后才可提交 | `CC-OUTBOUND-CHANGE-004` |
+| 4 | 两套手写签名均为可选；存在时保存并可随记录提交 | `CC-OUTBOUND-CHANGE-004` |
 | 5 | Web/PDA 产生一致字段语义和记录结果 | `CC-OUTBOUND-CHANGE-005` |
 | 6 | 授权用户可查看、查询、复核和按权限撤回 | `CC-OUTBOUND-CHANGE-006` |
 | 7 | 多语言界面不显示三语并列文本 | `CC-OUTBOUND-CHANGE-007` |
@@ -138,7 +138,7 @@
 - 两套签名图像、签名人和签名时间必须分别保存；
 - 选择值必须由 ORM 约束限制；
 - ACL/Record Rule 必须覆盖创建、读取、修改、提交、撤回和复核；
-- 缺少必填字段、签名或时间顺序错误时保持草稿并显示真实错误；
+- 缺少必填字段或时间顺序错误时保持草稿并显示真实错误；签名缺失不阻止提交；
 - 不允许静默吞错、成功形状回退或伪造提交成功。
 
 ## 9. 测试契约
@@ -147,7 +147,7 @@
 |---|---|---|---|
 | `CC-OUTBOUND-TEST-001` | 创建、保存、重读草稿 | ORM | 字段值完整保持 |
 | `CC-OUTBOUND-TEST-002` | 时间顺序 | ORM | 逆序时间不能提交 |
-| `CC-OUTBOUND-TEST-003` | 两方签名提交 | ORM/UI | 缺任一签名不能提交，完整签名可提交 |
+| `CC-OUTBOUND-TEST-003` | 两方签名提交 | ORM/UI | 无签名、单方签名和双方签名均可按规则提交 |
 | `CC-OUTBOUND-TEST-004` | UN Number | ORM | 只允许 `3171`、`3480`、`3481` |
 | `CC-OUTBOUND-TEST-005` | 检查和温度结果 | ORM | 只保存结果，不触发业务流程 |
 | `CC-OUTBOUND-TEST-006` | 照片和备注 | ORM | 为空仍可按其他条件提交 |

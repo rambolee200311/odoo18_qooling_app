@@ -1,0 +1,18 @@
+<odoo>
+    <record id="action_qooling_inbound_pda" model="ir.actions.client">
+        <field name="name">Inbound Record (PDA)</field>
+        <field name="tag">wd_qooling_inbound_pda</field>
+    </record>
+    <record id="action_qooling_outbound_pda" model="ir.actions.client">
+        <field name="name">Outbound Record (PDA)</field>
+        <field name="tag">wd_qooling_outbound_pda</field>
+    </record>
+    <menuitem id="menu_qooling_forms" name="FORMS" parent="menu_qooling_root" sequence="10"/>
+    <menuitem id="menu_qooling_pda" name="PDA" parent="menu_qooling_forms" sequence="10"/>
+    <menuitem id="menu_qooling_inbound_pda" name="Inbound Record" parent="menu_qooling_pda"
+              action="action_qooling_inbound_pda" sequence="10"
+              groups="base.group_user,wd_qooling_app.group_qooling_inbound_user"/>
+    <menuitem id="menu_qooling_outbound_pda" name="Outbound Record" parent="menu_qooling_pda"
+              action="action_qooling_outbound_pda" sequence="20"
+              groups="base.group_user,wd_qooling_app.group_qooling_outbound_user"/>
+</odoo>

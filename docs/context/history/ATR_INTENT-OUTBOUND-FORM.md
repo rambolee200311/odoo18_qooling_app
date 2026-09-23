@@ -10,10 +10,10 @@
 
 | 字段 | 值 |
 |---|---|
-| Environment | 尚未执行 |
+| Environment | Workspace static validation only; Odoo runtime unavailable |
 | Test Framework | Odoo TransactionCase / View/HTTP / Playwright，按 TDD |
-| Code Baseline | 尚未创建 |
-| Executed By | 尚未执行 |
+| Code Baseline | Working tree (uncommitted) |
+| Executed By | Copilot, 2026-09-23 |
 | Latest Valid Run | N/A |
 
 ## 2. Test Contract Baseline
@@ -38,15 +38,21 @@
 | Required Tests | 10 |
 | PASS | 0 |
 | FAIL | 0 |
-| BLOCKED | 0 |
+| BLOCKED | 10 |
 | NOT RUN | 10 |
 | Latest Valid Run | N/A |
 
 ## 4. Test Run History（Append-only）
 
-当前没有 ATR Run。没有真实执行的测试不得记录为 PASS。
+### 2026-09-23 — Static preflight (not an Odoo ATR run)
+
+- `python3 -m py_compile` passed for the Outbound model and tests.
+- Python XML parsing passed for Outbound views, security, and sequence data.
+- Odoo TransactionCase/View/HTTP tests: **BLOCKED / NOT RUN** (no Odoo
+  executable or installed runtime was available in the workspace).
+- Playwright/PDA and HVR: **NOT RUN**; no human-device evidence is claimed.
 
 ## 5. Handoff
 
-实现代码创建后，先执行 ORM/权限/视图针对性测试，再追加测试 Run，
-并将结果绑定到实际 Commit。
+Odoo ORM/权限/视图 tests and human PDA/signature HVR remain required before
+release. HVR status is explicitly **NOT RUN**.
