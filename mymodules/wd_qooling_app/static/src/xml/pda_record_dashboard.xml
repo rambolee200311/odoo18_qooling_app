@@ -18,7 +18,7 @@
             <div t-elif="!state.records.length" class="alert alert-info">
                 No records found.
             </div>
-            <div t-else="" class="table-responsive">
+            <div t-else="" class="table-responsive d-none d-md-block">
                 <table class="table table-hover align-middle">
                     <thead>
                         <tr>
@@ -44,6 +44,27 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div t-if="state.records.length" class="d-md-none">
+                <div t-foreach="state.records" t-as="record" t-key="record.id"
+                     class="card mb-3 o_qooling_pda_dashboard__card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                            <h2 class="h5 mb-0 text-break"><t t-esc="record.name"/></h2>
+                            <span class="badge text-bg-secondary flex-shrink-0"><t t-esc="record.state"/></span>
+                        </div>
+                        <dl class="row small mb-3">
+                            <dt class="col-4">Date</dt>
+                            <dd class="col-8 text-break"><t t-esc="record.dateValue"/></dd>
+                            <dt class="col-4">Reference</dt>
+                            <dd class="col-8 text-break"><t t-esc="record.referenceValue || '-'"/></dd>
+                        </dl>
+                        <button type="button" class="btn btn-outline-primary w-100"
+                                t-on-click="() => openRecord(record)">
+                            <t t-esc="record.state === 'draft' ? 'Edit draft' : 'Open'"/>
+                        </button>
+                    </div>
+                </div>
             </div>
         </main>
     </t>

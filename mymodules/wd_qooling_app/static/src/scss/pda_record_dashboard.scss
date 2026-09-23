@@ -1,0 +1,14 @@
+.o_qooling_pda_dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    &__card {
+        min-width: 0;
+        border-radius: .75rem;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .08);
+
+        dl {
+            margin-bottom: 0;
+        }
+    }
+}
