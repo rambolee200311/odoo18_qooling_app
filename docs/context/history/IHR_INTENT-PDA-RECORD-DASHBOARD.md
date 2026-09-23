@@ -79,6 +79,16 @@
 | Reason | Verify the visible PDA record selection behavior |
 | Result | Completed; HVR-RUN-001 recorded |
 
+### IHR-007
+
+| Field | Content |
+|---|---|
+| Phase | Fix |
+| Action | Added a mobile card layout for PDA history records while retaining the desktop table |
+| Reason | Narrow screens could not present all table columns clearly |
+| Files | `pda_record_dashboard.xml`; `pda_record_dashboard.scss`; manifest |
+| Result | Completed; responsive Playwright verification passed |
+
 ## 3. Preservation and Boundary Review
 
 - Record loading uses the Odoo ORM and existing server-side access rules.

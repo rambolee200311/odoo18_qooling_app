@@ -75,6 +75,16 @@
 | Result | PASS |
 | Evidence | Inbound 10 rows; Outbound 3 rows; Temperature 6 rows; Draft `INB/00156` opened; Submitted `INB/00148` read-only; New Inbound displayed `New` |
 
+### ATR-RUN-006
+
+| Field | Value |
+|---|---|
+| Scope | Narrow-screen PDA dashboard layout |
+| Invocation | Shared browser Playwright at 390x844 viewport |
+| Executed | Inbound PDA history dashboard |
+| Result | PASS |
+| Evidence | 10 mobile cards rendered; desktop table hidden; card width 358px; body width matched 390px viewport with no horizontal overflow |
+
 ## 5. Findings and Resolution
 
 - Initial browser run used stale assets and could not find the new dashboard action
