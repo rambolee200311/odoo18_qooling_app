@@ -84,7 +84,7 @@
 |---|---|---|
 | `record_id` | Many2one | 必填，级联归属温度记录 |
 | `sequence` | Integer | 用于用户排序，不表示固定托盘编号上限 |
-| `pallet_reference` | Char | 用户填写或扫描的托盘标识 |
+| `pallet_reference` | Char | 系统连续生成的托盘标识，如 `pallet1`、`pallet2`；只读 |
 | `temperature` | Float | 摄氏度原始读数 |
 | `measurement_result` | Text/Selection | 保存用户或人工复核结果 |
 | `exception_result` | Text | 保存该托盘的异常事实或说明 |
@@ -106,7 +106,12 @@
 
 正向实现：托盘明细通过 One2many 列表动态增删。用户点击“新增一行”创建
 一条 `wd.qooling.temperature.record.line`；明细数量由用户实际填写决定，
-不设上限。`total_pallets` 仅作为记录值，不驱动明细生成或删除。
+不设上限。系统按当前记录内的录入顺序连续生成 `pallet1`、`pallet2`、
+`pallet3` 等标识，用户不可手动修改编号。`total_pallets` 仅作为记录值，
+不驱动明细生成或删除。
+
+草稿删除明细后，系统按剩余明细顺序重新整理 `palletN` 编号，保证草稿中
+始终连续；已提交记录必须先由主管撤回为草稿后才能修改。
 
 ## 4. ORM 约束和服务行为
 
@@ -143,9 +148,10 @@ Filing date、Number 和 Total Pallets。
 2. 用户按 `Enter`；
 3. 系统校验输入是有效数字；
 4. 系统立即创建一条 `wd.qooling.temperature.record.line`，写入温度、
-   当前序号和当前温度记录；
+   当前序号、连续托盘标识（`pallet1`、`pallet2`……）和当前温度记录；
 5. 输入框清空并重新获得焦点，等待下一条温度；
-6. 明细列表即时显示新记录，并允许用户补录托盘标识、检查结果和处置说明。
+6. 明细列表即时显示新记录，并允许用户补录检查结果和处置说明；托盘编号
+   由系统生成且不可编辑。
 
 快速录入框只负责新增一条原始温度明细，不自动判断温度是否异常、不自动
 触发程序 51/52、不自动创建处置流程。输入为空或不是有效数字时，系统显示
@@ -212,6 +218,7 @@ PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和
 | `TEST-TEMP-003` | TransactionCase | 动态创建 1、2 和多个托盘明细 |
 | `TEST-TEMP-004` | TransactionCase | 记录超过 65 个托盘时不截断、不补齐、不创建固定字段；用户可明确拆分 |
 | `TEST-TEMP-003A` | View/HTTP/Playwright | 温度输入框按 Enter 创建一条明细并清空、回焦 |
+| `TEST-TEMP-003B` | TransactionCase/Playwright | 连续生成 `pallet1`、`pallet2`、`pallet3`，编号只读 |
 | `TEST-TEMP-005` | TransactionCase | 温度和异常结果只保存，不触发业务流程 |
 | `TEST-TEMP-006` | TransactionCase | 人工异常状态和权限 |
 | `TEST-TEMP-007` | View/HTTP | Web 表单字段、One2many 明细和状态按钮 |
@@ -239,6 +246,7 @@ PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和
 
 - [ ] 托盘明细 One2many 方案经人工确认；
 - [ ] 快速温度录入框的 Enter 新增、清空和回焦交互经人工确认；
+- [ ] 托盘连续编号格式、起始值和只读行为经人工确认；
 - [ ] 不固定 65 行、不截断超过 65 个实际托盘已确认；
 - [ ] Web/PDA/PDF 入口边界经人工确认；
 - [ ] 权限、签名和状态矩阵经人工确认；
