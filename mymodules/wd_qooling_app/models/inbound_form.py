@@ -122,7 +122,7 @@ class QoolingInboundForm(models.Model):
     photo_ids = fields.Many2many(
         "ir.attachment",
         "wd_qooling_inbound_form_attachment_rel",
-        "record_id",
+        "inbound_id",
         "attachment_id",
         string="Photos and videos",
     )
