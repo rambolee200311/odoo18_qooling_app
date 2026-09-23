@@ -79,13 +79,13 @@ mymodules/wd_qooling_outbound/
 | `start_loading_at` | Datetime | 必填 |
 | `end_loading_at` | Datetime | 必填 |
 | `goods_type` | Selection | `bonded`、`non_bonded` |
-| `mrn_number` | Char | 非必填 |
+| `mrn_number` | Char | 非必填；`goods_type = non_bonded` 时 View 隐藏 |
 | `seal_number` | Char | 非必填 |
-| `mrn_checked_before_release` | Boolean/Selection | 只保存用户检查结果 |
+| `mrn_checked_before_release` | Boolean/Selection | 只保存用户检查结果；`goods_type = non_bonded` 时 View 隐藏 |
 | `adr` | Selection | `yes`、`no` |
-| `un_number` | Selection | `3171`、`3480`、`3481` |
+| `un_number` | Selection | `3171`、`3480`、`3481`；`adr != yes` 时 View 隐藏 |
 | `proper_shipping_name` | Char | 用户填写 |
-| `measured_temperature` | Float | 摄氏度数值，不设置自动阈值 |
+| `measured_temperature` | Float | 摄氏度数值，不设置自动阈值；`adr != yes` 时 View 隐藏 |
 | `loading_plan_discussed` | Boolean/Selection | 不强制为 Yes |
 | `adr_separation_compatibility` | Boolean/Selection | 非 ADR 时不自动隐藏或推断 |
 | `weight_distribution` | Boolean/Selection/Text | 保存检查结果，标准由人工复核 |

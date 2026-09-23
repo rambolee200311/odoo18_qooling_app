@@ -47,13 +47,13 @@ Outbound Form 用于记录出库装载、货物、ADR、车辆、驾驶员、温
 | Start time loading | 必填 |
 | End time of loading | 必填；到达时间 ≤ 开始装载时间 ≤ 结束装载时间 |
 | Goods type | `Bonded`、`Non-Bonded` |
-| MRN Number | 文本，非必填 |
+| MRN Number | 文本，非必填；Goods type 为 `Non-Bonded` 时不显示 |
 | Seal Number | 文本，非必填 |
-| MRN checked before release | 放行前核查结果 |
+| MRN checked before release | 放行前核查结果；Goods type 为 `Non-Bonded` 时不显示 |
 | ADR | ADR 状态 |
-| UN Number | 只允许 `3171`、`3480`、`3481` |
+| UN Number | 只允许 `3171`、`3480`、`3481`；ADR 为 `No` 时不显示 |
 | Proper Shipping Name | 手工填写 |
-| Measured temperature | 用户填写，单位为摄氏度 |
+| Measured temperature | 用户填写，单位为摄氏度；ADR 为 `No` 时不显示 |
 | Loading plan discussed with driver | 不强制为 Yes |
 | ADR separation/compatibility | 非 ADR 时不隐藏 |
 | Weight distribution | 记录检查结果，人工复核标准 |
