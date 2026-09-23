@@ -39,7 +39,7 @@
 | Preservation Impact | None（待 HVR 验证） |
 | Deviation | None |
 | Stop Condition 触发 | No |
-| Open Issues | 1（`TD-INBOUND-PDA-001`） |
+| Open Issues | 4 technical debts（`TD-INBOUND-PDA-001`、`TD-INBOUND-002` 至 `TD-INBOUND-004`） |
 | Revert 发生 | No |
 | 当前状态 | Implementation Complete |
 
@@ -140,12 +140,15 @@
 
 | ID | 描述 | 状态 | 后续 |
 |---|---|---|---|
-| — | 无 | Closed | — |
+| `TD-INBOUND-PDA-001` | 专用 PDA 触控 Web 界面和 PDA 专用 JavaScript 交互层 | Open | 单独设计并实现 PDA UI |
+| `TD-INBOUND-002` | 货物照片多张上传 | Open | 增加多图数据模型和上传交互 |
+| `TD-INBOUND-003` | 图片缩略图、放大镜和右侧图片 panel | Open | 增加图片预览交互 |
+| `TD-INBOUND-004` | Chatter 永远置于表单底部 | Open | 增加稳定的表单布局规则 |
 
 ## 8. Handoff Summary
 
 - Implementation：完成 Web/PDA 范围内的冻结 CC 实现；
 - ATR：`ATR-RUN-001` 保留失败记录，`ATR-RUN-002` 当前自动化测试通过；
-- HVR：Web 和响应式移动视口已验证；专用 PDA 触控 Web 界面由 `TD-INBOUND-PDA-001` 跟踪；
+- HVR：Web 和响应式移动视口已验证；专用 PDA、图片和 Chatter 能力由上述技术债跟踪；
 - FR：尚未形成；
 - Merge / Release：等待 Human Review。
