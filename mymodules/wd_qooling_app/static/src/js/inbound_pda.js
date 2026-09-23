@@ -17,6 +17,7 @@ export class QoolingInboundPda extends Component {
 
     setup() {
         this.setValue = this.setValue.bind(this);
+        this.deletePhoto = this.deletePhoto.bind(this);
         this.orm = useService("orm");
         this.notification = useService("notification");
         this.action = useService("action");
@@ -26,6 +27,7 @@ export class QoolingInboundPda extends Component {
             warehouses: [],
             users: [],
             recordId: null,
+            photos: [],
             step: 0,
             busy: false,
             error: "",
@@ -77,6 +79,7 @@ export class QoolingInboundPda extends Component {
                 const [recordId] = await this.orm.create("wd.qooling.inbound.form", [this.state.record]);
                 this.state.recordId = recordId;
             }
+            await this.loadPhotos();
             this.state.saved = "Draft saved";
             this.notification.add("Inbound draft saved.", { type: "success" });
         } catch (error) {
@@ -122,11 +125,65 @@ export class QoolingInboundPda extends Component {
     }
 
     onPhoto(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = () => this.setValue("photo", reader.result.split(",")[1]);
-        reader.readAsDataURL(file);
+        if (!this.state.recordId) {
+            this.state.error = "Save the draft before uploading photos.";
+            event.target.value = "";
+            return;
+        }
+        for (const file of event.target.files) {
+            const reader = new FileReader();
+            reader.onload = async () => {
+                try {
+                    const [attachmentId] = await this.orm.create("ir.attachment", [{
+                        name: file.name,
+                        datas: reader.result.split(",")[1],
+                        mimetype: file.type,
+                        res_model: "wd.qooling.inbound.form",
+                        res_id: this.state.recordId,
+                    }]);
+                    await this.orm.write("wd.qooling.inbound.form", [this.state.recordId], {
+                        photo_ids: [[4, attachmentId]],
+                    });
+                    await this.loadPhotos();
+                } catch (error) {
+                    this.state.error = error.data?.message || error.message || "Could not upload the photo.";
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+        event.target.value = "";
+    }
+
+    async loadPhotos() {
+        if (!this.state.recordId) {
+            this.state.photos = [];
+            return;
+        }
+        const records = await this.orm.searchRead(
+            "ir.attachment",
+            [
+                ["res_model", "=", "wd.qooling.inbound.form"],
+                ["res_id", "=", this.state.recordId],
+                ["res_field", "=", false],
+            ],
+            ["name", "mimetype"],
+        );
+        this.state.photos = records;
+    }
+
+    async deletePhoto(photoId) {
+        if (!this.state.recordId) {
+            return;
+        }
+        try {
+            await this.orm.write("wd.qooling.inbound.form", [this.state.recordId], {
+                photo_ids: [[3, photoId]],
+            });
+            await this.orm.unlink("ir.attachment", [photoId]);
+            await this.loadPhotos();
+        } catch (error) {
+            this.state.error = error.data?.message || error.message || "Could not delete the photo.";
+        }
     }
 
     setupSignature() {

@@ -61,8 +61,9 @@
 
 新增技术债：
 
-- `TD-INBOUND-002`：支持货物照片多张上传；当前 `photo` 仅支持单张 Binary 图片。
-- `TD-INBOUND-003`：窄屏 PDA 图片区域只显示缩略图；点击图片放大镜后在 popup
+- `TD-INBOUND-002`：支持货物照片多张上传；已改为 `photo_ids` Many2many
+  附件关联，并提供逐图删除和放大操作。
+- `TD-INBOUND-003`：窄屏 PDA 图片区域显示多张缩略图；每张图片可删除或在 popup
   显示原图或大图，不使用右侧 panel。
 - `TD-INBOUND-004`：Chatter 在表单布局中始终固定在底部显示。
 
@@ -129,7 +130,7 @@ mymodules/wd_qooling_app/
 | ORM-INBOUND-032 | `temperature_measured` | `Selection` | `yes`、`no` |
 | ORM-INBOUND-033 | `pallet_temperature_registered` | `Selection` | `yes`、`no` |
 | ORM-INBOUND-034 | `average_temperature_per_pallet` | `Float` | 摄氏度数值；不设置业务阈值判断 |
-| ORM-INBOUND-035 | `photo` | `Binary` | 非必填；单个表单关联图片 |
+| ORM-INBOUND-035 | `photo_ids` | `Many2many(ir.attachment)` | 非必填；可关联多张表单图片 |
 | ORM-INBOUND-036 | `comments` | `Text` | 非必填 |
 | ORM-INBOUND-037 | `warehouse_signature` | `Binary` | Web/PDA 手写签名图像，提交必填 |
 | ORM-INBOUND-038 | `signer_id` | `Many2one(res.users)` | 签名用户 |

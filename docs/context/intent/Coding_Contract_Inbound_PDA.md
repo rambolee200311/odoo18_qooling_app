@@ -38,6 +38,7 @@ PDA 页面必须继续复用既有 `wd.qooling.inbound.form` ORM 记录、字段
 - PDA 为窄屏布局，图片区域显示缩略图；
 - 点击缩略图或放大操作后，在 popup 中查看大图，不使用右侧 panel；
 - PDA 页面级加载、保存、提交和错误反馈；
+- 多张图片上传，每张图片独立显示删除和 popup 放大操作；
 - 稳定的 `data-testid` 选择器，支持 PDA E2E 验证；
 - 复用既有 Inbound ORM、ACL、Record Rule、签名和提交方法；
 - 保持现有 WEB Inbound 菜单和 action 行为不变。
@@ -48,7 +49,7 @@ PDA 页面必须继续复用既有 `wd.qooling.inbound.form` ORM 记录、字段
 - 修改 Inbound 状态、权限、必填规则或提交语义；
 - 条码扫描、库存移动、卸货控制、通知、隔离、放行或运输流程；
 - 离线缓存、断网同步或设备原生 API；
-- 图片多张上传、Chatter 置底；
+- Chatter 置底；
 - Outbound 或 Temperature Record PDA 页面；
 - 修改 Odoo 官方代码或引入独立前端框架。
 
@@ -61,7 +62,7 @@ PDA 页面必须继续复用既有 `wd.qooling.inbound.form` ORM 记录、字段
 | `CC-PDA-CHANGE-003` | 分步导航 | 页面提供清晰的下一项、上一项和当前进度反馈 |
 | `CC-PDA-CHANGE-004` | 草稿保存 | 保存使用既有 Inbound ORM，错误显示在当前页面 |
 | `CC-PDA-CHANGE-005` | 签名 | 触控笔或手指可绘制、清除和保存手写签名 |
-| `CC-PDA-CHANGE-006` | 图片预览 | 窄屏显示缩略图，放大图使用 popup |
+| `CC-PDA-CHANGE-006` | 图片管理 | 支持多张图片；每张图片显示缩略图、删除按钮和 popup 放大按钮 |
 | `CC-PDA-CHANGE-007` | 提交 | 使用既有提交规则，成功后进入既有 `submitted` 状态 |
 | `CC-PDA-CHANGE-008` | WEB 保持不变 | 现有 WEB 菜单、action 和表单行为不改变 |
 

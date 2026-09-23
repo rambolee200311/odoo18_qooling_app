@@ -1,3 +1,5 @@
+import base64
+
 from odoo import fields
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
@@ -89,12 +91,35 @@ class TestQoolingInboundForm(TransactionCase):
         self.assertEqual(record.state, "draft")
         self.assertTrue(record.warehouse_signature)
 
-    def test_optional_photo_and_comments(self):
+    def test_optional_photos_and_comments(self):
         record = self.env["wd.qooling.inbound.form"].with_user(self.user).create({
             **self._draft_values(),
             "warehouse_signature": "c2lnbmF0dXJl",
         })
         record.action_submit()
-        self.assertFalse(record.photo)
+        self.assertFalse(record.photo_ids)
         self.assertFalse(record.comments)
         self.assertTrue(fields.Datetime.to_datetime(record.submitted_at))
+
+    def test_multiple_photos_are_related_attachments(self):
+        record = self.env["wd.qooling.inbound.form"].with_user(self.user).create(self._draft_values())
+        attachments = self.env["ir.attachment"].with_user(self.user).create([
+            {
+                "name": "damage-1.jpg",
+                "datas": base64.b64encode(b"photo-1"),
+                "mimetype": "image/jpeg",
+                "res_model": record._name,
+                "res_id": record.id,
+            },
+            {
+                "name": "damage-2.jpg",
+                "datas": base64.b64encode(b"photo-2"),
+                "mimetype": "image/jpeg",
+                "res_model": record._name,
+                "res_id": record.id,
+            },
+        ])
+        record.write({"photo_ids": [(6, 0, attachments.ids)]})
+        self.assertEqual(record.photo_ids, attachments)
+        record.write({"photo_ids": [(3, attachments[0].id)]})
+        self.assertEqual(record.photo_ids, attachments[1])

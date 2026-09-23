@@ -117,7 +117,13 @@ class QoolingInboundForm(models.Model):
         string="Temperature of each pallet is registered",
     )
     average_temperature_per_pallet = fields.Float(string="Average temperature per pallet (°C)")
-    photo = fields.Binary(string="Photo", attachment=True)
+    photo_ids = fields.Many2many(
+        "ir.attachment",
+        "wd_qooling_inbound_form_attachment_rel",
+        "inbound_id",
+        "attachment_id",
+        string="Photos",
+    )
     comments = fields.Text(string="Comments")
     warehouse_signature = fields.Binary(string="Warehouse signature", attachment=True, copy=False)
     signer_id = fields.Many2one("res.users", string="Signer", readonly=True, copy=False)
