@@ -3,7 +3,8 @@
 > 文档状态：已冻结
 > 文档版本：v1.0.0
 > 冻结日期：2026-09-23
-> 实施状态：尚未授权
+> 实施状态：Approved for Implementation
+> 实施批准日期：2026-09-23
 > 上游 SRS：[SRS_qooling_weekly_temperature_control.md](../designing/SRS_qooling_weekly_temperature_control.md) `v0.3.0 Draft`
 > 上游 TDD：[TDD_qooling_temperature_record.md](../designing/TDD_qooling_temperature_record.md) `v1.1.0 Revised`
 > 适用 Form：Weekly Temperature Control / Temperature Record
