@@ -12,9 +12,9 @@
 
 | 字段 | 值 |
 |---|---|
-| Branch | `agents/docs-review-summary` |
+| Branch | `main` |
 | Base Commit | `50c63cb` |
-| Implementation Commit | 待提交 |
+| Implementation Commit | `6eeb860` |
 | PR | N/A |
 
 ## 2. 基线
