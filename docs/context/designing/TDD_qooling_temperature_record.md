@@ -1,7 +1,7 @@
 # Temperature Record 技术设计文档（TDD）
 
 > 文档状态：草稿  
-> 文档版本：v0.1.0  
+> 文档版本：v0.2.0
 > 适用 Form：Weekly Temperature Control / Temperature Record  
 > 依据：[SRS_qooling_weekly_temperature_control.md](./SRS_qooling_weekly_temperature_control.md)
 
@@ -10,9 +10,9 @@
 本 TDD 将温度控制表设计为“温度记录工具”，只保存用户填写的上下文、
 托盘明细、检查结果、照片、备注、签名和人工处置结果。
 
-系统不得自动判断温度是否异常，不得自动触发隔离、复测、通知、放行、
-库存或其他仓库业务流程。温度范围、`40°C` 阈值、测量次数、复测和处置
-均由人工复核决定，系统只保存结果。
+系统不得自动执行温度异常判定、隔离、复测、通知、放行、库存或其他仓库
+业务动作。系统可以保存用户填写的人工判断结果和处置结果，但不将其作为
+自动化触发器。温度范围、`40°C` 阈值、测量次数、复测和处置均由人工复核决定。
 
 ## 2. 入口和运行模式
 
@@ -49,6 +49,9 @@
 | `temperature_exception_result` | Text/Selection | 保存用户填写的温度异常结果 |
 | `disposition_result` | Text | 保存人工复核处置结果 |
 | `photo_ids` | One2many | 当前可先映射附件；多图上传为技术债 |
+| `pdf_import_status` | Selection | `pending`、`success`、`failed`；PDF 登记结果 |
+| `pdf_import_error` | Text | PDF 缺少字段、签名或解析失败时保存失败原因 |
+| `pdf_import_attachment_id` | Many2one(`ir.attachment`) | 原始 PDF 附件，必须保留 |
 | `comments` | Text | 非必填 |
 | `signature` | Binary | 手写签名，提交必填 |
 | `signer_id` | Many2one(`res.users`) | 签名人 |
@@ -57,6 +60,21 @@
 | `filing_date` | Date | 默认当前日期 |
 | `submitted_by_id` | Many2one(`res.users`) | 提交人 |
 | `submitted_at` | Datetime | 提交时间 |
+
+#### 3.1.1 检查字段选项集
+
+四个检查字段统一使用二态 Selection；默认值为空，表示尚未填写，不将空值
+解释为 `no`：
+
+| 字段 | Selection 值 | 默认值 | 业务分支 |
+|---|---|---|---|
+| `packaging_damage` | `[('yes', 'Ja'), ('no', 'Nee')]` | 空 | `yes` 时记录程序 51/52 的人工处置说明 |
+| `unpacked_housing_damage` | `[('yes', 'Ja'), ('no', 'Nee')]` | 空 | `yes` 时记录程序 51/52 的人工处置说明 |
+| `electrolyte_leakage` | `[('yes', 'Ja'), ('no', 'Nee')]` | 空 | `yes` 时记录泄漏处置结果 |
+| `storage_stability` | `[('yes', 'Ja'), ('no', 'Nee')]` | 空 | `yes` 时记录存储稳定性处置结果 |
+
+程序 51/52 只是用户填写的人工处置参考或文本结果，不由系统自动启动、
+通知或判定完成。若业务确认需要第三种答案，必须先修订本选项集和 SRS。
 
 ### 3.2 托盘温度明细
 
@@ -86,6 +104,10 @@
 `Total Pallets` 只作为记录值和核对信息保存；系统不得用它自动补齐、
 删除或生成托盘明细。
 
+正向实现：托盘明细通过 One2many 列表动态增删。用户点击“新增一行”创建
+一条 `wd.qooling.temperature.record.line`；明细数量由用户实际填写决定，
+不设上限。`total_pallets` 仅作为记录值，不驱动明细生成或删除。
+
 ## 4. ORM 约束和服务行为
 
 | 编号 | 约束/行为 |
@@ -113,6 +135,11 @@ Filing date、Number 和 Total Pallets。
 而不是固定 65 个输入框。明细至少显示托盘标识、温度、测量结果、异常说明
 和人工处置结果。
 
+PDA 上点击“新增一行”打开底部抽屉或全屏明细页面；保存后返回记录并保留
+明细列表位置。温度字段使用数字输入控件，以便调用 PDA 数字键盘。若标准
+Odoo Form 无法稳定满足该交互，必须先登记专用 PDA UI 技术债，不得用固定
+65 行替代动态明细。
+
 ### 5.3 检查与证据区
 
 检查结果、人工处置、照片、备注和签名分开显示。照片为空不显示成功形态
@@ -129,6 +156,29 @@ Filing date、Number 和 Total Pallets。
 
 库管可以创建和填写记录；仓库主管可以复核、标记异常、关闭或撤回。
 Record Rule 和 ACL 必须在服务端生效，不能只隐藏按钮。
+
+### 6.1 权限组
+
+| 权限组 | 权限 |
+|---|---|
+| `group_temperature_user` | 创建、读取、修改草稿、保存和提交本人有权访问的记录 |
+| `group_temperature_supervisor` | 包含 `group_temperature_user`；可复核、标记异常、关闭和撤回 |
+
+两个组均为本模块新增组；不替换、不修改 Odoo 官方仓库权限组。实际用户
+可同时加入现有仓库操作组和上述温度记录组，仓库主管额外加入
+`group_temperature_supervisor`。
+
+### 6.2 状态流转
+
+| 动作 | 起始状态 | 目标状态 | 触发角色 | 是否记录审计时间/用户 |
+|---|---|---|---|---|
+| 保存草稿 | `draft` | `draft` | `group_temperature_user` | 否 |
+| 提交 | `draft` | `submitted` | `group_temperature_user` | 是，写入 `submitted_by_id`/`submitted_at` |
+| 标记异常 | `submitted` | `exception_pending` | `group_temperature_supervisor` | 是，写入消息/操作日志 |
+| 关闭 | `exception_pending` | `closed` | `group_temperature_supervisor` | 是，写入消息/操作日志 |
+| 撤回 | `submitted`、`exception_pending`、`closed` | `draft` | `group_temperature_supervisor` | 是，写入消息/操作日志 |
+
+撤回不删除原字段值；是否允许修改由回到 `draft` 后的普通编辑权限决定。
 
 ## 7. PDF 登记边界
 
@@ -150,13 +200,19 @@ PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和
 | `TEST-TEMP-008` | Playwright | Web/PDA 明细新增、编辑、滚动和签名 |
 | `TEST-TEMP-009` | Playwright | 多语言字段和选择值 |
 | `TEST-TEMP-010` | PDF/TransactionCase | 原始 PDF、字段、签名和失败原因可追溯 |
+| `TEST-TEMP-011` | TransactionCase | 无权限用户提交、复核、关闭和撤回被拒绝 |
+| `TEST-TEMP-012` | TransactionCase | 缺少客户、集装箱号或签名时提交被拒绝 |
+| `TEST-TEMP-013` | View/HTTP | 温度字段拒绝非数字输入并返回明确错误 |
+| `TEST-TEMP-014` | View/HTTP | 图片上传失败时保留表单状态并显示真实错误 |
 
 测试不得以“显示 65 行”作为通过条件；必须验证实际明细数量和原始值完整性。
 
 ## 9. 技术债和停止条件
 
 - 专用 PDA 触控 JavaScript、图片多张上传、缩略图放大 panel 和 Chatter
-  置底按现有 Form 技术债跟踪，不在本 TDD 中伪装为已完成。
+  置底按既有技术债跟踪，不在本 TDD 中伪装为已完成；对应已登记编号为
+  `TD-INBOUND-PDA-001`、`TD-INBOUND-002`、`TD-INBOUND-003` 和
+  `TD-INBOUND-004`。这些能力在本 TDD 中不实现，但模型和视图必须保留扩展点。
 - 若实现需要自动判断温度、自动拆分记录、自动补齐托盘或固定 65 行，
   必须停止并先修订 SRS/TDD。
 - 若引入库存、运输、隔离、放行或通知流程，必须停止并重新评审范围。
@@ -167,4 +223,5 @@ PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和
 - [ ] 不固定 65 行、不截断超过 65 个实际托盘已确认；
 - [ ] Web/PDA/PDF 入口边界经人工确认；
 - [ ] 权限、签名和状态矩阵经人工确认；
+- [ ] 检查字段选项集、权限组、状态流转和 PDF 失败原因字段经业务确认；
 - [ ] Coding Contract 创建并批准后，才可进入实施。
