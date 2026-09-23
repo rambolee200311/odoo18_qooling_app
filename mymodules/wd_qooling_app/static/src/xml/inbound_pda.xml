@@ -52,16 +52,29 @@
                     </t>
                 </div>
                 <div t-elif="state.step === 3" data-testid="inbound-pda-evidence">
-                    <label class="o_qooling_pda__upload">
-                        <span class="btn btn-secondary">
-                            <i class="fa fa-paperclip me-1" aria-hidden="true"/> Attach photos
-                        </span>
-                        <input type="file" accept="image/*" multiple="multiple" t-on-change="onPhoto"/>
-                    </label>
+                    <div class="o_qooling_pda__upload">
+                        <label class="btn btn-secondary me-2">
+                            <i class="fa fa-camera me-1" aria-hidden="true"/> Take photo
+                            <input class="d-none" type="file" accept="image/*" capture="environment"
+                                   t-on-change="onPhoto"/>
+                        </label>
+                        <label class="btn btn-secondary">
+                            <i class="fa fa-video-camera me-1" aria-hidden="true"/> Record video
+                            <input class="d-none" type="file" accept="video/*" capture="environment"
+                                   t-on-change="onPhoto"/>
+                        </label>
+                        <label class="btn btn-outline-secondary ms-2">
+                            <i class="fa fa-paperclip me-1" aria-hidden="true"/> Attach media
+                            <input class="d-none" type="file" accept="image/*,video/*" multiple="multiple"
+                                   t-on-change="onPhoto"/>
+                        </label>
+                    </div>
                     <div class="o_qooling_pda__photos">
                         <div t-foreach="state.photos" t-as="photo" t-key="photo.id"
                              class="o_qooling_pda__photo" data-testid="inbound-pda-photo">
-                            <img t-att-src="'/web/content/' + photo.id" t-att-alt="photo.name"
+                            <video t-if="isVideo(photo)" t-att-src="'/web/content/' + photo.id"
+                                   class="o_qooling_pda__thumbnail" muted="muted" preload="metadata"/>
+                            <img t-else="" t-att-src="'/web/content/' + photo.id" t-att-alt="photo.name"
                                  class="o_qooling_pda__thumbnail"/>
                             <div class="o_qooling_pda__photo-actions">
                                 <button type="button" class="btn btn-sm btn-light o_qooling_pda__photo-enlarge"
@@ -94,7 +107,9 @@
             </footer>
             <div t-if="state.preview" class="o_qooling_pda__preview" role="dialog"
                  t-on-click="() => state.preview = false" data-testid="inbound-pda-photo-preview">
-                <img t-att-src="'/web/content/' + state.preview" alt="Enlarged inbound evidence"
+                <video t-if="isVideo(getPreviewPhoto())" t-att-src="'/web/content/' + state.preview"
+                       controls="controls" autoplay="autoplay" t-on-click.stop="() => {}"/>
+                <img t-else="" t-att-src="'/web/content/' + state.preview" alt="Enlarged inbound evidence"
                      t-on-click.stop="() => {}"/>
             </div>
         </main>

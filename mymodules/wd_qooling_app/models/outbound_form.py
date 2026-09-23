@@ -4,6 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 
 class QoolingOutboundForm(models.Model):
     _name = "wd.qooling.outbound.form"
+    _inherit = "wd.qooling.media.evidence.mixin"
     _description = "Qooling Outbound Form"
     _order = "date_arrival desc, id desc"
 
@@ -49,7 +50,7 @@ class QoolingOutboundForm(models.Model):
     cargo_photo = fields.Binary(attachment=True, string="Photo of cargo")
     photo_ids = fields.Many2many(
         "ir.attachment", "wd_qooling_outbound_form_attachment_rel",
-        "outbound_id", "attachment_id", string="Photos",
+        "outbound_id", "attachment_id",         string="Photos and videos",
     )
     warehouse_operator_comments = fields.Text(string="Warehouse operator comments")
     warehouse_signature = fields.Binary(attachment=True, copy=False, string="Warehouse operator signature")

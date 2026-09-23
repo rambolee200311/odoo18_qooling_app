@@ -4,6 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 
 class QoolingInboundForm(models.Model):
     _name = "wd.qooling.inbound.form"
+    _inherit = "wd.qooling.media.evidence.mixin"
     _description = "Qooling Inbound Form"
     _order = "date desc, id desc"
 
@@ -118,6 +119,13 @@ class QoolingInboundForm(models.Model):
     )
     average_temperature_per_pallet = fields.Float(string="Average temperature per pallet (°C)")
     photo = fields.Binary(string="Photo", attachment=True)
+    photo_ids = fields.Many2many(
+        "ir.attachment",
+        "wd_qooling_inbound_form_attachment_rel",
+        "record_id",
+        "attachment_id",
+        string="Photos and videos",
+    )
     comments = fields.Text(string="Comments")
     warehouse_signature = fields.Binary(string="Warehouse signature", attachment=True, copy=False)
     signer_id = fields.Many2one("res.users", string="Signer", readonly=True, copy=False)

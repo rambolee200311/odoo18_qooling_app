@@ -7,6 +7,7 @@ CHECK_SELECTION = [("yes", "Ja"), ("no", "Nee")]
 
 class QoolingTemperatureRecord(models.Model):
     _name = "wd.qooling.temperature.record"
+    _inherit = "wd.qooling.media.evidence.mixin"
     _description = "Qooling Temperature Record"
     _order = "date desc, id desc"
 
@@ -57,7 +58,7 @@ class QoolingTemperatureRecord(models.Model):
         "wd_qooling_temperature_record_attachment_rel",
         "record_id",
         "attachment_id",
-        string="Photos",
+        string="Photos and videos",
     )
     comments = fields.Text(string="Comments")
     signature = fields.Binary(string="Signature", attachment=True, copy=False)

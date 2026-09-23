@@ -50,6 +50,11 @@
     object-fit: contain;
 }
 
+.o_qooling_photo_gallery__preview video {
+    max-width: 95vw;
+    max-height: 90vh;
+}
+
 .o_qooling_photo_gallery__upload {
     min-height: 2.25rem;
 }

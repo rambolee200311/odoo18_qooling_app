@@ -98,3 +98,13 @@ class TestQoolingInboundForm(TransactionCase):
         self.assertFalse(record.photo)
         self.assertFalse(record.comments)
         self.assertTrue(fields.Datetime.to_datetime(record.submitted_at))
+
+    def test_media_evidence_relation_accepts_video(self):
+        record = self.env["wd.qooling.inbound.form"].with_user(self.user).create(self._draft_values())
+        attachment = self.env["ir.attachment"].create({
+            "name": "evidence.webm",
+            "datas": "dmlkZW8=",
+            "mimetype": "video/webm",
+        })
+        record.write({"photo_ids": [(4, attachment.id)]})
+        self.assertIn(attachment, record.photo_ids)

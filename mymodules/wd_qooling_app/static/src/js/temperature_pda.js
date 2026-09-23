@@ -4,6 +4,21 @@ import { Component, onPatched, onWillStart, onWillUnmount, useRef, useState } fr
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 
+const MAX_MEDIA_COUNT = 20;
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024;
+const MAX_VIDEO_SIZE = 100 * 1024 * 1024;
+
+function getMediaError(file, currentCount) {
+    if (currentCount >= MAX_MEDIA_COUNT) {
+        return `A record can contain at most ${MAX_MEDIA_COUNT} media files.`;
+    }
+    if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) {
+        return "Only image and video files can be uploaded.";
+    }
+    const limit = file.type.startsWith("video/") ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
+    return file.size > limit ? `This file exceeds the ${limit / (1024 * 1024)} MB limit.` : "";
+}
+
 const STEPS = [
     { key: "details", label: "Details" },
     { key: "temperatures", label: "Pallet temperatures" },
@@ -90,6 +105,7 @@ export class QoolingTemperaturePda extends Component {
         if (values.date) values.date = values.date.replace("T", " ");
         if (this.state.recordId) await this.orm.write("wd.qooling.temperature.record", [this.state.recordId], values);
         else [this.state.recordId] = await this.orm.create("wd.qooling.temperature.record", [values]);
+        this.state.record.state = "draft";
         sessionStorage.setItem(DRAFT_STORAGE_KEY, String(this.state.recordId));
         await Promise.all([this.loadLines(), this.loadPhotos()]);
     }
@@ -178,8 +194,16 @@ export class QoolingTemperaturePda extends Component {
     }
 
     onPhoto(event) {
-        if (!this.state.recordId) { this.state.error = "Save the draft before uploading photos."; event.target.value = ""; return; }
+        if (!this.state.recordId) { this.state.error = "Save the draft before uploading media."; event.target.value = ""; return; }
+        if (this.state.record.state !== "draft") {
+            this.state.error = "Media evidence can only be changed while the record is a draft.";
+            event.target.value = ""; return;
+        }
+        let currentCount = this.state.photos.length;
         for (const file of event.target.files) {
+            const mediaError = getMediaError(file, currentCount);
+            if (mediaError) { this.state.error = mediaError; continue; }
+            currentCount += 1;
             const reader = new FileReader();
             reader.onload = async () => {
                 try {
@@ -190,12 +214,20 @@ export class QoolingTemperaturePda extends Component {
                     await this.orm.write("wd.qooling.temperature.record", [this.state.recordId], { photo_ids: [[4, attachmentId]] });
                     await this.loadPhotos();
                 } catch (error) {
-                    this.state.error = error.data?.message || error.message || "Could not upload the photo.";
+                    this.state.error = error.data?.message || error.message || "Could not upload the media.";
                 }
             };
             reader.readAsDataURL(file);
         }
         event.target.value = "";
+    }
+
+    isVideo(photo) {
+        return photo?.mimetype?.startsWith("video/");
+    }
+
+    getPreviewPhoto() {
+        return this.state.photos.find((photo) => photo.id === this.state.preview);
     }
 
     async loadPhotos() {

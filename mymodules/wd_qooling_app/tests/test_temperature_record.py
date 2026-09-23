@@ -1,6 +1,6 @@
 import base64
 
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tests.common import TransactionCase
 
 
@@ -74,3 +74,25 @@ class TestQoolingTemperatureRecord(TransactionCase):
         })
         record.write({"photo_ids": [(4, attachment.id)]})
         self.assertIn(attachment, record.photo_ids)
+
+    def test_media_rejects_unsupported_mimetype(self):
+        record = self.env["wd.qooling.temperature.record"].with_user(self.operator).create(self._values())
+        attachment = self.env["ir.attachment"].create({
+            "name": "evidence.exe",
+            "datas": "ZXhlYw==",
+            "mimetype": "application/octet-stream",
+        })
+        with self.assertRaises(ValidationError):
+            record.write({"photo_ids": [(4, attachment.id)]})
+
+    def test_media_is_readonly_after_submission(self):
+        record = self.env["wd.qooling.temperature.record"].with_user(self.operator).create(self._values())
+        record.action_sign(base64.b64encode(b"signature"))
+        record.action_submit()
+        attachment = self.env["ir.attachment"].create({
+            "name": "evidence.mp4",
+            "datas": "dmlkZW8=",
+            "mimetype": "video/mp4",
+        })
+        with self.assertRaises(UserError):
+            record.write({"photo_ids": [(4, attachment.id)]})
