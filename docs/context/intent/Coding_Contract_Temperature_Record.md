@@ -1,7 +1,8 @@
 # Temperature Record Coding Contract
 
-> 文档状态：草稿
-> 文档版本：v0.1.0
+> 文档状态：已冻结
+> 文档版本：v1.0.0
+> 冻结日期：2026-09-23
 > 实施状态：尚未授权
 > 上游 SRS：[SRS_qooling_weekly_temperature_control.md](../designing/SRS_qooling_weekly_temperature_control.md) `v0.3.0 Draft`
 > 上游 TDD：[TDD_qooling_temperature_record.md](../designing/TDD_qooling_temperature_record.md) `v1.1.0 Revised`
@@ -12,9 +13,9 @@
 本 Coding Contract（CC）冻结 Temperature Record 的实施范围、保存边界、
 禁止事项、测试契约、停止条件和完成闸门，不重新定义上游 SRS/TDD 的业务语义。
 
-在 CC 获得人工批准前，不得开始 Temperature Record 编码、数据库迁移或 UI
-实现。任何字段、状态、入口、权限或人工复核边界变化，必须先修订冻结 TDD
-及本 CC。
+本 CC 已获人工批准冻结，但尚未获得实施授权；在取得实施授权前，不得开始
+Temperature Record 编码、数据库迁移或 UI 实现。任何字段、状态、入口、权限
+或人工复核边界变化，必须先修订冻结 TDD 及本 CC。
 
 ## 1. 实施目标
 
@@ -160,4 +161,5 @@ draft -> submitted -> exception_pending -> closed
 - [ ] Web/PDA 字段和状态一致；
 - [ ] 人工复核边界无自动业务处置；
 - [ ] IHR、ATR、HVR 和 Final Report 更新；
-- [ ] 用户批准本 CC 后，才可授权实施。
+- [x] 用户批准本 CC 冻结；
+- [ ] 用户另行授权实施。
