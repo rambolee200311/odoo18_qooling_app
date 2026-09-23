@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="wd_qooling_app.OutboundPda">
-        <main class="o_qooling_pda" data-testid="outbound-pda">
+        <main t-att-class="'o_qooling_pda ' + (isReadOnly ? 'is-readonly' : '')" data-testid="outbound-pda">
             <header class="o_qooling_pda__header"><div><span class="text-muted">FORMS / PDA</span><h1>Outbound Record <span class="o_qooling_pda__record-name" data-testid="outbound-pda-record-name"><t t-esc="state.record.name || 'New'"/></span></h1></div>
                 <button class="btn btn-outline-secondary" type="button" t-on-click="openWebForm" data-testid="outbound-pda-web">Open web form</button>
             </header>
@@ -10,6 +10,7 @@
             </nav>
             <div t-if="state.error" class="alert alert-danger" role="alert" data-testid="outbound-pda-error"><t t-esc="state.error"/></div>
             <div t-if="state.saved" class="alert alert-success" data-testid="outbound-pda-feedback"><t t-esc="state.saved"/></div>
+            <div t-if="isReadOnly" class="alert alert-info" role="status">This record is submitted and read-only.</div>
             <section class="o_qooling_pda__body">
                 <div t-if="state.step === 0" data-testid="outbound-pda-details">
                     <label>Location<select class="form-select" data-field="location_id" t-on-change="onFieldChange"><option value="">Select warehouse</option><t t-foreach="state.warehouses" t-as="warehouse" t-key="warehouse.id"><option t-att-value="warehouse.id"><t t-esc="warehouse.name"/></option></t></select></label>
@@ -45,7 +46,7 @@
                 <div t-elif="state.step === 4" data-testid="outbound-pda-driver-signature"><label>Driver signature</label><canvas t-ref="driverSignatureCanvas" class="o_qooling_pda__signature" data-testid="outbound-pda-driver-signature-canvas" t-on-pointerdown="(event) => startSignature(event, 'driver')" t-on-pointermove="moveSignature" t-on-pointerup="endSignature" t-on-pointercancel="endSignature" t-on-touchstart="(event) => startSignature(event, 'driver')" t-on-touchmove="moveSignature" t-on-touchend="endSignature"/><button type="button" class="btn btn-outline-secondary mt-2" t-on-click="clearSignature">Clear signature</button></div>
                 <div t-elif="state.step === 5" data-testid="outbound-pda-warehouse-signature"><label>Warehouse operator signature</label><canvas t-ref="warehouseSignatureCanvas" class="o_qooling_pda__signature" data-testid="outbound-pda-warehouse-signature-canvas" t-on-pointerdown="(event) => startSignature(event, 'warehouse')" t-on-pointermove="moveSignature" t-on-pointerup="endSignature" t-on-pointercancel="endSignature" t-on-touchstart="(event) => startSignature(event, 'warehouse')" t-on-touchmove="moveSignature" t-on-touchend="endSignature"/><button type="button" class="btn btn-outline-secondary mt-2" t-on-click="clearSignature">Clear signature</button></div>
             </section>
-            <footer class="o_qooling_pda__footer"><button class="btn btn-outline-secondary" type="button" t-on-click="previous" t-att-disabled="state.step === 0">Back</button><button t-if="state.step &lt; steps.length - 1" class="btn btn-primary" type="button" t-on-click="next" data-testid="outbound-pda-next">Next</button><button class="btn btn-outline-primary" type="button" t-on-click="save" t-att-disabled="state.busy" data-testid="outbound-pda-save">Save draft</button><button t-if="state.step === steps.length - 1" class="btn btn-success" type="button" t-on-click="submit" t-att-disabled="state.busy" data-testid="outbound-pda-submit">Submit</button></footer>
+            <footer class="o_qooling_pda__footer"><button class="btn btn-outline-secondary" type="button" t-on-click="previous" t-att-disabled="state.step === 0">Back</button><button t-if="state.step &lt; steps.length - 1" class="btn btn-primary" type="button" t-on-click="next" data-testid="outbound-pda-next">Next</button><button t-if="!isReadOnly" class="btn btn-outline-primary" type="button" t-on-click="save" t-att-disabled="state.busy" data-testid="outbound-pda-save">Save draft</button><button t-if="state.step === steps.length - 1 &amp;&amp; !isReadOnly" class="btn btn-success" type="button" t-on-click="submit" t-att-disabled="state.busy" data-testid="outbound-pda-submit">Submit</button></footer>
             <div t-if="state.preview" class="o_qooling_pda__preview" role="dialog" t-on-click="() => state.preview = false" data-testid="outbound-pda-photo-preview"><video t-if="isVideo(getPreviewPhoto())" t-att-src="'/web/content/' + state.preview" controls="controls" autoplay="autoplay" t-on-click.stop="() => {}"/><img t-else="" t-att-src="'/web/content/' + state.preview" alt="Enlarged outbound evidence" t-on-click.stop="() => {}"/></div>
         </main>
     </t>

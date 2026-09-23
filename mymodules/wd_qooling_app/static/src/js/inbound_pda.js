@@ -52,6 +52,7 @@ export class QoolingInboundPda extends Component {
             warehouses: [],
             users: [],
             recordId: null,
+            readOnly: false,
             photos: [],
             step: 0,
             busy: false,
@@ -79,7 +80,15 @@ export class QoolingInboundPda extends Component {
         return STEPS;
     }
 
+    get isReadOnly() {
+        return this.state.readOnly;
+    }
+
     async loadDraft() {
+        if (this.props.action?.context?.new_record) {
+            sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+            return;
+        }
         const contextDraftId = this.props.action?.context?.active_id;
         const storedDraftId = Number(sessionStorage.getItem(DRAFT_STORAGE_KEY) || 0);
         const draftId = Number(contextDraftId || storedDraftId);
@@ -87,7 +96,7 @@ export class QoolingInboundPda extends Component {
             return;
         }
         const [record] = await this.orm.read("wd.qooling.inbound.form", [draftId], DRAFT_FIELDS);
-        if (!record || record.state !== "draft") {
+        if (!record || !["draft", "submitted"].includes(record.state)) {
             sessionStorage.removeItem(DRAFT_STORAGE_KEY);
             return;
         }
@@ -95,6 +104,7 @@ export class QoolingInboundPda extends Component {
             record[field] = record[field]?.[0] || false;
         }
         this.state.recordId = record.id;
+        this.state.readOnly = record.state !== "draft";
         Object.assign(this.state.record, record);
         await this.loadPhotos();
     }
@@ -106,6 +116,7 @@ export class QoolingInboundPda extends Component {
     }
 
     setValue(name, value) {
+        if (this.isReadOnly) return;
         this.state.record[name] = value;
         this.state.error = "";
     }
@@ -139,6 +150,7 @@ export class QoolingInboundPda extends Component {
     }
 
     async save() {
+        if (this.isReadOnly) return;
         if (!this.validateRequiredFields()) {
             return;
         }
@@ -165,6 +177,7 @@ export class QoolingInboundPda extends Component {
     }
 
     async submit() {
+        if (this.isReadOnly) return;
         if (!this.validateRequiredFields()) {
             return;
         }
@@ -272,6 +285,7 @@ export class QoolingInboundPda extends Component {
     }
 
     async deletePhoto(photoId) {
+        if (this.isReadOnly) return;
         if (!this.state.recordId) {
             return;
         }

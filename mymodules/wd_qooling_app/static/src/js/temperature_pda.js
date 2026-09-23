@@ -47,7 +47,7 @@ export class QoolingTemperaturePda extends Component {
         this.canvas = useRef("signatureCanvas");
         this.state = useState({
             record: { date: new Date().toISOString().slice(0, 16), filing_date: new Date().toISOString().slice(0, 10) },
-            warehouses: [], users: [], recordId: null, lines: [], photos: [], step: 0,
+            warehouses: [], users: [], recordId: null, readOnly: false, lines: [], photos: [], step: 0,
             busy: false, error: "", saved: "", preview: false, quickTemperature: "",
         });
         onWillStart(async () => {
@@ -66,19 +66,26 @@ export class QoolingTemperaturePda extends Component {
 
     get steps() { return STEPS; }
 
+    get isReadOnly() { return this.state.readOnly; }
+
     async loadDraft() {
+        if (this.props.action?.context?.new_record) {
+            sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+            return;
+        }
         const contextId = this.props.action?.context?.active_id;
         const storedId = Number(sessionStorage.getItem(DRAFT_STORAGE_KEY) || 0);
         const id = Number(contextId || storedId);
         if (!id) return;
         const [record] = await this.orm.read("wd.qooling.temperature.record", [id], RECORD_FIELDS);
-        if (!record || record.state !== "draft") {
+        if (!record || !["draft", "submitted"].includes(record.state)) {
             sessionStorage.removeItem(DRAFT_STORAGE_KEY);
             return;
         }
         for (const field of ["manager_id", "location_id"]) record[field] = record[field]?.[0] || false;
         record.date = record.date?.replace(" ", "T").slice(0, 16);
         this.state.recordId = record.id;
+        this.state.readOnly = record.state !== "draft";
         Object.assign(this.state.record, record);
         await Promise.all([this.loadLines(), this.loadPhotos()]);
     }
@@ -89,7 +96,11 @@ export class QoolingTemperaturePda extends Component {
         this.state.record.name = record?.name || "New";
     }
 
-    setValue(name, value) { this.state.record[name] = value; this.state.error = ""; }
+    setValue(name, value) {
+        if (this.isReadOnly) return;
+        this.state.record[name] = value;
+        this.state.error = "";
+    }
 
     onFieldChange(event) {
         const field = event.target.dataset.field;
@@ -107,6 +118,7 @@ export class QoolingTemperaturePda extends Component {
     }
 
     async persist() {
+        if (this.isReadOnly) return;
         const values = { ...this.state.record };
         if (values.date) values.date = values.date.replace("T", " ");
         if (this.state.recordId) await this.orm.write("wd.qooling.temperature.record", [this.state.recordId], values);
@@ -120,6 +132,7 @@ export class QoolingTemperaturePda extends Component {
     }
 
     async save() {
+        if (this.isReadOnly) return;
         if (!this.validateRequired()) return;
         this.state.busy = true; this.state.error = "";
         try {
@@ -132,6 +145,7 @@ export class QoolingTemperaturePda extends Component {
     }
 
     async submit() {
+        if (this.isReadOnly) return;
         if (!this.validateRequired()) return;
         if (!this.state.record.signature) { this.state.error = "Signature is required before submission."; return; }
         this.state.busy = true; this.state.error = "";
@@ -162,6 +176,7 @@ export class QoolingTemperaturePda extends Component {
     }
 
     async addTemperature(event) {
+        if (this.isReadOnly) return;
         if (event) event.preventDefault();
         const value = Number(this.state.quickTemperature);
         if (!Number.isFinite(value)) { this.state.error = "Enter a valid temperature."; return; }
@@ -193,6 +208,7 @@ export class QoolingTemperaturePda extends Component {
     }
 
     async clearAll() {
+        if (this.isReadOnly) return;
         if (!this.state.recordId || !confirm("Clear all pallet temperatures?")) return;
         try {
             await this.orm.call("wd.qooling.temperature.record", "action_clear_lines", [[this.state.recordId]]);
@@ -248,6 +264,7 @@ export class QoolingTemperaturePda extends Component {
     }
 
     async deletePhoto(id) {
+        if (this.isReadOnly) return;
         try {
             await this.orm.write("wd.qooling.temperature.record", [this.state.recordId], { photo_ids: [[3, id]] });
             await this.orm.unlink("ir.attachment", [id]);

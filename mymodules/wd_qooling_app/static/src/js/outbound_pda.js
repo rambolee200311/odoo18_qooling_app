@@ -68,7 +68,7 @@ export class QoolingOutboundPda extends Component {
                 goods_type: "bonded",
                 adr: "no",
             },
-            warehouses: [], users: [], recordId: null, photos: [], step: 0,
+            warehouses: [], users: [], recordId: null, readOnly: false, photos: [], step: 0,
             busy: false, error: "", saved: "", preview: false,
         });
         onWillStart(async () => {
@@ -92,13 +92,19 @@ export class QoolingOutboundPda extends Component {
 
     get steps() { return STEPS; }
 
+    get isReadOnly() { return this.state.readOnly; }
+
     async loadDraft() {
+        if (this.props.action?.context?.new_record) {
+            sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+            return;
+        }
         const contextDraftId = this.props.action?.context?.active_id;
         const storedDraftId = Number(sessionStorage.getItem(DRAFT_STORAGE_KEY) || 0);
         const draftId = Number(contextDraftId || storedDraftId);
         if (!draftId) return;
         const [record] = await this.orm.read("wd.qooling.outbound.form", [draftId], DRAFT_FIELDS);
-        if (!record || record.state !== "draft") {
+        if (!record || !["draft", "submitted"].includes(record.state)) {
             sessionStorage.removeItem(DRAFT_STORAGE_KEY);
             return;
         }
@@ -107,6 +113,7 @@ export class QoolingOutboundPda extends Component {
             record[field] = record[field]?.replace(" ", "T").slice(0, 16);
         }
         this.state.recordId = record.id;
+        this.state.readOnly = record.state !== "draft";
         Object.assign(this.state.record, record);
         await this.loadPhotos();
     }
@@ -117,7 +124,11 @@ export class QoolingOutboundPda extends Component {
         this.state.record.name = record?.name || "New";
     }
 
-    setValue(name, value) { this.state.record[name] = value; this.state.error = ""; }
+    setValue(name, value) {
+        if (this.isReadOnly) return;
+        this.state.record[name] = value;
+        this.state.error = "";
+    }
 
     onFieldChange(event) {
         const field = event.target.dataset.field;
@@ -139,6 +150,7 @@ export class QoolingOutboundPda extends Component {
     }
 
     async persist() {
+        if (this.isReadOnly) return;
         const values = { ...this.state.record };
         for (const field of ["date_arrival", "start_loading_at", "end_loading_at"]) {
             if (values[field]) values[field] = values[field].replace("T", " ");
@@ -156,6 +168,7 @@ export class QoolingOutboundPda extends Component {
     }
 
     async save() {
+        if (this.isReadOnly) return;
         if (!this.validateRequiredFields()) return;
         this.state.busy = true; this.state.error = "";
         try {
@@ -168,6 +181,7 @@ export class QoolingOutboundPda extends Component {
     }
 
     async submit() {
+        if (this.isReadOnly) return;
         if (!this.validateRequiredFields()) return;
         this.state.busy = true; this.state.error = "";
         try {
@@ -244,6 +258,7 @@ export class QoolingOutboundPda extends Component {
     }
 
     async deletePhoto(photoId) {
+        if (this.isReadOnly) return;
         try {
             await this.orm.write("wd.qooling.outbound.form", [this.state.recordId], { photo_ids: [[3, photoId]] });
             await this.orm.unlink("ir.attachment", [photoId]);

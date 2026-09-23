@@ -17,8 +17,10 @@
         "web.assets_backend": [
             "wd_qooling_app/static/src/js/signature_field.js",
             "wd_qooling_app/static/src/js/qooling_dashboard.js",
+            "wd_qooling_app/static/src/js/pda_record_dashboard.js",
             "wd_qooling_app/static/src/xml/signature_field.xml",
             "wd_qooling_app/static/src/xml/qooling_dashboard.xml",
+            "wd_qooling_app/static/src/xml/pda_record_dashboard.xml",
             "wd_qooling_app/static/src/js/inbound_pda.js",
             "wd_qooling_app/static/src/js/outbound_pda.js",
             "wd_qooling_app/static/src/js/temperature_pda.js",

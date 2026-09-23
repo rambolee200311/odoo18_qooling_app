@@ -1,0 +1,50 @@
+<templates xml:space="preserve">
+    <t t-name="wd_qooling_app.PdaRecordDashboard">
+        <main class="o_qooling_pda_dashboard container-fluid py-4">
+            <header class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+                <div>
+                    <div class="text-muted">FORMS / PDA</div>
+                    <h1 class="h3 mb-0"><t t-esc="dashboardConfig.title"/></h1>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-outline-secondary"
+                            t-on-click="backToDashboard">Qooling Dashboard</button>
+                    <button type="button" class="btn btn-primary"
+                            t-on-click="createRecord">New record</button>
+                </div>
+            </header>
+            <div t-if="state.error" class="alert alert-danger" role="alert"><t t-esc="state.error"/></div>
+            <div t-if="state.loading" class="text-muted">Loading records...</div>
+            <div t-elif="!state.records.length" class="alert alert-info">
+                No records found.
+            </div>
+            <div t-else="" class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Reference</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.records" t-as="record" t-key="record.id">
+                            <td class="fw-semibold"><t t-esc="record.name"/></td>
+                            <td><span class="badge text-bg-secondary"><t t-esc="record.state"/></span></td>
+                            <td><t t-esc="record.dateValue"/></td>
+                            <td><t t-esc="record.referenceValue"/></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-primary"
+                                        t-on-click="() => openRecord(record)">
+                                    <t t-esc="record.state === 'draft' ? 'Edit draft' : 'Open'"/>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </t>
+</templates>
