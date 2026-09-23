@@ -5,7 +5,7 @@
             <header class="o_qooling_pda__header">
                 <div>
                     <span class="text-muted">FORMS / PDA</span>
-                    <h1>Inbound Record</h1>
+                    <h1>Inbound Record <span class="o_qooling_pda__record-name" data-testid="inbound-pda-record-name"><t t-esc="state.record.name || 'New'"/></span></h1>
                 </div>
                 <button class="btn btn-outline-secondary" type="button" t-on-click="openWebForm"
                         data-testid="inbound-pda-web">Open web form</button>

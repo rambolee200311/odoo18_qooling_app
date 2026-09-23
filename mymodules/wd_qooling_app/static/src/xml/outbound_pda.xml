@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
     <t t-name="wd_qooling_app.OutboundPda">
         <main class="o_qooling_pda" data-testid="outbound-pda">
-            <header class="o_qooling_pda__header"><div><span class="text-muted">FORMS / PDA</span><h1>Outbound Record</h1></div>
+            <header class="o_qooling_pda__header"><div><span class="text-muted">FORMS / PDA</span><h1>Outbound Record <span class="o_qooling_pda__record-name" data-testid="outbound-pda-record-name"><t t-esc="state.record.name || 'New'"/></span></h1></div>
                 <button class="btn btn-outline-secondary" type="button" t-on-click="openWebForm" data-testid="outbound-pda-web">Open web form</button>
             </header>
             <nav class="o_qooling_pda__steps" aria-label="Outbound steps">

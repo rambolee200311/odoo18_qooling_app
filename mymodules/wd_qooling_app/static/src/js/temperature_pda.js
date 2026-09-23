@@ -28,7 +28,7 @@ const STEPS = [
 ];
 const DRAFT_STORAGE_KEY = "wd_qooling_temperature_pda_draft_id";
 const RECORD_FIELDS = [
-    "state", "date", "manager_id", "customer", "container_number", "location_id",
+    "name", "state", "date", "manager_id", "customer", "container_number", "location_id",
     "filing_date", "packaging_damage", "unpacked_housing_damage", "electrolyte_leakage",
     "storage_stability", "comments", "signature",
 ];
@@ -83,6 +83,12 @@ export class QoolingTemperaturePda extends Component {
         await Promise.all([this.loadLines(), this.loadPhotos()]);
     }
 
+    async refreshRecordName() {
+        if (!this.state.recordId) return;
+        const [record] = await this.orm.read("wd.qooling.temperature.record", [this.state.recordId], ["name"]);
+        this.state.record.name = record?.name || "New";
+    }
+
     setValue(name, value) { this.state.record[name] = value; this.state.error = ""; }
 
     onFieldChange(event) {
@@ -104,7 +110,10 @@ export class QoolingTemperaturePda extends Component {
         const values = { ...this.state.record };
         if (values.date) values.date = values.date.replace("T", " ");
         if (this.state.recordId) await this.orm.write("wd.qooling.temperature.record", [this.state.recordId], values);
-        else [this.state.recordId] = await this.orm.create("wd.qooling.temperature.record", [values]);
+        else {
+            [this.state.recordId] = await this.orm.create("wd.qooling.temperature.record", [values]);
+            await this.refreshRecordName();
+        }
         this.state.record.state = "draft";
         sessionStorage.setItem(DRAFT_STORAGE_KEY, String(this.state.recordId));
         await Promise.all([this.loadLines(), this.loadPhotos()]);

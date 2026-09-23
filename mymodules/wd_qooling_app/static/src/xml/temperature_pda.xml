@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
     <t t-name="wd_qooling_app.TemperaturePda">
         <main class="o_qooling_pda" data-testid="temperature-pda">
-            <header class="o_qooling_pda__header"><div><span class="text-muted">FORMS / PDA</span><h1>Temperature Record</h1></div><button class="btn btn-outline-secondary" type="button" t-on-click="openWebForm">Open web form</button></header>
+            <header class="o_qooling_pda__header"><div><span class="text-muted">FORMS / PDA</span><h1>Temperature Record <span class="o_qooling_pda__record-name" data-testid="temperature-pda-record-name"><t t-esc="state.record.name || 'New'"/></span></h1></div><button class="btn btn-outline-secondary" type="button" t-on-click="openWebForm">Open web form</button></header>
             <nav class="o_qooling_pda__steps" aria-label="Temperature steps"><t t-foreach="steps" t-as="item" t-key="item.key"><button type="button" t-att-class="state.step === steps.indexOf(item) ? 'active' : ''" t-on-click="() => state.step = steps.indexOf(item)" t-att-data-testid="'temperature-pda-step-' + item.key"><span><t t-esc="steps.indexOf(item) + 1"/></span><t t-esc="item.label"/></button></t></nav>
             <div t-if="state.error" class="alert alert-danger" data-testid="temperature-pda-error"><t t-esc="state.error"/></div>
             <div t-if="state.saved" class="alert alert-success" data-testid="temperature-pda-feedback"><t t-esc="state.saved"/></div>

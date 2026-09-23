@@ -28,7 +28,7 @@ const STEPS = [
 ];
 const DRAFT_STORAGE_KEY = "wd_qooling_inbound_pda_draft_id";
 const DRAFT_FIELDS = [
-    "state", "location_id", "date", "supervisor_id", "ref_no",
+    "name", "state", "location_id", "date", "supervisor_id", "ref_no",
     "container_shipment_number", "goods_status", "unloading_permission",
     "checked_visible_damage", "checked_received_quantity", "checked_product_quality",
     "packaging_condition", "gas_measurement", "adr", "un_number",
@@ -99,6 +99,12 @@ export class QoolingInboundPda extends Component {
         await this.loadPhotos();
     }
 
+    async refreshRecordName() {
+        if (!this.state.recordId) return;
+        const [record] = await this.orm.read("wd.qooling.inbound.form", [this.state.recordId], ["name"]);
+        this.state.record.name = record?.name || "New";
+    }
+
     setValue(name, value) {
         this.state.record[name] = value;
         this.state.error = "";
@@ -144,6 +150,7 @@ export class QoolingInboundPda extends Component {
             } else {
                 const [recordId] = await this.orm.create("wd.qooling.inbound.form", [this.state.record]);
                 this.state.recordId = recordId;
+                await this.refreshRecordName();
             }
             this.state.record.state = "draft";
             sessionStorage.setItem(DRAFT_STORAGE_KEY, String(this.state.recordId));
@@ -167,6 +174,7 @@ export class QoolingInboundPda extends Component {
             if (!this.state.recordId) {
                 const [recordId] = await this.orm.create("wd.qooling.inbound.form", [this.state.record]);
                 this.state.recordId = recordId;
+                await this.refreshRecordName();
             } else {
                 await this.orm.write("wd.qooling.inbound.form", [this.state.recordId], this.state.record);
             }

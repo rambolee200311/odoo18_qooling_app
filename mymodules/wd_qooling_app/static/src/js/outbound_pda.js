@@ -29,7 +29,7 @@ const STEPS = [
 ];
 const DRAFT_STORAGE_KEY = "wd_qooling_outbound_pda_draft_id";
 const DRAFT_FIELDS = [
-    "state", "location_id", "date_arrival", "start_loading_at", "end_loading_at",
+    "name", "state", "location_id", "date_arrival", "start_loading_at", "end_loading_at",
     "supervisor_id", "ref_no", "goods_type", "mrn_number", "seal_number",
     "mrn_checked_before_release", "adr", "un_number", "proper_shipping_name",
     "measured_temperature", "loading_plan_discussed", "adr_separation_compatibility",
@@ -111,6 +111,12 @@ export class QoolingOutboundPda extends Component {
         await this.loadPhotos();
     }
 
+    async refreshRecordName() {
+        if (!this.state.recordId) return;
+        const [record] = await this.orm.read("wd.qooling.outbound.form", [this.state.recordId], ["name"]);
+        this.state.record.name = record?.name || "New";
+    }
+
     setValue(name, value) { this.state.record[name] = value; this.state.error = ""; }
 
     onFieldChange(event) {
@@ -142,6 +148,7 @@ export class QoolingOutboundPda extends Component {
         } else {
             const [recordId] = await this.orm.create("wd.qooling.outbound.form", [values]);
             this.state.recordId = recordId;
+            await this.refreshRecordName();
         }
         this.state.record.state = "draft";
         sessionStorage.setItem(DRAFT_STORAGE_KEY, String(this.state.recordId));
