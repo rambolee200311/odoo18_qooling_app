@@ -78,6 +78,8 @@
                         </div>
                     </div>
                     <label>Comments<textarea class="form-control" data-field="comments" t-on-input="onFieldChange"><t t-esc="state.record.comments || ''"/></textarea></label>
+                </div>
+                <div t-elif="state.step === 4" data-testid="inbound-pda-signature-step">
                     <label>Warehouse signature</label>
                     <canvas t-ref="signatureCanvas" class="o_qooling_pda__signature" data-testid="inbound-pda-signature"/>
                     <button type="button" class="btn btn-outline-secondary mt-2" t-on-click="clearSignature">Clear signature</button>

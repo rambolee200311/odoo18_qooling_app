@@ -3,6 +3,7 @@
 import { Component, onMounted, onWillUnmount, useRef } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { standardFieldProps } from "@web/views/fields/standard_field_props";
+import { isBinarySize } from "@web/core/utils/binary";
 
 export class QoolingSignatureField extends Component {
     static template = "wd_qooling_app.QoolingSignatureField";
@@ -22,6 +23,7 @@ export class QoolingSignatureField extends Component {
         this.context.lineWidth = 2;
         this.context.lineCap = "round";
         this._drawing = false;
+        this._restoreSignature();
         this._start = (event) => {
             this._drawing = true;
             this.canvas.el.setPointerCapture?.(event.pointerId);
@@ -48,6 +50,22 @@ export class QoolingSignatureField extends Component {
         canvas.addEventListener("pointercancel", this._end);
         canvas.addEventListener("pointerleave", this._end);
         canvas.addEventListener("lostpointercapture", this._end);
+    }
+
+    _restoreSignature() {
+        const signature = this.props.record.data[this.props.name];
+        if (!signature) {
+            return;
+        }
+        const image = new Image();
+        image.onload = () => {
+            if (this.canvas.el) {
+                this.context.drawImage(image, 0, 0, this.canvas.el.width, this.canvas.el.height);
+            }
+        };
+        image.src = isBinarySize(signature)
+            ? `/web/image/${this.props.record.resModel}/${this.props.record.resId}/${this.props.name}`
+            : `data:image/png;base64,${signature}`;
     }
 
     _draw(event) {

@@ -8,12 +8,22 @@ const STEPS = [
     { key: "details", label: "Details" },
     { key: "checks", label: "Checks" },
     { key: "adr", label: "ADR & temperature" },
-    { key: "evidence", label: "Evidence & sign" },
+    { key: "evidence", label: "Evidence" },
+    { key: "signature", label: "Signature" },
+];
+const DRAFT_STORAGE_KEY = "wd_qooling_inbound_pda_draft_id";
+const DRAFT_FIELDS = [
+    "state", "location_id", "date", "supervisor_id", "ref_no",
+    "container_shipment_number", "goods_status", "unloading_permission",
+    "checked_visible_damage", "checked_received_quantity", "checked_product_quality",
+    "packaging_condition", "gas_measurement", "adr", "un_number",
+    "temperature_measured", "pallet_temperature_registered",
+    "average_temperature_per_pallet", "comments", "warehouse_signature",
 ];
 
 export class QoolingInboundPda extends Component {
     static template = "wd_qooling_app.InboundPda";
-    static props = {};
+    static props = { "*": true };
 
     setup() {
         this.setValue = this.setValue.bind(this);
@@ -39,9 +49,10 @@ export class QoolingInboundPda extends Component {
                 this.orm.searchRead("stock.warehouse", [], ["name"], { limit: 100 }),
                 this.orm.searchRead("res.users", [["share", "=", false]], ["name"], { limit: 100 }),
             ]);
+            await this.loadDraft();
         });
         onPatched(() => {
-            if (this.state.step === 3 && this.signatureCanvas.el !== this.signatureElement) {
+            if (this.state.step === 4 && this.signatureCanvas.el !== this.signatureElement) {
                 this.teardownSignature();
                 this.setupSignature();
             }
@@ -51,6 +62,26 @@ export class QoolingInboundPda extends Component {
 
     get steps() {
         return STEPS;
+    }
+
+    async loadDraft() {
+        const contextDraftId = this.props.action?.context?.active_id;
+        const storedDraftId = Number(sessionStorage.getItem(DRAFT_STORAGE_KEY) || 0);
+        const draftId = Number(contextDraftId || storedDraftId);
+        if (!draftId) {
+            return;
+        }
+        const [record] = await this.orm.read("wd.qooling.inbound.form", [draftId], DRAFT_FIELDS);
+        if (!record || record.state !== "draft") {
+            sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+            return;
+        }
+        for (const field of ["location_id", "supervisor_id"]) {
+            record[field] = record[field]?.[0] || false;
+        }
+        this.state.recordId = record.id;
+        Object.assign(this.state.record, record);
+        await this.loadPhotos();
     }
 
     setValue(name, value) {
@@ -69,7 +100,27 @@ export class QoolingInboundPda extends Component {
         this.setValue(field, value);
     }
 
+    validateRequiredFields() {
+        const requiredFields = [
+            ["location_id", "Location"],
+            ["date", "Date"],
+            ["supervisor_id", "Supervisor"],
+            ["goods_status", "Goods status"],
+            ["unloading_permission", "Unloading permission"],
+            ["adr", "ADR"],
+        ];
+        const missingField = requiredFields.find(([field]) => !this.state.record[field]);
+        if (missingField) {
+            this.state.error = `${missingField[1]} is required before saving.`;
+            return false;
+        }
+        return true;
+    }
+
     async save() {
+        if (!this.validateRequiredFields()) {
+            return;
+        }
         this.state.busy = true;
         this.state.error = "";
         try {
@@ -79,6 +130,7 @@ export class QoolingInboundPda extends Component {
                 const [recordId] = await this.orm.create("wd.qooling.inbound.form", [this.state.record]);
                 this.state.recordId = recordId;
             }
+            sessionStorage.setItem(DRAFT_STORAGE_KEY, String(this.state.recordId));
             await this.loadPhotos();
             this.state.saved = "Draft saved";
             this.notification.add("Inbound draft saved.", { type: "success" });
@@ -90,6 +142,9 @@ export class QoolingInboundPda extends Component {
     }
 
     async submit() {
+        if (!this.validateRequiredFields()) {
+            return;
+        }
         this.state.busy = true;
         this.state.error = "";
         try {
@@ -101,6 +156,7 @@ export class QoolingInboundPda extends Component {
             }
             await this.orm.call("wd.qooling.inbound.form", "action_submit", [[this.state.recordId]]);
             this.state.record.state = "submitted";
+            sessionStorage.removeItem(DRAFT_STORAGE_KEY);
             this.state.saved = "Submitted";
             this.notification.add("Inbound record submitted.", { type: "success" });
         } catch (error) {
@@ -198,6 +254,7 @@ export class QoolingInboundPda extends Component {
         this.signatureContext.lineWidth = 2;
         this.signatureContext.lineCap = "round";
         this.drawing = false;
+        this.restoreSignature(canvas);
         this.signatureStart = (event) => {
             this.drawing = true;
             canvas.setPointerCapture?.(event.pointerId);
@@ -224,8 +281,24 @@ export class QoolingInboundPda extends Component {
         canvas.addEventListener("pointercancel", this.signatureEnd);
     }
 
+    restoreSignature(canvas) {
+        const signature = this.state.record.warehouse_signature;
+        if (!signature) {
+            return;
+        }
+        const image = new Image();
+        image.onload = () => {
+            if (this.signatureElement === canvas) {
+                this.signatureContext.drawImage(image, 0, 0, canvas.width, canvas.height);
+            }
+        };
+        image.src = `data:image/png;base64,${signature}`;
+    }
+
     clearSignature() {
-        this.signatureContext.clearRect(0, 0, this.signatureCanvas.el.width, this.signatureCanvas.el.height);
+        if (this.signatureContext && this.signatureCanvas.el) {
+            this.signatureContext.clearRect(0, 0, this.signatureCanvas.el.width, this.signatureCanvas.el.height);
+        }
         this.setValue("warehouse_signature", false);
     }
 
