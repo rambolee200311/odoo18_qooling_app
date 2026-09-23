@@ -41,6 +41,7 @@ export class QoolingPhotoGalleryField extends Component {
         }
         this.state.metadataKey = key;
         if (!ids.length) {
+            this.state.metadata = {};
             return;
         }
         const records = await this.orm.searchRead(
@@ -90,8 +91,18 @@ export class QoolingPhotoGalleryField extends Component {
             (candidate) => candidate.resId === id
         );
         if (record) {
-            await this.operations.removeRecord(record);
+            try {
+                await this.operations.removeRecord(record);
+            } catch (error) {
+                this.notification.add(error.data?.message || error.message || "Could not delete the media.", {
+                    type: "danger",
+                });
+            }
         }
+    }
+
+    get hasRecordId() {
+        return Boolean(this.props.record.resId);
     }
 
     openPreview(id) {

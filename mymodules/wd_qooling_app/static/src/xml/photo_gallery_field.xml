@@ -22,17 +22,20 @@
                     </div>
                 </t>
             </div>
-            <FileInput t-if="canEdit"
+            <FileInput t-if="canEdit and hasRecordId"
                 acceptedFileExtensions="'image/*,video/*'"
                 multiUpload="true"
                 onUpload.bind="onFileUploaded"
                 resModel="props.record.resModel"
-                resId="props.record.resId or 0"
+                resId="props.record.resId"
             >
                 <button type="button" class="btn btn-secondary o_qooling_photo_gallery__upload">
                     <i class="fa fa-paperclip me-1" aria-hidden="true"/> Attach photos or videos
                 </button>
             </FileInput>
+            <div t-if="canEdit and not hasRecordId" class="alert alert-info mt-2 mb-0">
+                Save the draft before uploading media.
+            </div>
             <div t-if="state.previewId" class="o_qooling_photo_gallery__preview" role="dialog"
                  t-on-click="closePreview">
                 <video t-if="isVideo(getPreviewFile())" t-att-src="getUrl(state.previewId)"
