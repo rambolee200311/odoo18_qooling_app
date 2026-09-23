@@ -10,6 +10,9 @@ class PdaRecordDashboard extends Component {
     static config = {};
 
     setup() {
+        this.openRecord = this.openRecord.bind(this);
+        this.createRecord = this.createRecord.bind(this);
+        this.backToDashboard = this.backToDashboard.bind(this);
         this.action = useService("action");
         this.orm = useService("orm");
         this.state = useState({ records: [], loading: true, error: "" });
