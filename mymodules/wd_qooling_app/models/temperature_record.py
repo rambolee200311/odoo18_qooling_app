@@ -47,7 +47,18 @@ class QoolingTemperatureRecord(models.Model):
     )
     electrolyte_leakage = fields.Selection(CHECK_SELECTION, string="Electrolyte leakage")
     storage_stability = fields.Selection(CHECK_SELECTION, string="Storage stability")
-    photo = fields.Binary(string="Photo", attachment=True)
+    photo = fields.Binary(
+        string="Legacy photo",
+        attachment=True,
+        help="Legacy compatibility field. New evidence must use photo_ids.",
+    )
+    photo_ids = fields.Many2many(
+        "ir.attachment",
+        "wd_qooling_temperature_record_attachment_rel",
+        "record_id",
+        "attachment_id",
+        string="Photos",
+    )
     comments = fields.Text(string="Comments")
     signature = fields.Binary(string="Signature", attachment=True, copy=False)
     signer_id = fields.Many2one("res.users", string="Signer", readonly=True, copy=False)
@@ -97,7 +108,7 @@ class QoolingTemperatureRecord(models.Model):
         for record in self:
             if record.state != "draft":
                 raise UserError(_("Only draft temperature records can be cleared."))
-            record.line_ids.with_context(allow_temperature_line_unlink=True).unlink()
+            record.line_ids.with_context(allow_temperature_line_unlink=True).sudo().unlink()
             record.quick_temperature = False
         return True
 

@@ -63,3 +63,14 @@ class TestQoolingTemperatureRecord(TransactionCase):
         record.with_user(self.supervisor).action_mark_exception()
         record.with_user(self.supervisor).action_close()
         self.assertEqual(record.state, "closed")
+
+    def test_multiple_evidence_photos_are_supported(self):
+        record = self.env["wd.qooling.temperature.record"].with_user(self.operator).create(self._values())
+        attachment = self.env["ir.attachment"].create({
+            "name": "temperature.jpg",
+            "datas": "dGVzdA==",
+            "res_model": record._name,
+            "res_id": record.id,
+        })
+        record.write({"photo_ids": [(4, attachment.id)]})
+        self.assertIn(attachment, record.photo_ids)

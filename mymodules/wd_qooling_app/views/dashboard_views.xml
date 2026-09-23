@@ -1,7 +1,19 @@
 <odoo>
+    <record id="action_qooling_dashboard" model="ir.actions.client">
+        <field name="name">Qooling Dashboard</field>
+        <field name="tag">qooling_dashboard</field>
+    </record>
+    <record id="menu_qooling_root" model="ir.ui.menu">
+        <field name="name">Qooling</field>
+        <field name="action" ref="action_qooling_dashboard"/>
+    </record>
     <record id="action_qooling_inbound_pda" model="ir.actions.client">
         <field name="name">Inbound Record (PDA)</field>
         <field name="tag">wd_qooling_inbound_pda</field>
+    </record>
+    <record id="action_qooling_temperature_pda" model="ir.actions.client">
+        <field name="name">Temperature Record (PDA)</field>
+        <field name="tag">wd_qooling_temperature_pda</field>
     </record>
     <record id="action_qooling_outbound_pda" model="ir.actions.client">
         <field name="name">Outbound Record (PDA)</field>
@@ -12,6 +24,9 @@
     <menuitem id="menu_qooling_inbound_pda" name="Inbound Record" parent="menu_qooling_pda"
               action="action_qooling_inbound_pda" sequence="10"
               groups="base.group_user,wd_qooling_app.group_qooling_inbound_user"/>
+    <menuitem id="menu_qooling_temperature_pda" name="Temperature Record" parent="menu_qooling_pda"
+              action="action_qooling_temperature_pda" sequence="30"
+              groups="base.group_user,wd_qooling_app.group_temperature_user"/>
     <menuitem id="menu_qooling_outbound_pda" name="Outbound Record" parent="menu_qooling_pda"
               action="action_qooling_outbound_pda" sequence="20"
               groups="base.group_user,wd_qooling_app.group_qooling_outbound_user"/>

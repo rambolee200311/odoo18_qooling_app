@@ -10,8 +10,28 @@ export class QoolingSignatureField extends Component {
 
     setup() {
         this.canvas = useRef("canvas");
-        onMounted(() => this._setupCanvas());
+        onMounted(() => {
+            this._setupCanvas();
+            this._restoreSignature();
+        });
         onWillUnmount(() => this._removeListeners());
+    }
+
+    _restoreSignature() {
+        const recordId = this.props.record.resId;
+        const model = this.props.record.resModel;
+        if (!recordId || !model || !this.props.record.data[this.props.name]) {
+            return;
+        }
+        const image = new Image();
+        image.onload = () => {
+            if (this.context && this.canvas.el) {
+                this.context.drawImage(
+                    image, 0, 0, this.canvas.el.width, this.canvas.el.height
+                );
+            }
+        };
+        image.src = `/web/image/${model}/${recordId}/${this.props.name}`;
     }
 
     _setupCanvas() {

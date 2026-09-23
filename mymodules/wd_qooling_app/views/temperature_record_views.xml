@@ -95,7 +95,7 @@
                                 <field name="storage_stability"/>
                             </group>
                             <group>
-                                <field name="photo" widget="image"/>
+                                <field name="photo_ids" widget="qooling_photo_gallery"/>
                                 <field name="comments"/>
                                 <field name="signature" widget="qooling_signature"/>
                                 <field name="signer_id" readonly="1"/>
