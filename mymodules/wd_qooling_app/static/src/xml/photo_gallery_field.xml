@@ -33,7 +33,7 @@
                     <i class="fa fa-paperclip me-1" aria-hidden="true"/> Attach photos or videos
                 </button>
             </FileInput>
-            <div t-if="canEdit and not hasRecordId" class="alert alert-info mt-2 mb-0">
+            <div t-if="canEdit &amp;&amp; !hasRecordId" class="alert alert-info mt-2 mb-0">
                 Save the draft before uploading media.
             </div>
             <div t-if="state.previewId" class="o_qooling_photo_gallery__preview" role="dialog"
