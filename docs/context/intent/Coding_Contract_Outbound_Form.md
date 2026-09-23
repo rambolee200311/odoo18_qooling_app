@@ -1,7 +1,8 @@
 # Outbound Form Coding Contract
 
-> 文档状态：Draft
-> 文档版本：v0.1.0
+> 文档状态：Frozen
+> 文档版本：v1.0.0
+> 冻结日期：2026-09-23
 > 上游 SRS：[SRS_qooling_outbound_form.md](../designing/SRS_qooling_outbound_form.md) `v1.0.0 Frozen`
 > 上游 TDD：[TDD_qooling_outbound_form.md](../designing/TDD_qooling_outbound_form.md) `v1.0.0 Frozen`
 > 适用 Form：Outbound / 出库表
@@ -11,7 +12,7 @@
 本 Coding Contract（CC）冻结 Outbound Form 的实施范围、保留行为、禁止事项、
 测试契约、停止条件和完成闸门，不重新定义 SRS 或 TDD 业务语义。
 
-本 CC 尚未批准实施。未完成本 CC 审批前，不得开始 Outbound 编码。
+本 CC 已批准冻结，但尚未批准实施。未获得独立的实施批准前，不得开始 Outbound 编码。
 
 ## 1. 变更概述
 
