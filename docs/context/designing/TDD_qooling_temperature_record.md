@@ -21,7 +21,6 @@
 |---|---|
 | Web | 标准 Odoo Web 表单，支持草稿、提交、查询、复核 |
 | PDA | 与 Web 使用同一 ORM 和生命周期；当前先提供响应式表单，专用触控 UI 作为技术债 |
-| PDF | 按 SRS 保留原始文件并登记字段、签名和处理结果；不得绕过 ORM 创建业务结论 |
 
 “Weekly Temperature Control”名称和实际每日记录频率由用户决定。本 TDD
 不创建提醒、定时任务或自动频率推导。
@@ -50,9 +49,6 @@
 | `temperature_exception_result` | Text/Selection | 保存用户填写的温度异常结果 |
 | `disposition_result` | Text | 保存人工复核处置结果 |
 | `photo_ids` | One2many | 当前可先映射附件；多图上传为技术债 |
-| `pdf_import_status` | Selection | `pending`、`success`、`failed`；PDF 登记结果 |
-| `pdf_import_error` | Text | PDF 缺少字段、签名或解析失败时保存失败原因 |
-| `pdf_import_attachment_id` | Many2one(`ir.attachment`) | 原始 PDF 附件，必须保留 |
 | `comments` | Text | 非必填 |
 | `signature` | Binary | 手写签名，提交必填 |
 | `signer_id` | Many2one(`res.users`) | 签名人 |
@@ -210,13 +206,7 @@ Record Rule 和 ACL 必须在服务端生效，不能只隐藏按钮。
 
 撤回不删除原字段值；是否允许修改由回到 `draft` 后的普通编辑权限决定。
 
-## 7. PDF 登记边界
-
-PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和提交结果。
-原始 PDF 必须保留为附件；缺少必填字段或签名时记录失败原因，不能将失败
-文件标记为已提交。PDF 不得绕过 `wd.qooling.temperature.record` 和明细模型。
-
-## 8. 测试设计
+## 7. 测试设计
 
 | 测试 ID | 类型 | 覆盖 |
 |---|---|---|
@@ -233,15 +223,14 @@ PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和
 | `TEST-TEMP-007` | View/HTTP | Web 表单字段、One2many 明细和状态按钮 |
 | `TEST-TEMP-008` | Playwright | Web/PDA 明细新增、编辑、滚动和签名 |
 | `TEST-TEMP-009` | Playwright | 多语言字段和选择值 |
-| `TEST-TEMP-010` | PDF/TransactionCase | 原始 PDF、字段、签名和失败原因可追溯 |
-| `TEST-TEMP-011` | TransactionCase | 无权限用户提交、复核、关闭和撤回被拒绝 |
-| `TEST-TEMP-012` | TransactionCase | 缺少客户、集装箱号或签名时提交被拒绝 |
-| `TEST-TEMP-013` | View/HTTP | 温度字段拒绝非数字输入并返回明确错误 |
-| `TEST-TEMP-014` | View/HTTP | 图片上传失败时保留表单状态并显示真实错误 |
+| `TEST-TEMP-010` | TransactionCase | 无权限用户提交、复核、关闭和撤回被拒绝 |
+| `TEST-TEMP-011` | TransactionCase | 缺少客户、集装箱号或签名时提交被拒绝 |
+| `TEST-TEMP-012` | View/HTTP | 温度字段拒绝非数字输入并返回明确错误 |
+| `TEST-TEMP-013` | View/HTTP | 图片上传失败时保留表单状态并显示真实错误 |
 
 测试不得以“显示 65 行”作为通过条件；必须验证实际明细数量和原始值完整性。
 
-## 9. 技术债和停止条件
+## 8. 技术债和停止条件
 
 - 专用 PDA 触控 JavaScript、图片多张上传、缩略图放大 panel 和 Chatter
   置底按既有技术债跟踪，不在本 TDD 中伪装为已完成；对应已登记编号为
@@ -251,14 +240,14 @@ PDF 入口只负责登记原始文件、解析/人工录入的字段、签名和
   必须停止并先修订 SRS/TDD。
 - 若引入库存、运输、隔离、放行或通知流程，必须停止并重新评审范围。
 
-## 10. 草稿冻结闸门
+## 9. 冻结闸门
 
 - [x] 托盘明细 One2many 方案经人工确认；
 - [x] 快速温度录入框的 Enter 新增、清空和回焦交互经人工确认；
 - [x] 托盘连续编号格式、起始值和只读行为经人工确认；
 - [x] 单行不可删除、温度可修改、全部清空需二次确认的行为经人工确认；
 - [x] 不固定 65 行、不截断超过 65 个实际托盘已确认；
-- [x] Web/PDA/PDF 入口边界经人工确认；
+- [x] Web/PDA 入口边界经人工确认；
 - [x] 权限、签名和状态矩阵经人工确认；
-- [x] 检查字段选项集、权限组、状态流转和 PDF 失败原因字段经业务确认；
+- [x] 检查字段选项集、权限组和状态流转经业务确认；
 - [ ] Coding Contract 创建并批准后，才可进入实施。

@@ -3,7 +3,7 @@
 > 文档状态：草稿
 > 文档版本：v0.1.0
 > 实施状态：尚未授权
-> 上游 SRS：[SRS_qooling_weekly_temperature_control.md](../designing/SRS_qooling_weekly_temperature_control.md) `v0.2.0 Draft`
+> 上游 SRS：[SRS_qooling_weekly_temperature_control.md](../designing/SRS_qooling_weekly_temperature_control.md) `v0.3.0 Draft`
 > 上游 TDD：[TDD_qooling_temperature_record.md](../designing/TDD_qooling_temperature_record.md) `v1.0.0 Frozen`
 > 适用 Form：Weekly Temperature Control / Temperature Record
 
@@ -20,7 +20,7 @@
 
 在 Odoo 18 中实现温度记录工具，支持：
 
-- Web、PDA 和按 SRS 登记边界处理 PDF；
+- Web 和 PDA；
 - 草稿保存、提交、查询和仓库主管人工复核；
 - 客户、集装箱、日期、经理和归档字段；
 - 动态托盘温度明细；
@@ -28,7 +28,7 @@
 - 修改已有托盘温度；
 - 明确确认后清空全部托盘明细并从 `pallet1` 重新采集；
 - 损坏、泄漏、存储稳定性、温度异常和人工处置结果记录；
-- 手写签名、照片、备注和 PDF 原件/处理结果保存。
+- 手写签名、照片和备注保存。
 
 ## 2. 范围冻结
 
@@ -44,8 +44,7 @@
 - 连续只读托盘编号；
 - 草稿中修改温度但禁止单行删除；
 - 二次确认的“清空全部托盘温度”操作；
-- PDF 原始附件、导入状态和失败原因记录；
-- ORM、视图、权限、HTTP、Playwright 和 PDF 登记测试。
+- ORM、视图、权限、HTTP 和 Playwright 测试。
 
 ### 2.2 Out of Scope
 
@@ -72,7 +71,6 @@
 | `CC-TEMP-CHANGE-007` | 清空全部明细 | 二次确认后删除全部明细，下一次采集从 `pallet1` 开始 |
 | `CC-TEMP-CHANGE-008` | 提交 | 基础必填字段和签名满足后进入 `submitted` |
 | `CC-TEMP-CHANGE-009` | 人工复核状态 | 主管可标记异常、关闭和撤回 |
-| `CC-TEMP-CHANGE-010` | PDF 登记 | 原始 PDF、处理状态和失败原因可追溯 |
 
 ## 4. 必须保留的边界
 
@@ -95,7 +93,6 @@
 - 单行删除请求必须被 ORM 拒绝，不能只隐藏前端按钮；
 - 清空全部动作必须通过显式服务方法执行，并要求 UI 二次确认；
 - 清空取消时不得修改任何已有明细；
-- PDF 失败时写入 `pdf_import_status=failed` 和 `pdf_import_error`；
 - 不允许静默吞错、成功形状回退或伪造提交成功。
 
 ## 6. 权限和状态契约
@@ -135,10 +132,9 @@ draft -> submitted -> exception_pending -> closed
 | `CC-TEMP-TEST-008` | 清空全部 | Playwright/ORM | 确认后清空，取消不变，下一行是 `pallet1` |
 | `CC-TEMP-TEST-009` | 人工异常状态 | ORM/HTTP | 仅主管可操作 |
 | `CC-TEMP-TEST-010` | 结果只保存 | ORM | 不创建自动业务流程 |
-| `CC-TEMP-TEST-011` | PDF 失败 | PDF/ORM | 原件和失败原因可追溯 |
-| `CC-TEMP-TEST-012` | 未授权访问 | ORM/HTTP | 提交、复核、关闭和撤回被拒绝 |
-| `CC-TEMP-TEST-013` | 温度类型错误 | View/HTTP | 非数字输入返回真实错误 |
-| `CC-TEMP-TEST-014` | 上传失败 | View/HTTP | 表单状态不被伪造为成功 |
+| `CC-TEMP-TEST-011` | 未授权访问 | ORM/HTTP | 提交、复核、关闭和撤回被拒绝 |
+| `CC-TEMP-TEST-012` | 温度类型错误 | View/HTTP | 非数字输入返回真实错误 |
+| `CC-TEMP-TEST-013` | 上传失败 | View/HTTP | 表单状态不被伪造为成功 |
 
 自动化测试 PASS 不得替代 PDA、签名和人工复核 HVR。
 
@@ -161,7 +157,6 @@ draft -> submitted -> exception_pending -> closed
 - [ ] ORM、视图、安全和前端资源通过针对性测试；
 - [ ] 动态托盘、Enter 录入和连续编号通过测试；
 - [ ] 单行删除禁令、温度修改和清空全部动作通过测试；
-- [ ] PDF 原件、失败状态和失败原因可追溯；
 - [ ] Web/PDA 字段和状态一致；
 - [ ] 人工复核边界无自动业务处置；
 - [ ] IHR、ATR、HVR 和 Final Report 更新；

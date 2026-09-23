@@ -1,14 +1,14 @@
 # Weekly Temperature Control 软件需求规格说明书（SRS）
 
 > 文档状态：草稿  
-> 文档版本：v0.2.0
+> 文档版本：v0.3.0
 > 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)  
 > 字段证据：[每周温度控制记录表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/每周温度控制记录表.docx)  
 > 适用 Form：Weekly Temperature Control / 每周温度控制记录表
 
 ## 0. 文档边界
 
-本文档只承载 Weekly Temperature Control 的业务需求。Web、PDF、PDA、手写签名和 Odoo 多语言要求仅在其适用于温度记录时纳入。
+本文档只承载 Weekly Temperature Control 的业务需求。Web、PDA、手写签名和 Odoo 多语言要求仅在其适用于温度记录时纳入。
 
 ## 1. 业务目标与范围
 
@@ -16,7 +16,7 @@ Weekly Temperature Control 用于记录客户集装箱内实际托盘温度，�
 
 本期包含：
 
-- Web、PDF 和 PDA 录入；
+- Web 和 PDA 录入；
 - 保存草稿、提交和仓库主管复核；
 - 客户、集装箱、经理、日期和归档信息；
 - 动态托盘及温度明细；
@@ -34,7 +34,6 @@ Weekly Temperature Control 用于记录客户集装箱内实际托盘温度，�
 | 仓库主管 | 复核记录 |
 | Web | 录入、提交、手写签名和复核 |
 | PDA | 录入、提交和手写签名 |
-| PDF | 填写、提交并进入同一复核流程 |
 
 Location 使用仓库档案；客户和集装箱号必填；经理从用户中选择。
 
@@ -99,15 +98,11 @@ Location 使用仓库档案；客户和集装箱号必填；经理从用户中�
 
 #### FR-FORM-06 Web 入口录入和提交
 
-Web 录入、草稿、提交和复核必须使用与 PDF/PDA 相同的温度字段和生命周期。
+Web 和 PDA 录入、草稿、提交和复核必须使用相同的温度字段和生命周期。
 
-#### FR-FORM-07 PDF 入口录入和提交
+#### FR-FORM-08 Web/PDA 统一复核
 
-PDF 字段、签名和归档信息登记到温度业务记录；缺少必填字段或签名不得标记为已提交，原 PDF 和失败原因须保留。
-
-#### FR-FORM-08 Web/PDF 统一复核
-
-Web、PDF 和 PDA 产生的温度记录进入同一复核流程，字段语义、权限和状态一致。
+Web 和 PDA 产生的温度记录进入同一复核流程，字段语义、权限和状态一致。
 
 #### FR-FORM-09 多语言字段和选择值
 
@@ -196,9 +191,7 @@ PDA 和 Web 均须支持用户直接绘制手写签名；保存签名图像、�
 | AC-25 | 包装损坏和未包装产品壳体损坏独立保存 |
 | AC-26 | 温度记录证据重新打开后仍可查看 |
 | AC-27 | Web 温度记录可录入、提交和复核 |
-| AC-28 | PDF 原件、字段、签名和提交结果可追溯 |
-| AC-29 | PDF 缺少必填字段或签名时拒绝提交 |
-| AC-30 | Web、PDF、PDA 的温度记录复核字段和状态一致 |
+| AC-30 | Web、PDA 的温度记录复核字段和状态一致 |
 | AC-31 | 用户只看到当前语言的字段名和选择值 |
 | AC-33 | PDA/Web 可绘制并保存手写签名 |
 | AC-34 | 未完成手写签名时拒绝完成或提交 |
