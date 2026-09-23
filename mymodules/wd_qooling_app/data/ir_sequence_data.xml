@@ -5,4 +5,10 @@
         <field name="prefix">INB/</field>
         <field name="padding">5</field>
     </record>
+    <record id="seq_qooling_outbound_form" model="ir.sequence">
+        <field name="name">Qooling Outbound Form</field>
+        <field name="code">wd.qooling.outbound.form</field>
+        <field name="prefix">OUT/</field>
+        <field name="padding">5</field>
+    </record>
 </odoo>

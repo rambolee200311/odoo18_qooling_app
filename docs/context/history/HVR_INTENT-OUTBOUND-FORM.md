@@ -36,7 +36,7 @@
 | FAIL | 0 |
 | BLOCKED | 0 |
 | NOT RUN | 6 |
-| Current Evidence Set | Playwright 启动记录；Outbound UI 不存在 |
+| Current Evidence Set | Outbound UI implementation and Odoo runtime test log; human run pending |
 
 ## 4. Verification Discipline
 
@@ -49,5 +49,6 @@
 ## 5. Run History（Append-only）
 
 `HVR-OUTBOUND-001` 至 `HVR-OUTBOUND-006` 当前仍为 `NOT RUN`。
-Playwright 已启动，但当前实例没有 Outbound 模块、菜单或表单页面；
-原因是 Outbound 尚未编码。不得使用其他 Form 或 Odoo 收件箱替代 Outbound HVR。
+Outbound ORM and views are now implemented and the targeted Odoo runtime tests
+pass. Playwright/PDA and human verification are still pending; other forms or
+the Odoo inbox must not be substituted for Outbound HVR.

@@ -9,6 +9,7 @@
         "security/ir.model.access.csv",
         "data/ir_sequence_data.xml",
         "views/inbound_form_views.xml",
+        "views/outbound_form_views.xml",
     ],
     "assets": {
         "web.assets_backend": [
