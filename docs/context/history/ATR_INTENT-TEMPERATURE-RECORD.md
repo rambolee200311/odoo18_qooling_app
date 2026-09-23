@@ -4,17 +4,17 @@
 > Intent ID：`INTENT-TEMPERATURE-RECORD`
 > IHR：[IHR_INTENT-TEMPERATURE-RECORD.md](./IHR_INTENT-TEMPERATURE-RECORD.md)
 > CC：`v1.0.0 Frozen`，Approved for Implementation
-> 模块：尚未实施确认
+> 模块：`wd_qooling_app`
 
 ## 1. Execution Metadata
 
 | 字段 | 值 |
 |---|---|
-| Environment | 尚未执行 |
+| Environment | Odoo 18 / database `odoo18ce` |
 | Test Framework | Odoo TransactionCase / View/HTTP / Playwright，按 TDD/CC |
-| Code Baseline | 尚未创建 |
-| Executed By | 尚未执行 |
-| Latest Valid Run | N/A |
+| Code Baseline | Working tree, implementation pending commit |
+| Executed By | Copilot |
+| Latest Valid Run | 2026-09-23, module upgrade with `--test-enable --stop-after-init` |
 
 ## 2. Test Contract Baseline
 
@@ -39,15 +39,19 @@
 | 指标 | 值 |
 |---|---|
 | Required Tests | 13 |
-| PASS | 0 |
+| PASS | 3 |
 | FAIL | 0 |
 | BLOCKED | 0 |
-| NOT RUN | 13 |
-| Latest Valid Run | N/A |
+| NOT RUN | 10 |
+| Latest Valid Run | 16 tests loaded, 0 failed, 0 errors |
+
+The three implemented TransactionCase tests cover dynamic pallet creation and
+numbering, single-line deletion protection with clear-all restart, and signature
+and supervisor state actions. The remaining contract tests require additional
+UI/negative-path coverage and are not marked PASS.
 
 ## 4. Handoff
 
 实现代码创建后，必须先执行 ORM/权限/视图针对性测试，再追加真实测试 Run。
 没有执行的测试不得记录为 PASS；自动化测试 PASS 不能替代 PDA、签名或人工
 复核 HVR。
-

@@ -234,8 +234,9 @@ Record Rule 和 ACL 必须在服务端生效，不能只隐藏按钮。
 
 - 专用 PDA 触控 JavaScript、图片多张上传、缩略图放大 panel 和 Chatter
   置底按既有技术债跟踪，不在本 TDD 中伪装为已完成；对应已登记编号为
-  `TD-INBOUND-PDA-001`、`TD-INBOUND-002`、`TD-INBOUND-003` 和
-  `TD-INBOUND-004`。这些能力在本 TDD 中不实现，但模型和视图必须保留扩展点。
+  `TD-TEMP-001`（真实 PDA 触控交互）、`TD-INBOUND-002`、
+  `TD-INBOUND-003` 和 `TD-INBOUND-004`。多语言字段和选择值验证另由
+  `TD-TEMP-002` 跟踪。这些能力在本 TDD 中不实现，但模型和视图必须保留扩展点。
 - 若实现需要自动判断温度、自动拆分记录、自动补齐托盘或固定 65 行，
   必须停止并先修订 SRS/TDD。
 - 若引入库存、运输、隔离、放行或通知流程，必须停止并重新评审范围。
