@@ -1,8 +1,8 @@
 # Temperature Record 技术设计文档（TDD）
 
-> 文档状态：已冻结
-> 文档版本：v1.0.0
-> 冻结日期：2026-09-23
+> 文档状态：已修订，待重新冻结
+> 文档版本：v1.1.0
+> 上一冻结版本：v1.0.0（2026-09-23）
 > 适用 Form：Weekly Temperature Control / Temperature Record  
 > 依据：[SRS_qooling_weekly_temperature_control.md](./SRS_qooling_weekly_temperature_control.md)
 

@@ -4,7 +4,7 @@
 > 文档版本：v0.1.0
 > 实施状态：尚未授权
 > 上游 SRS：[SRS_qooling_weekly_temperature_control.md](../designing/SRS_qooling_weekly_temperature_control.md) `v0.3.0 Draft`
-> 上游 TDD：[TDD_qooling_temperature_record.md](../designing/TDD_qooling_temperature_record.md) `v1.0.0 Frozen`
+> 上游 TDD：[TDD_qooling_temperature_record.md](../designing/TDD_qooling_temperature_record.md) `v1.1.0 Revised`
 > 适用 Form：Weekly Temperature Control / Temperature Record
 
 ## 0. 文档治理
