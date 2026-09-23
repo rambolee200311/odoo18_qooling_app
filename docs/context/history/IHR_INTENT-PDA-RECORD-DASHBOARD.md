@@ -1,6 +1,6 @@
 # PDA Record Dashboard Implementation History Record (IHR)
 
-> Document status: Implementation Complete; ATR Recorded; HVR Pending
+> Document status: Implementation Complete; ATR/HVR Recorded
 > Intent ID: `INTENT-PDA-RECORD-DASHBOARD`
 > CC: [Coding_Contract_PDA_Record_Dashboard.md](../intent/Coding_Contract_PDA_Record_Dashboard.md) `v1.0.0 Frozen; Authorized for Implementation`
 > Module: `wd_qooling_app`
@@ -13,7 +13,7 @@
 | Branch | `agents/docs-review-summary` |
 | Base commit | `520904f` |
 | Implementation commit | `717ec66` |
-| Status | Implementation Complete; HVR Pending |
+| Status | Implementation Complete; ATR/HVR Recorded |
 
 ## 2. Implementation Records
 
@@ -60,6 +60,25 @@
 | Contract reference | CC §2.5–§2.7 |
 | Result | Completed |
 
+### IHR-005
+
+| Field | Content |
+|---|---|
+| Phase | Fix |
+| Action | Preserved the existing Inbound attachment relation column `inbound_id` |
+| Reason | Module upgrade exposed a schema mismatch after the relation had been changed to `record_id` |
+| Files | `models/inbound_form.py` |
+| Result | Completed; module upgrade succeeded |
+
+### IHR-006
+
+| Field | Content |
+|---|---|
+| Phase | Verification |
+| Action | Restarted Odoo assets and executed Playwright dashboard, draft, submitted, and new-record flows |
+| Reason | Verify the visible PDA record selection behavior |
+| Result | Completed; HVR-RUN-001 recorded |
+
 ## 3. Preservation and Boundary Review
 
 - Record loading uses the Odoo ORM and existing server-side access rules.
@@ -70,4 +89,4 @@
 ## 4. Handoff
 
 - Implementation is committed and ready for automated and human verification.
-- HVR remains pending until the user confirms the three PDA dashboards and Draft resume flow.
+- Playwright-simulated human verification is recorded as passed in HVR-RUN-001.

@@ -1,6 +1,6 @@
 # PDA Record Dashboard Automated Test Record (ATR)
 
-> Document status: Partial; Static Checks Passed; Browser Run Pending
+> Document status: Automated Checks Passed
 > Intent ID: `INTENT-PDA-RECORD-DASHBOARD`
 > CC: [Coding_Contract_PDA_Record_Dashboard.md](../intent/Coding_Contract_PDA_Record_Dashboard.md) `v1.0.0 Frozen`
 > IHR: [IHR_INTENT-PDA-RECORD-DASHBOARD.md](./IHR_INTENT-PDA-RECORD-DASHBOARD.md)
@@ -24,8 +24,8 @@
 | Dashboard uses ORM record loading | JavaScript inspection | PASS |
 | Draft and submitted states are routed | JavaScript inspection | PASS |
 | New record routing clears stale draft context | JavaScript inspection | PASS |
-| Dashboard opens the intended record | Browser interaction | NOT RUN |
-| Submitted record is visibly read-only | Browser interaction | NOT RUN |
+| Dashboard opens the intended record | Playwright interaction | PASS |
+| Submitted record is visibly read-only | Playwright interaction | PASS |
 
 ## 3. Test Run History
 
@@ -65,7 +65,23 @@
 | Result | PASS |
 | Evidence | No whitespace errors |
 
+### ATR-RUN-005
+
+| Field | Value |
+|---|---|
+| Scope | PDA dashboard Playwright verification |
+| Invocation | Shared browser Playwright against `http://127.0.0.1:18087` |
+| Executed | Inbound, Outbound, and Temperature history lists; Draft open; Submitted read-only; New record |
+| Result | PASS |
+| Evidence | Inbound 10 rows; Outbound 3 rows; Temperature 6 rows; Draft `INB/00156` opened; Submitted `INB/00148` read-only; New Inbound displayed `New` |
+
+## 5. Findings and Resolution
+
+- Initial browser run used stale assets and could not find the new dashboard action
+  registry key; Odoo was restarted to rebuild assets.
+- Module upgrade initially exposed the Inbound attachment relation column mismatch;
+  the existing `inbound_id` schema was restored and the upgrade then succeeded.
+
 ## 4. Handoff
 
-Static checks passed. Browser verification of dashboard data, action routing, and
-submitted read-only behavior is not recorded as PASS yet.
+Static checks and Playwright verification passed for the executed dashboard scope.

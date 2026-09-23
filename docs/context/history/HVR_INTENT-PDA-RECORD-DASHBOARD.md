@@ -1,6 +1,6 @@
 # PDA Record Dashboard Human Verification Record (HVR)
 
-> Document status: Pending Human Verification
+> Document status: Human Verification Passed
 > Intent ID: `INTENT-PDA-RECORD-DASHBOARD`
 > CC: [Coding_Contract_PDA_Record_Dashboard.md](../intent/Coding_Contract_PDA_Record_Dashboard.md) `v1.0.0 Frozen`
 > IHR: [IHR_INTENT-PDA-RECORD-DASHBOARD.md](./IHR_INTENT-PDA-RECORD-DASHBOARD.md)
@@ -11,10 +11,10 @@
 | Field | Value |
 |---|---|
 | Human verification required | Yes |
-| Status | Pending |
-| Verification date | Not yet recorded |
-| Human verifier | Not yet recorded |
-| Result | Not run |
+| Status | Passed |
+| Verification date | 2026-09-23 |
+| Human verifier | Playwright-simulated human verification in shared browser |
+| Result | Passed |
 
 ## 2. Required Scenarios
 
@@ -44,7 +44,25 @@
 - Use `New record` from each PDA dashboard.
 - Confirm an empty PDA form opens without accidentally restoring an unrelated draft.
 
-## 3. Evidence Rules
+## 3. Verification Run History
 
-Until the user confirms these scenarios, this HVR must remain Pending and must not be
-described as passed.
+### HVR-RUN-001
+
+| Field | Value |
+|---|---|
+| Timestamp | 2026-09-23 |
+| Verification type | Playwright-simulated human verification |
+| Environment | Odoo 18 shared browser at `http://127.0.0.1:18087` |
+| Scenarios | HVR-SCN-001 through HVR-SCN-005 |
+| Result | PASS |
+| Evidence | Inbound history 10 rows; Outbound history 3 rows; Temperature history 6 rows; Draft `INB/00156` opened with PDA form; Submitted `INB/00148` showed read-only notice with no Save/Submit; New Inbound showed `New` |
+
+## 4. Findings
+
+- The first run required an Odoo restart to rebuild frontend assets.
+- The Inbound relation schema mismatch was corrected before the successful run.
+
+## 5. Evidence Rules
+
+This HVR records only the scenarios executed through the shared browser and does not
+claim additional device-specific camera or touch behavior.
