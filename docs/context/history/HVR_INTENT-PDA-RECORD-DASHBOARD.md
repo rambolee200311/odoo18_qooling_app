@@ -74,6 +74,17 @@
 | Result | PASS |
 | Evidence | 10 single-column cards; table hidden; 358px card width inside 390px viewport; no horizontal overflow |
 
+### HVR-RUN-003
+
+| Field | Value |
+|---|---|
+| Timestamp | 2026-09-23 |
+| Verification type | Manual human verification |
+| Environment | Odoo 18 PDA in the shared browser |
+| Scenarios | HVR-SCN-001 through HVR-SCN-006 |
+| Result | PASS |
+| Evidence | User confirmed the PDA history dashboards and their record navigation, including the narrow-screen card layout |
+
 ## 4. Findings
 
 - The first run required an Odoo restart to rebuild frontend assets.
