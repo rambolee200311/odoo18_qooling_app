@@ -54,11 +54,11 @@
                         <group>
                             <field name="goods_type"/>
                             <field name="mrn_number" invisible="goods_type == 'non_bonded'"/>
-                            <field name="seal_number"/>
+                            <field name="seal_number" invisible="goods_type == 'non_bonded'"/>
                             <field name="mrn_checked_before_release" invisible="goods_type == 'non_bonded'"/>
                             <field name="adr"/>
                             <field name="un_number" invisible="adr != 'yes'"/>
-                            <field name="proper_shipping_name"/>
+                            <field name="proper_shipping_name" invisible="adr != 'yes'"/>
                             <field name="measured_temperature" invisible="adr != 'yes'"/>
                         </group>
                     </group>
