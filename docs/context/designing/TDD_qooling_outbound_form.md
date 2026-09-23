@@ -209,6 +209,15 @@ ACL 和 Record Rule 必须在服务端生效，不能只隐藏按钮。
 | PDA 被实现成不可操作的缩小 Web 表单 | PDA HVR 和触控布局验收 |
 | 引入 PDF 入口 | 立即停止；不在本 TDD 范围内 |
 
+### 11.1 已确认技术债
+
+| 编号 | 技术债 | 当前状态 |
+|---|---|---|
+| TD-OUTBOUND-001 | 新增专用 PDA 触控 Web 界面和 PDA 专用 JavaScript 交互层；当前实现继续使用响应式标准 Form | Open |
+| TD-OUTBOUND-002 | 支持货物照片多张上传；当前 `cargo_photo` 仅支持单张 Binary 图片 | Open |
+| TD-OUTBOUND-003 | 图片区域只显示缩略图，点击图片放大镜后在右侧 panel 显示原图或大图 | Open |
+| TD-OUTBOUND-004 | Chatter 在表单布局中始终固定在底部显示 | Open |
+
 ## 12. 追溯矩阵
 
 | SRS 范围 | TDD 设计 |

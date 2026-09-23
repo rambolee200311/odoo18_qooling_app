@@ -33,7 +33,7 @@
 | Preservation Impact | No inventory/transport/workflow/PDF automation added |
 | Deviation | None |
 | Stop Condition | No |
-| Open Issues | 0 |
+| Open Issues | 4 technical debts (`TD-OUTBOUND-001` to `TD-OUTBOUND-004`) |
 | 当前状态 | Implementation complete; targeted runtime validation passed; HVR pending |
 
 ## 4. 实施历史（Append-only）
@@ -49,6 +49,9 @@
 - Evidence: Python compilation, XML parsing, and the Odoo module test run passed.
   The run reported 13 tests loaded with 0 failures and 0 errors; unrelated
   pre-existing warnings for `wd_advanced_m2o_record_panel` remain.
+- Follow-up technical debts: dedicated PDA JavaScript UI, multi-image thumbnail
+  handling with a right-side enlargement panel, and bottom-pinned Chatter are
+  tracked as `TD-OUTBOUND-001` through `TD-OUTBOUND-004`.
 
 ## 5. Handoff
 
