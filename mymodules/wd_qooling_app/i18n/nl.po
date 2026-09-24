@@ -49,7 +49,7 @@ msgid "ADR and Temperature"
 msgstr "ADR en temperatuur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__adr_separation_compatibility
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "ADR separation / compatibility"
@@ -171,7 +171,7 @@ msgid "Checked for visible damage or packaging issues"
 msgstr "Checked for visible damage or packaging issues"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_inbound_form
 #: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
@@ -222,7 +222,7 @@ msgid "Close"
 msgstr "Sluiten"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_outbound_form__state__closed
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_temperature_record__state__closed
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_temperature_record_search
@@ -356,7 +356,7 @@ msgid "Document number"
 msgstr "Documentnummer"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_inbound_form__state__draft
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_outbound_form__state__draft
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_temperature_record__state__draft
@@ -383,7 +383,7 @@ msgid "Driver comments"
 msgstr "Opmerkingen chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/xml/outbound_pda.xml:0
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__driver_signature
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
@@ -456,7 +456,7 @@ msgid "Driver: wheel chock"
 msgstr "Driver: wheel chock"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__electrolyte_leakage
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Electrolyte leakage"
@@ -511,7 +511,7 @@ msgid "Enter temperature and press Enter"
 msgstr "Enter temperature and press Enter"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_inbound_form
 #: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
@@ -645,7 +645,7 @@ msgid "Inbound Forms"
 msgstr "Inbound-formulieren"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/xml/inbound_pda.xml:0
 #: code:addons/wd_qooling_app/static/src/xml/qooling_dashboard.xml:0
 #: model:ir.ui.menu,name:wd_qooling_app.menu_qooling_inbound_pda
@@ -720,7 +720,7 @@ msgid "Loading records..."
 msgstr "Registraties laden..."
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__check_loading_quantity
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Loading: quantity checked"
@@ -962,7 +962,7 @@ msgid "Outbound Forms"
 msgstr "Outbound-formulieren"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/xml/outbound_pda.xml:0
 #: code:addons/wd_qooling_app/static/src/xml/qooling_dashboard.xml:0
 #: model:ir.ui.menu,name:wd_qooling_app.menu_qooling_outbound_pda
@@ -1001,7 +1001,7 @@ msgid "Packaging condition"
 msgstr "Verpakkingsconditie"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__packaging_damage
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Packaging visible damage"
@@ -1030,7 +1030,7 @@ msgid "Pallet temperature registered"
 msgstr "Pallettemperatuur geregistreerd"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__line_ids
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Pallet temperatures"
@@ -1282,7 +1282,7 @@ msgid "Sequence"
 msgstr "Sequence"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/xml/temperature_pda.xml:0
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__signature
 #: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
@@ -1332,7 +1332,7 @@ msgid "Status after ventilation"
 msgstr "Status after ventilation"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__storage_stability
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Storage stability"
@@ -1350,7 +1350,7 @@ msgid "Submit"
 msgstr "Indienen"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_inbound_form__state__submitted
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_outbound_form__state__submitted
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_temperature_record__state__submitted
@@ -1419,7 +1419,7 @@ msgid "Temperature (°C)"
 msgstr "Temperature (°C)"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/xml/qooling_dashboard.xml:0
 #: code:addons/wd_qooling_app/static/src/xml/temperature_pda.xml:0
 #: model:ir.ui.menu,name:wd_qooling_app.menu_qooling_temperature_pda
@@ -1615,7 +1615,7 @@ msgid "Warehouse operator signer"
 msgstr "Warehouse operator signer"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/xml/inbound_pda.xml:0
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_inbound_form__warehouse_signature
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
@@ -1628,7 +1628,7 @@ msgid "Warehouse signature time"
 msgstr "Warehouse signature time"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__weight_distribution
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Weight distribution checked"
@@ -1651,19 +1651,19 @@ msgid "Yes"
 msgstr "Ja"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Could not load PDA records."
 msgstr "PDA-registraties konden niet worden geladen."
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "From date cannot be later than To date."
 msgstr "De begindatum mag niet na de einddatum liggen."
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 #: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Exception pending"
@@ -1678,7 +1678,7 @@ msgid "Hide filters"
 msgstr "Filters verbergen"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
@@ -1686,14 +1686,14 @@ msgid "Details"
 msgstr "Details"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "ADR & temperature"
 msgstr "ADR en temperatuur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
@@ -1701,133 +1701,133 @@ msgid "Only image and video files can be uploaded."
 msgstr "Alleen afbeeldings- en videobestanden kunnen worden geüpload."
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Loading plan discussed"
 msgstr "Laadplan besproken"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Loading: visible damage"
 msgstr "Laden: zichtbare schade"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Cargo packaging"
 msgstr "Verpakking van lading"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Cargo identification"
 msgstr "Identificatie van lading"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Cargo secured"
 msgstr "Lading vastgezet"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle ADR certificate"
 msgstr "ADR-certificaat voertuig"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle fire extinguisher"
 msgstr "Brandblusser voertuig"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle ADR sign"
 msgstr "ADR-bord voertuig"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle fixing material"
 msgstr "Bevestigingsmateriaal voertuig"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle TREM card"
 msgstr "TREM-kaart voertuig"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver ADR certificate"
 msgstr "ADR-certificaat chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver safety vest"
 msgstr "Veiligheidsvest chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver eye protection"
 msgstr "Oogbescherming chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver protective gloves"
 msgstr "Beschermende handschoenen chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver wheel chock"
 msgstr "Wielkeg chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver tarpaulin"
 msgstr "Dekzeil chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver flashlight"
 msgstr "Zaklamp chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver shovel"
 msgstr "Schep chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver drip tray"
 msgstr "Lekbak chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver eyewash"
 msgstr "Oogspoeling chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver warning triangles"
 msgstr "Gevarendriehoeken chauffeur"
 
 #. module: wd_qooling_app
-#. javascript
+#. odoo-javascript
 #: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Unpackaged housing damage"
 msgstr "Schade aan onverpakte behuizing"
