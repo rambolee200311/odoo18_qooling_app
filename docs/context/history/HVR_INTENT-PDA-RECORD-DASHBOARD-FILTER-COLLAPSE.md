@@ -1,6 +1,6 @@
 # PDA Record Dashboard Filter Collapse Human Verification Record (HVR)
 
-> Document status: Pending Human Verification
+> Document status: Human Verification Passed
 > Intent ID: `INTENT-PDA-RECORD-DASHBOARD-FILTER-COLLAPSE`
 > CC: [Coding_Contract_PDA_Record_Dashboard_Filter_Collapse.md](../intent/Coding_Contract_PDA_Record_Dashboard_Filter_Collapse.md) `v1.0.0 Frozen`
 > IHR: [IHR_INTENT-PDA-RECORD-DASHBOARD-FILTER-COLLAPSE.md](./IHR_INTENT-PDA-RECORD-DASHBOARD-FILTER-COLLAPSE.md)
@@ -11,10 +11,10 @@
 | Field | Value |
 |---|---|
 | Human verification required | Yes |
-| Status | Pending |
-| Verification date | Not yet recorded |
-| Human verifier | Not yet recorded |
-| Result | Not run |
+| Status | Passed |
+| Verification date | 2026-09-24 |
+| Human verifier | User-confirmed manual verification |
+| Result | Passed |
 
 ## 2. Required Scenarios
 
@@ -50,7 +50,20 @@
 - Confirm the expand/collapse control and expanded filter fields are usable
   without horizontal scrolling.
 
-## 3. Evidence Rules
+## 3. Verification Run History
 
-This HVR remains Pending until the user confirms the required scenarios. Automated
-or Playwright-simulated results must not be described as real human verification.
+### HVR-RUN-001
+
+| Field | Value |
+|---|---|
+| Timestamp | 2026-09-24 |
+| Verification type | Manual human verification |
+| Environment | Odoo 18 PDA in the shared browser |
+| Scenarios | HVR-SCN-001 through HVR-SCN-005 |
+| Result | PASS |
+| Evidence | User confirmed the PDA filter area collapse/expand behavior, arrow controls, filtering interaction, Clear behavior, and narrow-screen usability |
+
+## 4. Evidence Rules
+
+This HVR records the user's manual confirmation in HVR-RUN-001. It does not claim
+additional device-specific behavior beyond the stated verification.
