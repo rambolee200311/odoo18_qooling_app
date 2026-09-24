@@ -48,6 +48,16 @@
 | Files | `pda_record_dashboard.js` |
 | Result | Completed |
 
+### IHR-004
+
+| Field | Content |
+|---|---|
+| Phase | Fix |
+| Action | Replaced visible Show/Hide filter text with upward/downward arrow controls and accessible labels |
+| Reason | Reduce control visual weight while preserving discoverability and accessibility |
+| Files | `pda_record_dashboard.xml`; filter-collapse CC version 1.1.0 |
+| Result | Completed |
+
 ## 3. Boundary Review
 
 - Filter values are retained while the area is manually collapsed.

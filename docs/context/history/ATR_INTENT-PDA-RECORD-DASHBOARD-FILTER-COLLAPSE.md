@@ -43,6 +43,15 @@
 | Result | PASS |
 | Evidence | Collapsed control width 99.875px; collapsed and expanded body width remained 390px; expanded filter width was 366px |
 
+### ATR-RUN-004
+
+| Field | Value |
+|---|---|
+| Scope | Arrow expand/collapse control |
+| Invocation | Shared browser Playwright |
+| Result | PASS |
+| Evidence | Collapsed control rendered `fa-chevron-down` with `aria-label="Show filters"` and `aria-expanded="false"`; expanded control rendered `fa-chevron-up` with `aria-label="Hide filters"` and `aria-expanded="true"` |
+
 ## 3. Evidence Boundary
 
 These are automated and Playwright execution results. They do not constitute

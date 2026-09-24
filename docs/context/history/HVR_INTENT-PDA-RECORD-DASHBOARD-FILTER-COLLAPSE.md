@@ -21,11 +21,12 @@
 ### HVR-SCN-001 — Default collapsed state
 
 - Open each PDA history dashboard.
-- Confirm the filter area is collapsed and `Show filters` is visible.
+- Confirm the filter area is collapsed and a downward arrow control is visible.
+- Confirm the control is announced as `Show filters`.
 
 ### HVR-SCN-002 — Expand and retain values
 
-- Expand the filter area.
+- Expand the filter area using the arrow control.
 - Enter filter values, collapse it, and expand it again.
 - Confirm the values remain visible.
 
@@ -33,6 +34,7 @@
 
 - Apply a valid filter.
 - Confirm the filter area automatically collapses.
+- Confirm the upward/downward arrow changes with the state.
 - Confirm the active-filter indication remains visible.
 
 ### HVR-SCN-004 — Clear remains open
