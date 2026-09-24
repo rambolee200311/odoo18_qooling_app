@@ -1,9 +1,10 @@
 # Weekly Temperature Control 软件需求规格说明书（SRS）
 
-> 文档状态：草稿  
-> 文档版本：v0.3.0
-> 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)  
-> 字段证据：[每周温度控制记录表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/每周温度控制记录表.docx)  
+> 文档状态：已冻结
+> 文档版本：v1.0.0
+> 冻结日期：2026-09-24
+> 来源基线：[SRS_qooling_forms.md](./SRS_qooling_forms.md)
+> 字段证据：[每周温度控制记录表.docx](/Users/lijianqiang/Documents/odoo18_qooling/docs/requirement/每周温度控制记录表.docx)
 > 适用 Form：Weekly Temperature Control / 每周温度控制记录表
 
 ## 0. 文档边界
