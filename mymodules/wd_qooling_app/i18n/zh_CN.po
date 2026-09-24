@@ -49,7 +49,9 @@ msgid "ADR and Temperature"
 msgstr "ADR 与温度"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__adr_separation_compatibility
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "ADR separation / compatibility"
 msgstr "ADR 分隔 / 兼容性"
 
@@ -169,7 +171,11 @@ msgid "Checked for visible damage or packaging issues"
 msgstr "Checked for visible damage or packaging issues"
 
 #. module: wd_qooling_app
+#. javascript
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_inbound_form
+#: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Checks"
 msgstr "检查"
 
@@ -216,9 +222,12 @@ msgid "Close"
 msgstr "关闭"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_outbound_form__state__closed
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_temperature_record__state__closed
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_temperature_record_search
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Closed"
 msgstr "已关闭"
 
@@ -347,12 +356,16 @@ msgid "Document number"
 msgstr "单据编号"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_inbound_form__state__draft
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_outbound_form__state__draft
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_temperature_record__state__draft
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_inbound_form_search
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_outbound_form_search
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_temperature_record_search
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Draft"
 msgstr "草稿"
 
@@ -370,9 +383,10 @@ msgid "Driver comments"
 msgstr "司机备注"
 
 #. module: wd_qooling_app
-#. odoo-javascript
+#. javascript
 #: code:addons/wd_qooling_app/static/src/xml/outbound_pda.xml:0
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__driver_signature
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver signature"
 msgstr "司机签名"
 
@@ -442,7 +456,9 @@ msgid "Driver: wheel chock"
 msgstr "Driver: wheel chock"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__electrolyte_leakage
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Electrolyte leakage"
 msgstr "电解液泄漏"
 
@@ -495,7 +511,11 @@ msgid "Enter temperature and press Enter"
 msgstr "Enter temperature and press Enter"
 
 #. module: wd_qooling_app
+#. javascript
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_inbound_form
+#: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Evidence"
 msgstr "证据"
 
@@ -625,10 +645,11 @@ msgid "Inbound Forms"
 msgstr "入库单列表"
 
 #. module: wd_qooling_app
-#. odoo-javascript
+#. javascript
 #: code:addons/wd_qooling_app/static/src/xml/inbound_pda.xml:0
 #: code:addons/wd_qooling_app/static/src/xml/qooling_dashboard.xml:0
 #: model:ir.ui.menu,name:wd_qooling_app.menu_qooling_inbound_pda
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Inbound Record"
 msgstr "入库记录"
 
@@ -699,7 +720,9 @@ msgid "Loading records..."
 msgstr "正在加载记录..."
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__check_loading_quantity
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Loading: quantity checked"
 msgstr "装货：数量已检查"
 
@@ -939,10 +962,11 @@ msgid "Outbound Forms"
 msgstr "出库单列表"
 
 #. module: wd_qooling_app
-#. odoo-javascript
+#. javascript
 #: code:addons/wd_qooling_app/static/src/xml/outbound_pda.xml:0
 #: code:addons/wd_qooling_app/static/src/xml/qooling_dashboard.xml:0
 #: model:ir.ui.menu,name:wd_qooling_app.menu_qooling_outbound_pda
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Outbound Record"
 msgstr "出库记录"
 
@@ -977,7 +1001,9 @@ msgid "Packaging condition"
 msgstr "包装状况"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__packaging_damage
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Packaging visible damage"
 msgstr "包装可见损坏"
 
@@ -1004,7 +1030,9 @@ msgid "Pallet temperature registered"
 msgstr "已登记托盘温度"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__line_ids
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Pallet temperatures"
 msgstr "托盘温度"
 
@@ -1254,9 +1282,11 @@ msgid "Sequence"
 msgstr "Sequence"
 
 #. module: wd_qooling_app
-#. odoo-javascript
+#. javascript
 #: code:addons/wd_qooling_app/static/src/xml/temperature_pda.xml:0
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__signature
+#: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Signature"
 msgstr "签名"
 
@@ -1302,7 +1332,9 @@ msgid "Status after ventilation"
 msgstr "Status after ventilation"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_temperature_record__storage_stability
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Storage stability"
 msgstr "储存稳定性"
 
@@ -1318,12 +1350,16 @@ msgid "Submit"
 msgstr "提交"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_inbound_form__state__submitted
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_outbound_form__state__submitted
 #: model:ir.model.fields.selection,name:wd_qooling_app.selection__wd_qooling_temperature_record__state__submitted
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_inbound_form_search
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_outbound_form_search
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_temperature_record_search
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Submitted"
 msgstr "已提交"
 
@@ -1383,11 +1419,12 @@ msgid "Temperature (°C)"
 msgstr "Temperature (°C)"
 
 #. module: wd_qooling_app
-#. odoo-javascript
+#. javascript
 #: code:addons/wd_qooling_app/static/src/xml/qooling_dashboard.xml:0
 #: code:addons/wd_qooling_app/static/src/xml/temperature_pda.xml:0
 #: model:ir.ui.menu,name:wd_qooling_app.menu_qooling_temperature_pda
 #: model_terms:ir.ui.view,arch_db:wd_qooling_app.view_qooling_temperature_record_form
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Temperature Record"
 msgstr "温度记录"
 
@@ -1578,9 +1615,10 @@ msgid "Warehouse operator signer"
 msgstr "Warehouse operator signer"
 
 #. module: wd_qooling_app
-#. odoo-javascript
+#. javascript
 #: code:addons/wd_qooling_app/static/src/xml/inbound_pda.xml:0
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_inbound_form__warehouse_signature
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Warehouse signature"
 msgstr "仓库签名"
 
@@ -1590,7 +1628,9 @@ msgid "Warehouse signature time"
 msgstr "Warehouse signature time"
 
 #. module: wd_qooling_app
+#. javascript
 #: model:ir.model.fields,field_description:wd_qooling_app.field_wd_qooling_outbound_form__weight_distribution
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Weight distribution checked"
 msgstr "已检查重量分布"
 
@@ -1611,14 +1651,21 @@ msgid "Yes"
 msgstr "是"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Could not load PDA records."
 msgstr "无法加载PDA记录。"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "From date cannot be later than To date."
 msgstr "开始日期不能晚于结束日期。"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
+#: code:addons/wd_qooling_app/static/src/js/pda_record_dashboard.js:0
 msgid "Exception pending"
 msgstr "异常待处理"
 
@@ -1631,101 +1678,156 @@ msgid "Hide filters"
 msgstr "隐藏筛选"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Details"
 msgstr "详细信息"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "ADR & temperature"
 msgstr "ADR 与温度"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/inbound_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Only image and video files can be uploaded."
 msgstr "只能使用图片和视频文件作为证据。"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Loading plan discussed"
 msgstr "已与司机讨论装货计划"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Loading: visible damage"
 msgstr "装货：可见损坏"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Cargo packaging"
 msgstr "货物包装"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Cargo identification"
 msgstr "货物识别"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Cargo secured"
 msgstr "货物已固定"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle ADR certificate"
 msgstr "车辆 ADR 证书"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle fire extinguisher"
 msgstr "车辆灭火器"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle ADR sign"
 msgstr "车辆 ADR 标志"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle fixing material"
 msgstr "车辆固定材料"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Vehicle TREM card"
 msgstr "车辆 TREM 卡"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver ADR certificate"
 msgstr "司机 ADR 证书"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver safety vest"
 msgstr "司机安全背心"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver eye protection"
 msgstr "司机护目镜"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver protective gloves"
 msgstr "司机防护手套"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver wheel chock"
 msgstr "司机车轮止动块"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver tarpaulin"
 msgstr "司机防水篷布"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver flashlight"
 msgstr "司机手电筒"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver shovel"
 msgstr "司机铲子"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver drip tray"
 msgstr "司机接液盘"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver eyewash"
 msgstr "司机洗眼器"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/outbound_pda.js:0
 msgid "Driver warning triangles"
 msgstr "司机警示三角牌"
 
 #. module: wd_qooling_app
+#. javascript
+#: code:addons/wd_qooling_app/static/src/js/temperature_pda.js:0
 msgid "Unpackaged housing damage"
 msgstr "未包装外壳损坏"
