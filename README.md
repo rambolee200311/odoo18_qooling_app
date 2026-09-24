@@ -108,5 +108,4 @@ v1.0.0
 
 ## 开发纪律
 
-详细实施约束见 [项目使用与实施说明](docs/INSTRUCTION.md)。所有业务变更应先
-更新对应的需求、Coding Contract 和验证记录，再实施代码修改。
+详细用户操作见 [用户操作指南](docs/INSTRUCTION.md)。
