@@ -3,6 +3,7 @@
 import { Component, onPatched, onWillStart, onWillUnmount, useRef, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
+import { _t } from "@web/core/l10n/translation";
 
 const MAX_MEDIA_COUNT = 20;
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024;
@@ -13,19 +14,19 @@ function getMediaError(file, currentCount) {
         return `A record can contain at most ${MAX_MEDIA_COUNT} media files.`;
     }
     if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) {
-        return "Only image and video files can be uploaded.";
+        return _t("Only image and video files can be uploaded.");
     }
     const limit = file.type.startsWith("video/") ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
     return file.size > limit ? `This file exceeds the ${limit / (1024 * 1024)} MB limit.` : "";
 }
 
 const STEPS = [
-    { key: "details", label: "Details" },
-    { key: "checks", label: "Checks" },
-    { key: "adr", label: "ADR & temperature" },
-    { key: "evidence", label: "Evidence" },
-    { key: "driver_signature", label: "Driver signature" },
-    { key: "warehouse_signature", label: "Warehouse signature" },
+    { key: "details", label: _t("Details") },
+    { key: "checks", label: _t("Checks") },
+    { key: "adr", label: _t("ADR & temperature") },
+    { key: "evidence", label: _t("Evidence") },
+    { key: "driver_signature", label: _t("Driver signature") },
+    { key: "warehouse_signature", label: _t("Warehouse signature") },
 ];
 const DRAFT_STORAGE_KEY = "wd_qooling_outbound_pda_draft_id";
 const DRAFT_FIELDS = [

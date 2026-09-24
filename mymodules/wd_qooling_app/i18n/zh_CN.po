@@ -1,0 +1,816 @@
+# Translation of Odoo Server.
+#
+# This file contains the translation of the following modules:
+#     * wd_qooling_app
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Language: zh_CN\n"
+"PO-Revision-Date: 2026-09-24 09:30+0800\n"
+"Last-Translator: Qooling Team\n"
+"Language-Team: Chinese (Simplified)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%s signature audit fields are required."
+msgstr "%s signature audit fields are required."
+
+msgid "A handwritten signature is required before submission."
+msgstr "提交前必须提供手写签名。"
+
+msgid "A handwritten warehouse signature is required before submission."
+msgstr "提交前必须提供仓库手写签名。"
+
+msgid "A record can contain at most %(count)s media files."
+msgstr "A record can contain at most %(count)s media files."
+
+msgid "ADR"
+msgstr "ADR"
+
+msgid "ADR and Temperature"
+msgstr "ADR and Temperature"
+
+msgid "ADR separation / compatibility"
+msgstr "ADR separation / compatibility"
+
+msgid "Action"
+msgstr "操作"
+
+msgid "Add temperature"
+msgstr "添加温度"
+
+msgid "All statuses"
+msgstr "全部状态"
+
+msgid "Arrival"
+msgstr "到达"
+
+msgid "Arrival, start loading, and end loading times must be in chronological order."
+msgstr "Arrival, start loading, and end loading times must be in chronological order."
+
+msgid "Attach media"
+msgstr "附加媒体"
+
+msgid "Attach photos or videos"
+msgstr "附加照片或视频"
+
+msgid "Average temperature"
+msgstr "平均温度"
+
+msgid "Average temperature per pallet (°C)"
+msgstr "Average temperature per pallet (°C)"
+
+msgid "B/L"
+msgstr "B/L"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Bonded"
+msgstr "保税"
+
+msgid "Business Reference"
+msgstr "业务参考号"
+
+msgid "Business reference"
+msgstr "业务参考号"
+
+msgid "Cargo: correct identification"
+msgstr "Cargo: correct identification"
+
+msgid "Cargo: packaging checked"
+msgstr "Cargo: packaging checked"
+
+msgid "Cargo: secured on truck"
+msgstr "Cargo: secured on truck"
+
+msgid "Checked for visible damage"
+msgstr "Checked for visible damage"
+
+msgid "Checked for visible damage or packaging issues"
+msgstr "Checked for visible damage or packaging issues"
+
+msgid "Checks"
+msgstr "检查"
+
+msgid "Checks and Evidence"
+msgstr "检查和证据"
+
+msgid "Clear"
+msgstr "清除"
+
+msgid "Clear all pallet lines?"
+msgstr "清除所有托盘行？"
+
+msgid "Clear all pallets"
+msgstr "清除所有托盘"
+
+msgid "Clear all temperatures"
+msgstr "清除所有温度"
+
+msgid "Clear signature"
+msgstr "清除签名"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Closed"
+msgstr "已关闭"
+
+msgid "Comments"
+msgstr "备注"
+
+msgid "Container Number"
+msgstr "集装箱编号"
+
+msgid "Container Number / Shipment Number"
+msgstr "集装箱编号 / 装运编号"
+
+msgid "Container number"
+msgstr "集装箱编号"
+
+msgid "Container number / shipment number"
+msgstr "Container number / shipment number"
+
+msgid "Create a Temperature Record"
+msgstr "创建温度记录"
+
+msgid "Create an Inbound Form"
+msgstr "创建入库单"
+
+msgid "Create an Outbound Form"
+msgstr "创建出库单"
+
+msgid "Created by"
+msgstr "创建人"
+
+msgid "Created on"
+msgstr "创建时间"
+
+msgid "Customer"
+msgstr "客户"
+
+msgid "Dangerous"
+msgstr "Dangerous"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Date and time arrival"
+msgstr "到达日期和时间"
+
+msgid "Delete image"
+msgstr "删除图片"
+
+msgid "Delete media"
+msgstr "删除媒体"
+
+msgid "Display Name"
+msgstr "Display Name"
+
+msgid "Document"
+msgstr "单据"
+
+msgid "Document number"
+msgstr "单据编号"
+
+msgid "Draft"
+msgstr "草稿"
+
+msgid "Driver"
+msgstr "司机"
+
+msgid "Driver comments"
+msgstr "司机备注"
+
+msgid "Driver signature"
+msgstr "司机签名"
+
+msgid "Driver signature time"
+msgstr "Driver signature time"
+
+msgid "Driver signer"
+msgstr "Driver signer"
+
+msgid "Driver: ADR certificate"
+msgstr "Driver: ADR certificate"
+
+msgid "Driver: drip tray"
+msgstr "Driver: drip tray"
+
+msgid "Driver: eye protection"
+msgstr "Driver: eye protection"
+
+msgid "Driver: eyewash bottle"
+msgstr "Driver: eyewash bottle"
+
+msgid "Driver: flashlight"
+msgstr "Driver: flashlight"
+
+msgid "Driver: protective gloves"
+msgstr "Driver: protective gloves"
+
+msgid "Driver: reflective safety vest"
+msgstr "Driver: reflective safety vest"
+
+msgid "Driver: shovel"
+msgstr "Driver: shovel"
+
+msgid "Driver: tarpaulin"
+msgstr "Driver: tarpaulin"
+
+msgid "Driver: two independent warning triangles"
+msgstr "Driver: two independent warning triangles"
+
+msgid "Driver: wheel chock"
+msgstr "Driver: wheel chock"
+
+msgid "Electrolyte leakage"
+msgstr "Electrolyte leakage"
+
+msgid "End loading"
+msgstr "结束装货"
+
+msgid "End time of loading"
+msgstr "End time of loading"
+
+msgid "Enlarge image"
+msgstr "Enlarge image"
+
+msgid "Enlarged inbound evidence"
+msgstr "Enlarged inbound evidence"
+
+msgid "Enlarged outbound evidence"
+msgstr "Enlarged outbound evidence"
+
+msgid "Enlarged photo"
+msgstr "Enlarged photo"
+
+msgid "Enlarged temperature evidence"
+msgstr "Enlarged temperature evidence"
+
+msgid "Enter temperature and press Enter"
+msgstr "Enter temperature and press Enter"
+
+msgid "Evidence"
+msgstr "证据"
+
+msgid "Evidence and Signatures"
+msgstr "证据和签名"
+
+msgid "Exception Pending"
+msgstr "异常待处理"
+
+msgid "FORMS"
+msgstr "表单"
+
+msgid "FORMS / PDA"
+msgstr "表单 / PDA"
+
+msgid "Filing date"
+msgstr "归档日期"
+
+msgid "Filled in by"
+msgstr "填写人"
+
+msgid "Filter"
+msgstr "筛选"
+
+msgid "Filters applied"
+msgstr "已应用筛选"
+
+msgid "Free union goods"
+msgstr "自由联盟货物"
+
+msgid "From"
+msgstr "开始日期"
+
+msgid "Gas measurement"
+msgstr "Gas measurement"
+
+msgid "Gas measurement Status"
+msgstr "Gas measurement Status"
+
+msgid "Good"
+msgstr "良好"
+
+msgid "Goods Status"
+msgstr "货物状态"
+
+msgid "Goods status"
+msgstr "货物状态"
+
+msgid "Goods type"
+msgstr "货物类型"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Inbound Form"
+msgstr "入库单"
+
+msgid "Inbound Forms"
+msgstr "入库单列表"
+
+msgid "Inbound Record"
+msgstr "入库记录"
+
+msgid "Inbound Record (PDA Form)"
+msgstr "入库记录（PDA表单）"
+
+msgid "Inbound Record (PDA)"
+msgstr "入库记录（PDA）"
+
+msgid "Inbound steps"
+msgstr "入库步骤"
+
+msgid "Ja"
+msgstr "Ja"
+
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+msgid "Legacy compatibility field. New evidence must use photo_ids."
+msgstr "Legacy compatibility field. New evidence must use photo_ids."
+
+msgid "Legacy photo"
+msgstr "Legacy photo"
+
+msgid "Loading and Cargo"
+msgstr "装货和货物"
+
+msgid "Loading plan discussed with driver"
+msgstr "Loading plan discussed with driver"
+
+msgid "Loading records..."
+msgstr "正在加载记录..."
+
+msgid "Loading: quantity checked"
+msgstr "Loading: quantity checked"
+
+msgid "Loading: visible damage or packaging issues"
+msgstr "Loading: visible damage or packaging issues"
+
+msgid "Location"
+msgstr "位置"
+
+msgid "MRN Number"
+msgstr "MRN Number"
+
+msgid "MRN checked before release"
+msgstr "MRN checked before release"
+
+msgid "MRN number"
+msgstr "MRN number"
+
+msgid "Manager"
+msgstr "经理"
+
+msgid "Mark Exception"
+msgstr "标记异常"
+
+msgid "Measured temperature"
+msgstr "测量温度"
+
+msgid "Measured temperature (°C)"
+msgstr "Measured temperature (°C)"
+
+msgid "Media evidence can only be changed while the record is a draft."
+msgstr "Media evidence can only be changed while the record is a draft."
+
+msgid "Media files of this type cannot exceed %(limit)s MB."
+msgstr "Media files of this type cannot exceed %(limit)s MB."
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Nee"
+msgstr "Nee"
+
+msgid "New"
+msgstr "新建"
+
+msgid "New record"
+msgstr "新建记录"
+
+msgid "Next"
+msgstr "下一步"
+
+msgid "No"
+msgstr "否"
+
+msgid "No records found."
+msgstr "未找到记录。"
+
+msgid "No records match the selected filters."
+msgstr "没有记录符合所选筛选条件。"
+
+msgid "No, stop unloading"
+msgstr "No, stop unloading"
+
+msgid "No, stop unloading and ask project manager"
+msgstr "No, stop unloading and ask project manager"
+
+msgid "Non-Bonded"
+msgstr "Non-Bonded"
+
+msgid "Not Applicable"
+msgstr "Not Applicable"
+
+msgid "Not applicable"
+msgstr "Not applicable"
+
+msgid "Not good"
+msgstr "Not good"
+
+msgid "Not recorded"
+msgstr "Not recorded"
+
+msgid "Number"
+msgstr "编号"
+
+msgid "Number received has been checked"
+msgstr "Number received has been checked"
+
+msgid "Only a Temperature Supervisor can perform this action."
+msgstr "Only a Temperature Supervisor can perform this action."
+
+msgid "Only an Outbound reviewer can perform this action."
+msgstr "Only an Outbound reviewer can perform this action."
+
+msgid "Only draft temperature records can be cleared."
+msgstr "Only draft temperature records can be cleared."
+
+msgid "Only draft temperature records can receive new readings."
+msgstr "Only draft temperature records can receive new readings."
+
+msgid "Only image and video files can be used as evidence."
+msgstr "Only image and video files can be used as evidence."
+
+msgid "Open web form"
+msgstr "打开Web表单"
+
+msgid "Outbound Form"
+msgstr "出库单"
+
+msgid "Outbound Forms"
+msgstr "出库单列表"
+
+msgid "Outbound Record"
+msgstr "出库记录"
+
+msgid "Outbound Record (PDA Form)"
+msgstr "出库记录（PDA表单）"
+
+msgid "Outbound Record (PDA)"
+msgstr "出库记录（PDA）"
+
+msgid "Outbound steps"
+msgstr "出库步骤"
+
+msgid "PDA"
+msgstr "PDA"
+
+msgid "Packaging condition"
+msgstr "Packaging condition"
+
+msgid "Packaging visible damage"
+msgstr "Packaging visible damage"
+
+msgid "Pallet"
+msgstr "托盘"
+
+msgid "Pallet Temperatures"
+msgstr "托盘温度"
+
+msgid "Pallet lines cannot be deleted individually. Use Clear all pallets."
+msgstr "Pallet lines cannot be deleted individually. Use Clear all pallets."
+
+msgid "Pallet temperature registered"
+msgstr "Pallet temperature registered"
+
+msgid "Pallet temperatures"
+msgstr "托盘温度"
+
+msgid "Pallet temperatures can only be added in draft."
+msgstr "Pallet temperatures can only be added in draft."
+
+msgid "Pallet temperatures can only be modified in draft."
+msgstr "Pallet temperatures can only be modified in draft."
+
+msgid "Photo"
+msgstr "照片"
+
+msgid "Photo of cargo"
+msgstr "Photo of cargo"
+
+msgid "Photos and videos"
+msgstr "照片和视频"
+
+msgid "Preview media"
+msgstr "预览媒体"
+
+msgid "Product quality and condition have been checked"
+msgstr "Product quality and condition have been checked"
+
+msgid "Product quality checked"
+msgstr "Product quality checked"
+
+msgid "Proper Shipping Name"
+msgstr "Proper Shipping Name"
+
+msgid "Proper shipping name"
+msgstr "Proper shipping name"
+
+msgid "Qooling"
+msgstr "Qooling"
+
+msgid "Qooling Dashboard"
+msgstr "Qooling看板"
+
+msgid "Qooling Inbound Form"
+msgstr "Qooling Inbound Form"
+
+msgid "Qooling Inbound Reviewer"
+msgstr "Qooling Inbound Reviewer"
+
+msgid "Qooling Inbound User"
+msgstr "Qooling Inbound User"
+
+msgid "Qooling Media Evidence Rules"
+msgstr "Qooling Media Evidence Rules"
+
+msgid "Qooling Outbound Form"
+msgstr "Qooling Outbound Form"
+
+msgid "Qooling Outbound Reviewer"
+msgstr "Qooling Outbound Reviewer"
+
+msgid "Qooling Outbound User"
+msgstr "Qooling Outbound User"
+
+msgid "Qooling Temperature Record"
+msgstr "Qooling Temperature Record"
+
+msgid "Qooling Temperature Record Pallet"
+msgstr "Qooling Temperature Record Pallet"
+
+msgid "Quick temperature (°C)"
+msgstr "Quick temperature (°C)"
+
+msgid "Quick temperature entry"
+msgstr "Quick temperature entry"
+
+msgid "Received quantity checked"
+msgstr "Received quantity checked"
+
+msgid "Record"
+msgstr "Record"
+
+msgid "Record video"
+msgstr "录制视频"
+
+msgid "Reference"
+msgstr "参考号"
+
+msgid "Reset to Draft"
+msgstr "重置为草稿"
+
+msgid "SKAL / BIO Product"
+msgstr "SKAL / BIO Product"
+
+msgid "Safe"
+msgstr "Safe"
+
+msgid "Save draft"
+msgstr "保存草稿"
+
+msgid "Save the draft before uploading media."
+msgstr "Save the draft before uploading media."
+
+msgid "Seal Number"
+msgstr "Seal Number"
+
+msgid "Seal number"
+msgstr "Seal number"
+
+msgid "Search number"
+msgstr "搜索编号"
+
+msgid "Select"
+msgstr "选择"
+
+msgid "Select location"
+msgstr "选择位置"
+
+msgid "Select manager"
+msgstr "选择经理"
+
+msgid "Select supervisor"
+msgstr "选择主管"
+
+msgid "Select warehouse"
+msgstr "选择仓库"
+
+msgid "Sequence"
+msgstr "Sequence"
+
+msgid "Signature"
+msgstr "签名"
+
+msgid "Signature time"
+msgstr "Signature time"
+
+msgid "Signer"
+msgstr "Signer"
+
+msgid "Start loading"
+msgstr "开始装货"
+
+msgid "Start time loading"
+msgstr "Start time loading"
+
+msgid "State"
+msgstr "状态"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Status after ventilation"
+msgstr "Status after ventilation"
+
+msgid "Storage stability"
+msgstr "Storage stability"
+
+msgid "Submit"
+msgstr "提交"
+
+msgid "Submitted"
+msgstr "已提交"
+
+msgid "Submitted At"
+msgstr "Submitted At"
+
+msgid "Submitted By"
+msgstr "Submitted By"
+
+msgid "Submitted at"
+msgstr "Submitted at"
+
+msgid "Submitted by"
+msgstr "Submitted by"
+
+msgid "Supervisor"
+msgstr "主管"
+
+msgid "Supervisor / Manager"
+msgstr "主管 / 经理"
+
+msgid "T1"
+msgstr "T1"
+
+msgid "Take photo"
+msgstr "拍照"
+
+msgid "Temperature (°C)"
+msgstr "Temperature (°C)"
+
+msgid "Temperature Record"
+msgstr "温度记录"
+
+msgid "Temperature Record (PDA Form)"
+msgstr "温度记录（PDA表单）"
+
+msgid "Temperature Record (PDA)"
+msgstr "温度记录（PDA）"
+
+msgid "Temperature Records"
+msgstr "温度记录列表"
+
+msgid "Temperature Supervisor"
+msgstr "Temperature Supervisor"
+
+msgid "Temperature User"
+msgstr "Temperature User"
+
+msgid "Temperature measured"
+msgstr "Temperature measured"
+
+msgid "Temperature of each pallet is registered"
+msgstr "Temperature of each pallet is registered"
+
+msgid "Temperature steps"
+msgstr "温度步骤"
+
+msgid "The same warehouse signature field is used by the web form."
+msgstr "The same warehouse signature field is used by the web form."
+
+msgid "This record is submitted and read-only."
+msgstr "此记录已提交，只读。"
+
+msgid "To"
+msgstr "结束日期"
+
+msgid "Total Pallets"
+msgstr "托盘总数"
+
+msgid "UN Number"
+msgstr "UN Number"
+
+msgid "UN Number and temperature fields are required when ADR is Yes."
+msgstr "UN Number and temperature fields are required when ADR is Yes."
+
+msgid "UN Number is not allowed."
+msgstr "UN Number is not allowed."
+
+msgid "UN number"
+msgstr "UN number"
+
+msgid "Unloading permission"
+msgstr "卸货许可"
+
+msgid "Unloading permission received?"
+msgstr "Unloading permission received?"
+
+msgid "Unpackaged product housing visible damage"
+msgstr "Unpackaged product housing visible damage"
+
+msgid "Vehicle and Driver"
+msgstr "车辆和司机"
+
+msgid "Vehicle: ADR certificate"
+msgstr "Vehicle: ADR certificate"
+
+msgid "Vehicle: ADR sign"
+msgstr "Vehicle: ADR sign"
+
+msgid "Vehicle: TREM card / written instructions"
+msgstr "Vehicle: TREM card / written instructions"
+
+msgid "Vehicle: fire extinguisher"
+msgstr "Vehicle: fire extinguisher"
+
+msgid "Vehicle: fixing material"
+msgstr "Vehicle: fixing material"
+
+msgid "Ventilated"
+msgstr "Ventilated"
+
+msgid "Ventilation required"
+msgstr "Ventilation required"
+
+msgid "WEB"
+msgstr "WEB"
+
+msgid "Warehouse operator"
+msgstr "仓库操作员"
+
+msgid "Warehouse operator comments"
+msgstr "Warehouse operator comments"
+
+msgid "Warehouse operator signature"
+msgstr "Warehouse operator signature"
+
+msgid "Warehouse operator signer"
+msgstr "Warehouse operator signer"
+
+msgid "Warehouse signature"
+msgstr "仓库签名"
+
+msgid "Warehouse signature time"
+msgstr "Warehouse signature time"
+
+msgid "Weight distribution checked"
+msgstr "Weight distribution checked"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "Could not load PDA records."
+msgstr "无法加载PDA记录。"
+
+msgid "From date cannot be later than To date."
+msgstr "开始日期不能晚于结束日期。"
+
+msgid "Exception pending"
+msgstr "异常待处理"
+
+msgid "Show filters"
+msgstr "显示筛选"
+
+msgid "Hide filters"
+msgstr "隐藏筛选"
+
+msgid "Details"
+msgstr "详细信息"
+
+msgid "ADR & temperature"
+msgstr "ADR和温度"
+
+msgid "Only image and video files can be uploaded."
+msgstr "只能使用图片和视频文件作为证据。"

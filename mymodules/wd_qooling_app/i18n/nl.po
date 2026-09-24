@@ -1,0 +1,816 @@
+# Translation of Odoo Server.
+#
+# This file contains the translation of the following modules:
+#     * wd_qooling_app
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Language: nl_NL\n"
+"PO-Revision-Date: 2026-09-24 09:30+0800\n"
+"Last-Translator: Qooling Team\n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%s signature audit fields are required."
+msgstr "%s signature audit fields are required."
+
+msgid "A handwritten signature is required before submission."
+msgstr "Een handgeschreven handtekening is vereist voordat u indient."
+
+msgid "A handwritten warehouse signature is required before submission."
+msgstr "Een handgeschreven magazijnhandtekening is vereist voordat u indient."
+
+msgid "A record can contain at most %(count)s media files."
+msgstr "A record can contain at most %(count)s media files."
+
+msgid "ADR"
+msgstr "ADR"
+
+msgid "ADR and Temperature"
+msgstr "ADR and Temperature"
+
+msgid "ADR separation / compatibility"
+msgstr "ADR separation / compatibility"
+
+msgid "Action"
+msgstr "Actie"
+
+msgid "Add temperature"
+msgstr "Temperatuur toevoegen"
+
+msgid "All statuses"
+msgstr "Alle statussen"
+
+msgid "Arrival"
+msgstr "Aankomst"
+
+msgid "Arrival, start loading, and end loading times must be in chronological order."
+msgstr "Arrival, start loading, and end loading times must be in chronological order."
+
+msgid "Attach media"
+msgstr "Media bijvoegen"
+
+msgid "Attach photos or videos"
+msgstr "Foto's of video's bijvoegen"
+
+msgid "Average temperature"
+msgstr "Gemiddelde temperatuur"
+
+msgid "Average temperature per pallet (°C)"
+msgstr "Average temperature per pallet (°C)"
+
+msgid "B/L"
+msgstr "B/L"
+
+msgid "Back"
+msgstr "Terug"
+
+msgid "Bonded"
+msgstr "Douane-entrepot"
+
+msgid "Business Reference"
+msgstr "Zakelijke referentie"
+
+msgid "Business reference"
+msgstr "Zakelijke referentie"
+
+msgid "Cargo: correct identification"
+msgstr "Cargo: correct identification"
+
+msgid "Cargo: packaging checked"
+msgstr "Cargo: packaging checked"
+
+msgid "Cargo: secured on truck"
+msgstr "Cargo: secured on truck"
+
+msgid "Checked for visible damage"
+msgstr "Checked for visible damage"
+
+msgid "Checked for visible damage or packaging issues"
+msgstr "Checked for visible damage or packaging issues"
+
+msgid "Checks"
+msgstr "Controles"
+
+msgid "Checks and Evidence"
+msgstr "Controles en bewijsmateriaal"
+
+msgid "Clear"
+msgstr "Wissen"
+
+msgid "Clear all pallet lines?"
+msgstr "Alle palletregels wissen?"
+
+msgid "Clear all pallets"
+msgstr "Alle pallets wissen"
+
+msgid "Clear all temperatures"
+msgstr "Alle temperaturen wissen"
+
+msgid "Clear signature"
+msgstr "Handtekening wissen"
+
+msgid "Close"
+msgstr "Sluiten"
+
+msgid "Closed"
+msgstr "Gesloten"
+
+msgid "Comments"
+msgstr "Opmerkingen"
+
+msgid "Container Number"
+msgstr "Containernummer"
+
+msgid "Container Number / Shipment Number"
+msgstr "Containernummer / zendingsnummer"
+
+msgid "Container number"
+msgstr "Containernummer"
+
+msgid "Container number / shipment number"
+msgstr "Container number / shipment number"
+
+msgid "Create a Temperature Record"
+msgstr "Temperatuurregistratie maken"
+
+msgid "Create an Inbound Form"
+msgstr "Inbound-formulier maken"
+
+msgid "Create an Outbound Form"
+msgstr "Outbound-formulier maken"
+
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+msgid "Customer"
+msgstr "Klant"
+
+msgid "Dangerous"
+msgstr "Dangerous"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Date and time arrival"
+msgstr "Datum en tijd van aankomst"
+
+msgid "Delete image"
+msgstr "Afbeelding verwijderen"
+
+msgid "Delete media"
+msgstr "Media verwijderen"
+
+msgid "Display Name"
+msgstr "Display Name"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "Document number"
+msgstr "Documentnummer"
+
+msgid "Draft"
+msgstr "Concept"
+
+msgid "Driver"
+msgstr "Chauffeur"
+
+msgid "Driver comments"
+msgstr "Opmerkingen chauffeur"
+
+msgid "Driver signature"
+msgstr "Handtekening chauffeur"
+
+msgid "Driver signature time"
+msgstr "Driver signature time"
+
+msgid "Driver signer"
+msgstr "Driver signer"
+
+msgid "Driver: ADR certificate"
+msgstr "Driver: ADR certificate"
+
+msgid "Driver: drip tray"
+msgstr "Driver: drip tray"
+
+msgid "Driver: eye protection"
+msgstr "Driver: eye protection"
+
+msgid "Driver: eyewash bottle"
+msgstr "Driver: eyewash bottle"
+
+msgid "Driver: flashlight"
+msgstr "Driver: flashlight"
+
+msgid "Driver: protective gloves"
+msgstr "Driver: protective gloves"
+
+msgid "Driver: reflective safety vest"
+msgstr "Driver: reflective safety vest"
+
+msgid "Driver: shovel"
+msgstr "Driver: shovel"
+
+msgid "Driver: tarpaulin"
+msgstr "Driver: tarpaulin"
+
+msgid "Driver: two independent warning triangles"
+msgstr "Driver: two independent warning triangles"
+
+msgid "Driver: wheel chock"
+msgstr "Driver: wheel chock"
+
+msgid "Electrolyte leakage"
+msgstr "Electrolyte leakage"
+
+msgid "End loading"
+msgstr "Einde laden"
+
+msgid "End time of loading"
+msgstr "End time of loading"
+
+msgid "Enlarge image"
+msgstr "Enlarge image"
+
+msgid "Enlarged inbound evidence"
+msgstr "Enlarged inbound evidence"
+
+msgid "Enlarged outbound evidence"
+msgstr "Enlarged outbound evidence"
+
+msgid "Enlarged photo"
+msgstr "Enlarged photo"
+
+msgid "Enlarged temperature evidence"
+msgstr "Enlarged temperature evidence"
+
+msgid "Enter temperature and press Enter"
+msgstr "Enter temperature and press Enter"
+
+msgid "Evidence"
+msgstr "Bewijsmateriaal"
+
+msgid "Evidence and Signatures"
+msgstr "Bewijsmateriaal en handtekeningen"
+
+msgid "Exception Pending"
+msgstr "Uitzondering in behandeling"
+
+msgid "FORMS"
+msgstr "FORMULIEREN"
+
+msgid "FORMS / PDA"
+msgstr "FORMULIEREN / PDA"
+
+msgid "Filing date"
+msgstr "Dossierdatum"
+
+msgid "Filled in by"
+msgstr "Ingevuld door"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Filters applied"
+msgstr "Filters toegepast"
+
+msgid "Free union goods"
+msgstr "Vrije uniegoederen"
+
+msgid "From"
+msgstr "Vanaf"
+
+msgid "Gas measurement"
+msgstr "Gas measurement"
+
+msgid "Gas measurement Status"
+msgstr "Gas measurement Status"
+
+msgid "Good"
+msgstr "Goed"
+
+msgid "Goods Status"
+msgstr "Goederenstatus"
+
+msgid "Goods status"
+msgstr "Goederenstatus"
+
+msgid "Goods type"
+msgstr "Goederentype"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Inbound Form"
+msgstr "Inbound-formulier"
+
+msgid "Inbound Forms"
+msgstr "Inbound-formulieren"
+
+msgid "Inbound Record"
+msgstr "Inbound-registratie"
+
+msgid "Inbound Record (PDA Form)"
+msgstr "Inbound-registratie (PDA-formulier)"
+
+msgid "Inbound Record (PDA)"
+msgstr "Inbound-registratie (PDA)"
+
+msgid "Inbound steps"
+msgstr "Inbound-stappen"
+
+msgid "Ja"
+msgstr "Ja"
+
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+msgid "Legacy compatibility field. New evidence must use photo_ids."
+msgstr "Legacy compatibility field. New evidence must use photo_ids."
+
+msgid "Legacy photo"
+msgstr "Legacy photo"
+
+msgid "Loading and Cargo"
+msgstr "Laden en vracht"
+
+msgid "Loading plan discussed with driver"
+msgstr "Loading plan discussed with driver"
+
+msgid "Loading records..."
+msgstr "Registraties laden..."
+
+msgid "Loading: quantity checked"
+msgstr "Loading: quantity checked"
+
+msgid "Loading: visible damage or packaging issues"
+msgstr "Loading: visible damage or packaging issues"
+
+msgid "Location"
+msgstr "Locatie"
+
+msgid "MRN Number"
+msgstr "MRN Number"
+
+msgid "MRN checked before release"
+msgstr "MRN checked before release"
+
+msgid "MRN number"
+msgstr "MRN number"
+
+msgid "Manager"
+msgstr "Manager"
+
+msgid "Mark Exception"
+msgstr "Uitzondering markeren"
+
+msgid "Measured temperature"
+msgstr "Gemeten temperatuur"
+
+msgid "Measured temperature (°C)"
+msgstr "Measured temperature (°C)"
+
+msgid "Media evidence can only be changed while the record is a draft."
+msgstr "Media evidence can only be changed while the record is a draft."
+
+msgid "Media files of this type cannot exceed %(limit)s MB."
+msgstr "Media files of this type cannot exceed %(limit)s MB."
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Nee"
+msgstr "Nee"
+
+msgid "New"
+msgstr "Nieuw"
+
+msgid "New record"
+msgstr "Nieuwe registratie"
+
+msgid "Next"
+msgstr "Volgende"
+
+msgid "No"
+msgstr "Nee"
+
+msgid "No records found."
+msgstr "Geen registraties gevonden."
+
+msgid "No records match the selected filters."
+msgstr "Geen registraties komen overeen met de geselecteerde filters."
+
+msgid "No, stop unloading"
+msgstr "No, stop unloading"
+
+msgid "No, stop unloading and ask project manager"
+msgstr "No, stop unloading and ask project manager"
+
+msgid "Non-Bonded"
+msgstr "Non-Bonded"
+
+msgid "Not Applicable"
+msgstr "Not Applicable"
+
+msgid "Not applicable"
+msgstr "Not applicable"
+
+msgid "Not good"
+msgstr "Not good"
+
+msgid "Not recorded"
+msgstr "Not recorded"
+
+msgid "Number"
+msgstr "Nummer"
+
+msgid "Number received has been checked"
+msgstr "Number received has been checked"
+
+msgid "Only a Temperature Supervisor can perform this action."
+msgstr "Only a Temperature Supervisor can perform this action."
+
+msgid "Only an Outbound reviewer can perform this action."
+msgstr "Only an Outbound reviewer can perform this action."
+
+msgid "Only draft temperature records can be cleared."
+msgstr "Only draft temperature records can be cleared."
+
+msgid "Only draft temperature records can receive new readings."
+msgstr "Only draft temperature records can receive new readings."
+
+msgid "Only image and video files can be used as evidence."
+msgstr "Only image and video files can be used as evidence."
+
+msgid "Open web form"
+msgstr "Webformulier openen"
+
+msgid "Outbound Form"
+msgstr "Outbound-formulier"
+
+msgid "Outbound Forms"
+msgstr "Outbound-formulieren"
+
+msgid "Outbound Record"
+msgstr "Outbound-registratie"
+
+msgid "Outbound Record (PDA Form)"
+msgstr "Outbound-registratie (PDA-formulier)"
+
+msgid "Outbound Record (PDA)"
+msgstr "Outbound-registratie (PDA)"
+
+msgid "Outbound steps"
+msgstr "Outbound-stappen"
+
+msgid "PDA"
+msgstr "PDA"
+
+msgid "Packaging condition"
+msgstr "Packaging condition"
+
+msgid "Packaging visible damage"
+msgstr "Packaging visible damage"
+
+msgid "Pallet"
+msgstr "Pallet"
+
+msgid "Pallet Temperatures"
+msgstr "Pallettemperaturen"
+
+msgid "Pallet lines cannot be deleted individually. Use Clear all pallets."
+msgstr "Pallet lines cannot be deleted individually. Use Clear all pallets."
+
+msgid "Pallet temperature registered"
+msgstr "Pallet temperature registered"
+
+msgid "Pallet temperatures"
+msgstr "Pallettemperaturen"
+
+msgid "Pallet temperatures can only be added in draft."
+msgstr "Pallet temperatures can only be added in draft."
+
+msgid "Pallet temperatures can only be modified in draft."
+msgstr "Pallet temperatures can only be modified in draft."
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid "Photo of cargo"
+msgstr "Photo of cargo"
+
+msgid "Photos and videos"
+msgstr "Foto's en video's"
+
+msgid "Preview media"
+msgstr "Media bekijken"
+
+msgid "Product quality and condition have been checked"
+msgstr "Product quality and condition have been checked"
+
+msgid "Product quality checked"
+msgstr "Product quality checked"
+
+msgid "Proper Shipping Name"
+msgstr "Proper Shipping Name"
+
+msgid "Proper shipping name"
+msgstr "Proper shipping name"
+
+msgid "Qooling"
+msgstr "Qooling"
+
+msgid "Qooling Dashboard"
+msgstr "Qooling-dashboard"
+
+msgid "Qooling Inbound Form"
+msgstr "Qooling Inbound Form"
+
+msgid "Qooling Inbound Reviewer"
+msgstr "Qooling Inbound Reviewer"
+
+msgid "Qooling Inbound User"
+msgstr "Qooling Inbound User"
+
+msgid "Qooling Media Evidence Rules"
+msgstr "Qooling Media Evidence Rules"
+
+msgid "Qooling Outbound Form"
+msgstr "Qooling Outbound Form"
+
+msgid "Qooling Outbound Reviewer"
+msgstr "Qooling Outbound Reviewer"
+
+msgid "Qooling Outbound User"
+msgstr "Qooling Outbound User"
+
+msgid "Qooling Temperature Record"
+msgstr "Qooling Temperature Record"
+
+msgid "Qooling Temperature Record Pallet"
+msgstr "Qooling Temperature Record Pallet"
+
+msgid "Quick temperature (°C)"
+msgstr "Quick temperature (°C)"
+
+msgid "Quick temperature entry"
+msgstr "Quick temperature entry"
+
+msgid "Received quantity checked"
+msgstr "Received quantity checked"
+
+msgid "Record"
+msgstr "Record"
+
+msgid "Record video"
+msgstr "Video opnemen"
+
+msgid "Reference"
+msgstr "Referentie"
+
+msgid "Reset to Draft"
+msgstr "Terugzetten naar concept"
+
+msgid "SKAL / BIO Product"
+msgstr "SKAL / BIO Product"
+
+msgid "Safe"
+msgstr "Safe"
+
+msgid "Save draft"
+msgstr "Concept opslaan"
+
+msgid "Save the draft before uploading media."
+msgstr "Save the draft before uploading media."
+
+msgid "Seal Number"
+msgstr "Seal Number"
+
+msgid "Seal number"
+msgstr "Seal number"
+
+msgid "Search number"
+msgstr "Nummer zoeken"
+
+msgid "Select"
+msgstr "Selecteren"
+
+msgid "Select location"
+msgstr "Locatie selecteren"
+
+msgid "Select manager"
+msgstr "Manager selecteren"
+
+msgid "Select supervisor"
+msgstr "Supervisor selecteren"
+
+msgid "Select warehouse"
+msgstr "Magazijn selecteren"
+
+msgid "Sequence"
+msgstr "Sequence"
+
+msgid "Signature"
+msgstr "Handtekening"
+
+msgid "Signature time"
+msgstr "Signature time"
+
+msgid "Signer"
+msgstr "Signer"
+
+msgid "Start loading"
+msgstr "Begin laden"
+
+msgid "Start time loading"
+msgstr "Start time loading"
+
+msgid "State"
+msgstr "Status"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status after ventilation"
+msgstr "Status after ventilation"
+
+msgid "Storage stability"
+msgstr "Storage stability"
+
+msgid "Submit"
+msgstr "Indienen"
+
+msgid "Submitted"
+msgstr "Ingediend"
+
+msgid "Submitted At"
+msgstr "Submitted At"
+
+msgid "Submitted By"
+msgstr "Submitted By"
+
+msgid "Submitted at"
+msgstr "Submitted at"
+
+msgid "Submitted by"
+msgstr "Submitted by"
+
+msgid "Supervisor"
+msgstr "Supervisor"
+
+msgid "Supervisor / Manager"
+msgstr "Supervisor / manager"
+
+msgid "T1"
+msgstr "T1"
+
+msgid "Take photo"
+msgstr "Foto maken"
+
+msgid "Temperature (°C)"
+msgstr "Temperature (°C)"
+
+msgid "Temperature Record"
+msgstr "Temperatuurregistratie"
+
+msgid "Temperature Record (PDA Form)"
+msgstr "Temperatuurregistratie (PDA-formulier)"
+
+msgid "Temperature Record (PDA)"
+msgstr "Temperatuurregistratie (PDA)"
+
+msgid "Temperature Records"
+msgstr "Temperatuurregistraties"
+
+msgid "Temperature Supervisor"
+msgstr "Temperature Supervisor"
+
+msgid "Temperature User"
+msgstr "Temperature User"
+
+msgid "Temperature measured"
+msgstr "Temperature measured"
+
+msgid "Temperature of each pallet is registered"
+msgstr "Temperature of each pallet is registered"
+
+msgid "Temperature steps"
+msgstr "Temperatuurstappen"
+
+msgid "The same warehouse signature field is used by the web form."
+msgstr "The same warehouse signature field is used by the web form."
+
+msgid "This record is submitted and read-only."
+msgstr "Deze registratie is ingediend en alleen-lezen."
+
+msgid "To"
+msgstr "Tot en met"
+
+msgid "Total Pallets"
+msgstr "Totaal aantal pallets"
+
+msgid "UN Number"
+msgstr "UN Number"
+
+msgid "UN Number and temperature fields are required when ADR is Yes."
+msgstr "UN Number and temperature fields are required when ADR is Yes."
+
+msgid "UN Number is not allowed."
+msgstr "UN Number is not allowed."
+
+msgid "UN number"
+msgstr "UN number"
+
+msgid "Unloading permission"
+msgstr "Toestemming voor lossen"
+
+msgid "Unloading permission received?"
+msgstr "Unloading permission received?"
+
+msgid "Unpackaged product housing visible damage"
+msgstr "Unpackaged product housing visible damage"
+
+msgid "Vehicle and Driver"
+msgstr "Voertuig en chauffeur"
+
+msgid "Vehicle: ADR certificate"
+msgstr "Vehicle: ADR certificate"
+
+msgid "Vehicle: ADR sign"
+msgstr "Vehicle: ADR sign"
+
+msgid "Vehicle: TREM card / written instructions"
+msgstr "Vehicle: TREM card / written instructions"
+
+msgid "Vehicle: fire extinguisher"
+msgstr "Vehicle: fire extinguisher"
+
+msgid "Vehicle: fixing material"
+msgstr "Vehicle: fixing material"
+
+msgid "Ventilated"
+msgstr "Ventilated"
+
+msgid "Ventilation required"
+msgstr "Ventilation required"
+
+msgid "WEB"
+msgstr "WEB"
+
+msgid "Warehouse operator"
+msgstr "Magazijnmedewerker"
+
+msgid "Warehouse operator comments"
+msgstr "Warehouse operator comments"
+
+msgid "Warehouse operator signature"
+msgstr "Warehouse operator signature"
+
+msgid "Warehouse operator signer"
+msgstr "Warehouse operator signer"
+
+msgid "Warehouse signature"
+msgstr "Magazijnhandtekening"
+
+msgid "Warehouse signature time"
+msgstr "Warehouse signature time"
+
+msgid "Weight distribution checked"
+msgstr "Weight distribution checked"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Could not load PDA records."
+msgstr "PDA-registraties konden niet worden geladen."
+
+msgid "From date cannot be later than To date."
+msgstr "De begindatum mag niet na de einddatum liggen."
+
+msgid "Exception pending"
+msgstr "Uitzondering in behandeling"
+
+msgid "Show filters"
+msgstr "Filters tonen"
+
+msgid "Hide filters"
+msgstr "Filters verbergen"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "ADR & temperature"
+msgstr "ADR en temperatuur"
+
+msgid "Only image and video files can be uploaded."
+msgstr "Alleen afbeeldings- en videobestanden kunnen worden geüpload."
