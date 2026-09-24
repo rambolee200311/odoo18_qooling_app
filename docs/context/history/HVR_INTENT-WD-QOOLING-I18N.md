@@ -1,6 +1,6 @@
 # wd_qooling_app Internationalization Human Verification Record (HVR)
 
-> Document status: Pending Human Verification
+> Document status: Passed
 > Intent ID: `INTENT-WD-QOOLING-I18N`
 > IHR: [IHR_INTENT-WD-QOOLING-I18N.md](./IHR_INTENT-WD-QOOLING-I18N.md)
 > ATR: [ATR_INTENT-WD-QOOLING-I18N.md](./ATR_INTENT-WD-QOOLING-I18N.md)
@@ -11,10 +11,10 @@
 | Field | Value |
 |---|---|
 | Human verification required | Yes |
-| Status | Pending |
-| Verification date | Not yet recorded |
-| Human verifier | Not yet recorded |
-| Result | Not run |
+| Status | Passed |
+| Verification date | 2026-09-24 |
+| Human verifier | User |
+| Result | Passed |
 
 ## 2. Required Scenarios
 
@@ -43,5 +43,15 @@
 
 ## 3. Evidence Rules
 
-This HVR remains Pending until the user confirms all three language scenarios.
-Automated catalog checks do not replace browser language verification.
+The user confirmed the English default, Dutch, and Simplified Chinese language
+verification for the Web/PDA surfaces. Automated catalog checks were used as
+supporting evidence and did not replace the browser verification.
+
+### HVR-RUN-001 — User confirmation
+
+| Field | Value |
+|---|---|
+| Scope | Inbound, Outbound, and Temperature Web/PDA i18n |
+| Languages | English default, Dutch (`nl_NL`), Simplified Chinese (`zh_CN`) |
+| Result | Passed |
+| Evidence | User confirmation received on 2026-09-24 |
