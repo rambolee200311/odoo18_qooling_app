@@ -27,6 +27,12 @@ const STEPS = [
     { key: "evidence", label: _t("Evidence") },
     { key: "signature", label: _t("Signature") },
 ];
+const CHECKS = [
+    ["packaging_damage", _t("Packaging visible damage")],
+    ["unpacked_housing_damage", _t("Unpackaged housing damage")],
+    ["electrolyte_leakage", _t("Electrolyte leakage")],
+    ["storage_stability", _t("Storage stability")],
+];
 const DRAFT_STORAGE_KEY = "wd_qooling_temperature_pda_draft_id";
 const RECORD_FIELDS = [
     "name", "state", "date", "manager_id", "customer", "container_number", "location_id",
@@ -66,6 +72,8 @@ export class QoolingTemperaturePda extends Component {
     }
 
     get steps() { return STEPS; }
+
+    get checks() { return CHECKS; }
 
     get isReadOnly() { return this.state.readOnly; }
 

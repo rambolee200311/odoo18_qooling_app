@@ -28,6 +28,32 @@ const STEPS = [
     { key: "driver_signature", label: _t("Driver signature") },
     { key: "warehouse_signature", label: _t("Warehouse signature") },
 ];
+const CHECKS = [
+    ["loading_plan_discussed", _t("Loading plan discussed")],
+    ["adr_separation_compatibility", _t("ADR separation / compatibility")],
+    ["weight_distribution", _t("Weight distribution checked")],
+    ["check_loading_visible_damage", _t("Loading: visible damage")],
+    ["check_loading_quantity", _t("Loading: quantity checked")],
+    ["cargo_packaging", _t("Cargo packaging")],
+    ["cargo_identification", _t("Cargo identification")],
+    ["cargo_secured", _t("Cargo secured")],
+    ["vehicle_adr_certificate", _t("Vehicle ADR certificate")],
+    ["vehicle_fire_extinguisher", _t("Vehicle fire extinguisher")],
+    ["vehicle_adr_sign", _t("Vehicle ADR sign")],
+    ["vehicle_fixing_material", _t("Vehicle fixing material")],
+    ["vehicle_trem_card", _t("Vehicle TREM card")],
+    ["driver_adr_certificate", _t("Driver ADR certificate")],
+    ["driver_safety_vest", _t("Driver safety vest")],
+    ["driver_eye_protection", _t("Driver eye protection")],
+    ["driver_protective_gloves", _t("Driver protective gloves")],
+    ["driver_wheel_chock", _t("Driver wheel chock")],
+    ["driver_tarpaulin", _t("Driver tarpaulin")],
+    ["driver_flashlight", _t("Driver flashlight")],
+    ["driver_shovel", _t("Driver shovel")],
+    ["driver_drip_tray", _t("Driver drip tray")],
+    ["driver_eyewash", _t("Driver eyewash")],
+    ["driver_warning_triangles", _t("Driver warning triangles")],
+];
 const DRAFT_STORAGE_KEY = "wd_qooling_outbound_pda_draft_id";
 const DRAFT_FIELDS = [
     "name", "state", "location_id", "date_arrival", "start_loading_at", "end_loading_at",
@@ -92,6 +118,8 @@ export class QoolingOutboundPda extends Component {
     }
 
     get steps() { return STEPS; }
+
+    get checks() { return CHECKS; }
 
     get isReadOnly() { return this.state.readOnly; }
 
