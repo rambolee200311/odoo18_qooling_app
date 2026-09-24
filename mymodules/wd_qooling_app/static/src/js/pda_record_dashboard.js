@@ -15,6 +15,7 @@ class PdaRecordDashboard extends Component {
         this.backToDashboard = this.backToDashboard.bind(this);
         this.applyFilters = this.applyFilters.bind(this);
         this.clearFilters = this.clearFilters.bind(this);
+        this.toggleFilters = this.toggleFilters.bind(this);
         this.action = useService("action");
         this.orm = useService("orm");
         this.state = useState({
@@ -22,6 +23,7 @@ class PdaRecordDashboard extends Component {
             loading: true,
             error: "",
             filterError: "",
+            filtersExpanded: false,
             filters: { dateFrom: "", dateTo: "", number: "", status: "" },
         });
         onWillStart(() => this.loadRecords());
@@ -68,6 +70,7 @@ class PdaRecordDashboard extends Component {
         const config = this.constructor.config;
         this.state.loading = true;
         this.state.error = "";
+        let success = true;
         try {
             const records = await this.orm.searchRead(
                 config.model,
@@ -84,9 +87,11 @@ class PdaRecordDashboard extends Component {
             }));
         } catch (error) {
             this.state.error = error.data?.message || error.message || "Could not load PDA records.";
+            success = false;
         } finally {
             this.state.loading = false;
         }
+        return success;
     }
 
     async applyFilters() {
@@ -96,7 +101,9 @@ class PdaRecordDashboard extends Component {
             this.state.filterError = "From date cannot be later than To date.";
             return;
         }
-        await this.loadRecords();
+        if (await this.loadRecords()) {
+            this.state.filtersExpanded = false;
+        }
     }
 
     async clearFilters() {
@@ -106,6 +113,10 @@ class PdaRecordDashboard extends Component {
         this.state.filters.status = "";
         this.state.filterError = "";
         await this.loadRecords();
+    }
+
+    toggleFilters() {
+        this.state.filtersExpanded = !this.state.filtersExpanded;
     }
 
     getStateLabel(state) {

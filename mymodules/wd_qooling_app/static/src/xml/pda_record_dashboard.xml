@@ -14,7 +14,16 @@
                 </div>
             </header>
             <div t-if="state.error" class="alert alert-danger" role="alert"><t t-esc="state.error"/></div>
-            <form class="o_qooling_pda_dashboard__filters row g-2 mb-4"
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                <button type="button" class="btn btn-outline-secondary"
+                        t-att-aria-expanded="state.filtersExpanded ? 'true' : 'false'"
+                        t-on-click="toggleFilters">
+                    <t t-esc="state.filtersExpanded ? 'Hide filters' : 'Show filters'"/>
+                </button>
+                <span t-if="!state.filtersExpanded &amp;&amp; hasActiveFilters"
+                      class="text-muted small">Filters applied</span>
+            </div>
+            <form t-if="state.filtersExpanded" class="o_qooling_pda_dashboard__filters row g-2 mb-4"
                   t-on-submit.prevent="applyFilters">
                 <div class="col-12 col-md-3">
                     <label class="form-label" for="pda-filter-date-from">From</label>
