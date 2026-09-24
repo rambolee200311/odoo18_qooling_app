@@ -1,7 +1,7 @@
 # Coding Contract Addendum: PDA Dashboard Filter Collapse
 
 **Status:** Frozen — Authorized for Implementation
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Approved:** 2026-09-24
 **Scope:** Filter area in the Inbound, Outbound, and Temperature Record PDA dashboards
 **Base CC:** [Coding_Contract_PDA_Record_Dashboard_Filter.md](./Coding_Contract_PDA_Record_Dashboard_Filter.md)
@@ -18,13 +18,19 @@ criteria need to be entered or changed.
 
 The filter area must be collapsed by default when a PDA history dashboard opens.
 
-The collapsed state must show a clearly labelled control:
+The collapsed state must show a clearly labelled upward/downward arrow control:
 
-- `Show filters` when the filter area is closed;
-- `Hide filters` when the filter area is open.
+- downward arrow when the filter area is closed;
+- upward arrow when the filter area is open.
+
+The arrow control must retain an accessible label:
+
+- `Show filters` when closed;
+- `Hide filters` when open.
 
 The control must be usable on desktop and narrow PDA screens without horizontal
-scrolling.
+scrolling. The arrow is the visible affordance; the text label need not be
+visually displayed.
 
 ### CC-PDA-FILTER-COLLAPSE-002 — Expand and collapse
 

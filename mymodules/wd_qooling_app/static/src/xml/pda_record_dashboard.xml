@@ -16,9 +16,11 @@
             <div t-if="state.error" class="alert alert-danger" role="alert"><t t-esc="state.error"/></div>
             <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
                 <button type="button" class="btn btn-outline-secondary"
+                        t-att-aria-label="state.filtersExpanded ? 'Hide filters' : 'Show filters'"
                         t-att-aria-expanded="state.filtersExpanded ? 'true' : 'false'"
                         t-on-click="toggleFilters">
-                    <t t-esc="state.filtersExpanded ? 'Hide filters' : 'Show filters'"/>
+                    <i t-att-class="state.filtersExpanded ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"
+                       aria-hidden="true"/>
                 </button>
                 <span t-if="!state.filtersExpanded &amp;&amp; hasActiveFilters"
                       class="text-muted small">Filters applied</span>
